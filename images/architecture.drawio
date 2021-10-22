@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2021-10-22T05:54:37.228Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="nzmg1qMIIMAKDU1tGsy8" version="15.5.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-22T05:56:35.296Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="gx1pCK0VAVgp2iPhQ238" version="15.5.7" type="github">
   <diagram id="mBfj8Z1WwXOkY7Xo1tF7" name="Page-1">
     <mxGraphModel dx="941" dy="1140" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-11" value="&lt;b&gt;CLIENT&lt;/b&gt;&lt;br&gt;ReactJS, react-router-dom" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="10" y="337.5" width="160" height="65" as="geometry" />
+          <mxGeometry x="60" y="40" width="160" height="65" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-13" value="Controller" style="swimlane;align=center;" vertex="1" parent="1">
-          <mxGeometry x="310" y="270" width="200" height="200" as="geometry" />
+          <mxGeometry x="310" y="270" width="200" height="250" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-23" value="Apollo ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-13">
           <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
@@ -99,6 +99,18 @@
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-60" value="&lt;span style=&quot;font-size: 14px&quot;&gt;4.Return raw data to Model&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=30;" vertex="1" parent="1">
           <mxGeometry x="840" y="270" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-61" value="Client" style="swimlane;align=center;" vertex="1" parent="1">
+          <mxGeometry y="290" width="180" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-62" value="@Speechly" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-61">
+          <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-63" value="&lt;b&gt;redux&lt;/b&gt;&lt;br&gt;used for defining one global store for the whole app" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-64" value="&lt;b&gt;VOICED-POWERED SELF-PRODUCTIVITY APPLICATION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="40" width="250" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

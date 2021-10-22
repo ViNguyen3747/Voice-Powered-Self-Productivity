@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-10-22T14:24:33.191Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="HEpc94_IsAyj0nxcmdMQ" version="15.5.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-22T14:51:28.104Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="Ww2O0-lCg2RJejyC6Hnp" version="15.5.8" type="github">
   <diagram id="mBfj8Z1WwXOkY7Xo1tF7" name="Page-1">
     <mxGraphModel dx="1200" dy="1341" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -13,6 +13,9 @@
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-23" value="Apollo ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-13" vertex="1">
           <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
         </mxCell>
+        <mxCell id="cZz0i_SCkCT4VLorB7M6-3" value="GraphQL ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-13">
+          <mxGeometry x="15" y="60" width="170" height="30" as="geometry" />
+        </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-14" value="Model - interaction with Database" style="swimlane;align=center;" parent="1" vertex="1">
           <mxGeometry x="640" y="10" width="200" height="200" as="geometry" />
         </mxCell>
@@ -24,6 +27,12 @@
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-28" value="JWT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-14" vertex="1">
           <mxGeometry x="15" y="85" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cZz0i_SCkCT4VLorB7M6-1" value="Apollo ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-14">
+          <mxGeometry x="15" y="120" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="cZz0i_SCkCT4VLorB7M6-2" value="GraphQL ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-14">
+          <mxGeometry x="10" y="150" width="170" height="30" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-15" value="View - User interface and Presentation" style="swimlane;align=center;startSize=23;" parent="1" vertex="1">
           <mxGeometry x="640" y="530" width="230" height="200" as="geometry" />
@@ -40,7 +49,7 @@
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-21" value="React - toastify" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
           <mxGeometry x="10" y="120" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-22" value="GraphQL ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
+        <mxCell id="cZz0i_SCkCT4VLorB7M6-4" value="@material-ui" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-15">
           <mxGeometry x="10" y="150" width="170" height="30" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-29" value="SERVER - ExpressJS framework" style="swimlane;align=center;" parent="1" vertex="1">
@@ -105,9 +114,6 @@
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-62" value="@Speechly" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-61" vertex="1">
           <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-63" value="&lt;b&gt;redux&lt;/b&gt;&lt;br&gt;used for defining one global store for the whole app" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="35" y="150" width="110" height="60" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-64" value="&lt;b&gt;VOICED-POWERED SELF-PRODUCTIVITY APPLICATION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="180" y="40" width="250" height="60" as="geometry" />

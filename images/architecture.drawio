@@ -1,17 +1,17 @@
-<mxfile host="app.diagrams.net" modified="2021-10-26T04:05:25.451Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="mEbopZ25B-SK6-e1tVuz" version="15.5.9" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-26T04:06:01.179Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="Xef16RFdYtEPIA0498M-" version="15.5.9" type="github">
   <diagram id="mBfj8Z1WwXOkY7Xo1tF7" name="Page-1">
     <mxGraphModel dx="3276" dy="1358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-15" value="View - ReactJS" style="swimlane;align=center;startSize=23;fillColor=#f8cecc;strokeColor=#b85450;swimlaneFillColor=none;fontStyle=1;fontSize=15;" parent="1" vertex="1">
-          <mxGeometry x="680" y="510" width="240" height="230" as="geometry" />
+          <mxGeometry x="680" y="510" width="210" height="230" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-16" value="JavaScript, HTML, CSS" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;fontSize=15;fontStyle=1" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
-          <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
+          <mxGeometry x="15" y="30" width="175" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="1hfYZ1iNuW0zuiRspNUj-5" value="React - chartjs - 2: to visualize data" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontStyle=1" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
-          <mxGeometry x="15" y="60" width="200" height="28.17" as="geometry" />
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-5" value="React - chartjs - 2: to visualize data" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=15;fontStyle=1" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
+          <mxGeometry x="17.5" y="60" width="175" height="28.17" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-34" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Request data&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=15;" parent="1" vertex="1">
           <mxGeometry x="190" y="320" width="100" height="30" as="geometry" />

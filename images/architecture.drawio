@@ -1,89 +1,41 @@
-<mxfile host="app.diagrams.net" modified="2021-10-22T14:51:28.104Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" etag="Ww2O0-lCg2RJejyC6Hnp" version="15.5.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-10-26T02:41:47.730Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36" etag="Gaa1EXFbHdhZf9SXJvDY" version="15.5.9" type="github">
   <diagram id="mBfj8Z1WwXOkY7Xo1tF7" name="Page-1">
-    <mxGraphModel dx="1200" dy="1341" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1351" dy="877" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-11" value="&lt;b&gt;CLIENT&lt;/b&gt;&lt;br&gt;ReactJS, react-router-dom" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="10" y="40" width="160" height="65" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-13" value="Controller - HTTP Request" style="swimlane;align=center;" parent="1" vertex="1">
-          <mxGeometry x="310" y="270" width="200" height="250" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-23" value="Apollo ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-13" vertex="1">
-          <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cZz0i_SCkCT4VLorB7M6-3" value="GraphQL ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-13">
-          <mxGeometry x="15" y="60" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-14" value="Model - interaction with Database" style="swimlane;align=center;" parent="1" vertex="1">
-          <mxGeometry x="640" y="10" width="200" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-25" value="Body-parser" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-14" vertex="1">
-          <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-27" value="Cors" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-14" vertex="1">
-          <mxGeometry x="15" y="60" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-28" value="JWT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-14" vertex="1">
-          <mxGeometry x="15" y="85" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cZz0i_SCkCT4VLorB7M6-1" value="Apollo ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-14">
-          <mxGeometry x="15" y="120" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cZz0i_SCkCT4VLorB7M6-2" value="GraphQL ?" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-14">
-          <mxGeometry x="10" y="150" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-15" value="View - User interface and Presentation" style="swimlane;align=center;startSize=23;" parent="1" vertex="1">
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-15" value="View - ReactJS" style="swimlane;align=center;startSize=23;" parent="1" vertex="1">
           <mxGeometry x="640" y="530" width="230" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-16" value="JWT - decode" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-16" value="JavaScript, HTML, CSS" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
           <mxGeometry x="10" y="30" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-19" value="React - google - login" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
-          <mxGeometry x="10" y="60" width="170" height="30" as="geometry" />
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-5" value="React - chartjs - 2: to visualize data" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-15">
+          <mxGeometry x="10" y="60" width="210" height="28.17" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-20" value="React - chartsjs - 2" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
-          <mxGeometry x="10" y="90" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-21" value="React - toastify" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-15" vertex="1">
-          <mxGeometry x="10" y="120" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="cZz0i_SCkCT4VLorB7M6-4" value="@material-ui" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="fSmmvaD_VFtoIKGgGKEK-15">
-          <mxGeometry x="10" y="150" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-29" value="SERVER - ExpressJS framework" style="swimlane;align=center;" parent="1" vertex="1">
-          <mxGeometry x="1000" y="270" width="200" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-30" value="Moongoose" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-29" vertex="1">
-          <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-31" value="bcryptjs" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-29" vertex="1">
-          <mxGeometry x="15" y="60" width="170" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-34" value="&lt;font style=&quot;font-size: 14px&quot;&gt;1. Request data&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-34" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Request data&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="180" y="320" width="100" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-35" value="&lt;font style=&quot;font-size: 14px&quot;&gt;8.Respond modified data to client&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="180" y="420" width="120" height="30" as="geometry" />
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-35" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Respond modified data to client&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="180" y="460" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-37" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;" parent="1" vertex="1">
           <mxGeometry x="190" y="350" width="100" height="20" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-38" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;flipH=1;notch=0;" parent="1" vertex="1">
-          <mxGeometry x="190" y="382.5" width="100" height="20" as="geometry" />
+          <mxGeometry x="190" y="410" width="100" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-40" value="&lt;font style=&quot;font-size: 14px&quot;&gt;2. Request raw data from Model&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-30;" parent="1" vertex="1">
-          <mxGeometry x="450" y="120" width="120" height="30" as="geometry" />
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-40" value="&lt;font style=&quot;font-size: 14px&quot;&gt;useQuery, useMutation to update data - Request raw data from Model&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-30;" parent="1" vertex="1">
+          <mxGeometry x="410" y="120" width="200" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-41" value="&lt;font style=&quot;font-size: 14px&quot;&gt;5. Respond raw data to controller&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-30;" parent="1" vertex="1">
-          <mxGeometry x="530" y="229.99999999999997" width="120" height="30" as="geometry" />
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-41" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Respond raw data to controller&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=-30;" parent="1" vertex="1">
+          <mxGeometry x="490" y="260" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-48" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.7;dx=50.66;direction=north;notch=0;rotation=60;" parent="1" vertex="1">
           <mxGeometry x="520" y="90" width="30" height="151.83" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-49" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.7;dx=50.66;direction=north;notch=0;rotation=-120;" parent="1" vertex="1">
-          <mxGeometry x="540" y="138.17000000000002" width="30" height="151.83" as="geometry" />
+          <mxGeometry x="510" y="160" width="30" height="151.83" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-50" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.7;dx=50.66;direction=north;notch=0;rotation=135;" parent="1" vertex="1">
           <mxGeometry x="550" y="470" width="30" height="151.83" as="geometry" />
@@ -91,32 +43,53 @@
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-51" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.7;dx=50.66;direction=north;notch=0;rotation=-45;" parent="1" vertex="1">
           <mxGeometry x="520" y="510" width="30" height="151.83" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-53" value="&lt;font style=&quot;font-size: 14px&quot;&gt;6.Sending raw data to view&amp;nbsp;&amp;nbsp;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=45;" parent="1" vertex="1">
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-53" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Sending raw data to view&amp;nbsp;&amp;nbsp;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=45;" parent="1" vertex="1">
           <mxGeometry x="520" y="500" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-54" value="&lt;font style=&quot;font-size: 14px&quot;&gt;7.Resonpond with modified data&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=45;" parent="1" vertex="1">
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-54" value="&lt;font style=&quot;font-size: 14px&quot;&gt;Resonpond with modified data&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=45;" parent="1" vertex="1">
           <mxGeometry x="433.37" y="593.23" width="130" height="44.63" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-55" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.7;dx=50.66;direction=north;notch=0;rotation=125;" parent="1" vertex="1">
-          <mxGeometry x="930" y="130" width="30" height="151.83" as="geometry" />
+          <mxGeometry x="920" y="103.17" width="30" height="151.83" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-56" value="&lt;span style=&quot;font-size: 14px&quot;&gt;3. Get data from server&amp;nbsp;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=35;" parent="1" vertex="1">
-          <mxGeometry x="900" y="160" width="120" height="30" as="geometry" />
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-56" value="&lt;span style=&quot;font-size: 14px&quot;&gt;Query resolver - request data, Mutation resolver to update data&amp;nbsp;&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=35;" parent="1" vertex="1">
+          <mxGeometry x="890" y="120" width="145" height="50" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-58" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.7;dx=50.66;direction=north;notch=0;rotation=-60;" parent="1" vertex="1">
-          <mxGeometry x="910" y="169.09000000000003" width="30" height="151.83" as="geometry" />
+          <mxGeometry x="890" y="180.00000000000003" width="30" height="151.83" as="geometry" />
         </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-60" value="&lt;span style=&quot;font-size: 14px&quot;&gt;4.Return raw data to Model&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=30;" parent="1" vertex="1">
-          <mxGeometry x="840" y="270" width="120" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-61" value="Client" style="swimlane;align=center;" parent="1" vertex="1">
-          <mxGeometry y="290" width="180" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="fSmmvaD_VFtoIKGgGKEK-62" value="@Speechly" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" parent="fSmmvaD_VFtoIKGgGKEK-61" vertex="1">
-          <mxGeometry x="15" y="30" width="170" height="30" as="geometry" />
+        <mxCell id="fSmmvaD_VFtoIKGgGKEK-60" value="&lt;span style=&quot;font-size: 14px&quot;&gt;Return raw data to Model&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=30;" parent="1" vertex="1">
+          <mxGeometry x="830" y="270" width="120" height="30" as="geometry" />
         </mxCell>
         <mxCell id="fSmmvaD_VFtoIKGgGKEK-64" value="&lt;b&gt;VOICED-POWERED SELF-PRODUCTIVITY APPLICATION&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="180" y="40" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-1" value="@Apollo - server- express" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;rotation=30;" vertex="1" parent="1">
+          <mxGeometry x="880" y="200" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-2" value="Database -MoongoDB" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="255" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-3" value="Model - Mongoose" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="630" y="97.5" width="160" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-4" value="Controller - ExpressJS and NodeJS" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="320" y="350" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-7" value="via @Speechly - React - Client" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="155" y="375" width="170" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-8" value="via @Apollo - Client" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;rotation=-30;" vertex="1" parent="1">
+          <mxGeometry x="465" y="190" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-9" value="" style="endArrow=classic;html=1;rounded=0;fontSize=14;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="330" y="250" as="sourcePoint" />
+            <mxPoint x="380" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1hfYZ1iNuW0zuiRspNUj-10" value="Client - @Speechly" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="10" y="345" width="140" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -1,11 +1,6 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-  extend type Query {
-    tasks: [Task!]
-    task(id: ID!): Task
-  }
-
   enum Category {
     Professional
     Physical
@@ -20,6 +15,10 @@ const typeDefs = gql`
     B
     C
     D
+  }
+  extend type Query {
+    tasks(category: Category): [Task!]!
+    task(id: ID!): Task
   }
 
   input addTaskInput {

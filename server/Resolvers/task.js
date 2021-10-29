@@ -3,10 +3,12 @@ const Task = require("../Database/Models/Task");
 const task = require("../typeDefs/task");
 const resolvers = {
   Query: {
-    tasks: async () => {
+    tasks: async (_, { category }) => {
+      if (category)
+        return await (await Task.find()).filter((t) => t.category == category);
       return await Task.find();
     },
-    singleTask: async (_, { id }) => {
+    task: async (_, { id }) => {
       return await Task.findById(id);
     },
   },

@@ -18,7 +18,7 @@ const typeDefs = gql`
   }
   extend type Query {
     tasks(category: Category): [Task!]!
-    task(id: ID!): Task
+    task(id: ID!): Task!
   }
 
   input addTaskInput {
@@ -40,7 +40,7 @@ const typeDefs = gql`
 
   extend type Mutation {
     addTask(input: addTaskInput!): Task
-    updateTask(id: ID!, input: updateTaskInput!): Task
+    updateTask(id: ID!, input: updateTaskInput): Task
     deleteTask(id: ID!): Task
   }
   type Task {

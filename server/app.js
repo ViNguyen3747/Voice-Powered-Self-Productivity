@@ -1,12 +1,13 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
+const conection = require('./Database/util/index')
 
 const dotenv = require("dotenv");
 dotenv.config();
 const { connection } = require("./Database/util");
 const typeDefs = require("./typeDefs");
 const resolvers = require("./resolvers");
-connection();
+
 
 const startServer = async () => {
   const app = express();
@@ -20,6 +21,7 @@ const startServer = async () => {
   app.use("/", (req, res, next) => {
     res.send({ message: "Hello" });
   });
+  await connection();
   app.listen(PORT, () => console.log(`Server listening on PORT: ${PORT}`));
 };
 

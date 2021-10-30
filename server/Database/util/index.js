@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const URL =
   "mongodb+srv://Vi_Long_Ombeni:Project123@cluster0.zxacs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-module.exports.connection = async () => {
+const connection = async () => {
   try {
     await mongoose.connect(URL, {
       useNewUrlParser: true,
@@ -14,7 +14,6 @@ module.exports.connection = async () => {
     throw error;
   }
 };
-
-module.exports.isValidObjectId = (id) => {
-  return mongoose.Types.ObjectId.isValid(id);
-};
+const isValidObjectId = (id) => {
+  return mongoose.Types.ObjectId.isValid(id)}
+module.exports = {isValidObjectId, connection};

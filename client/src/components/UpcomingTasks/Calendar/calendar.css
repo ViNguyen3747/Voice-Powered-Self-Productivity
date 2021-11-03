@@ -1,0 +1,82 @@
+body {
+  background-color: #6d9773;
+}
+.calendar-root {
+  width: 90%;
+  height: 100%;
+  margin: 50px auto;
+  justify-content: center;
+  background-color: #ffba00;
+  border-radius: 20px;
+  padding-bottom: 50px;
+}
+.calendar-container {
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.day-of-week-header-cell {
+  color: black;
+  padding: 8px 0;
+  text-align: center;
+}
+
+.days-of-week,
+.days-grid {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-column-gap: 0.8px;
+  grid-row-gap: 0.8px;
+  background-color: white;
+}
+
+.days-grid {
+  min-height: 600px;
+  position: relative;
+  border: 0.5px solid #bbb7b7;
+  background-color: #bbb7b7;
+}
+
+.day-grid-item-container {
+  position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.day-grid-item-container:not(.current-month) .day-grid-item-header {
+  color: #bbb7b7;
+}
+
+/* Position the day label within the day cell */
+.day-grid-item-container .day-grid-item-header {
+  color: black;
+  padding: 8px;
+  padding-bottom: 0;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.day-grid-item-container > .day-content-wrapper {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.navigation-header {
+  display: flex;
+}
+
+.navigation-header > * {
+  margin-right: 8px;
+}
+
+.controller {
+  margin: 20px auto;
+}

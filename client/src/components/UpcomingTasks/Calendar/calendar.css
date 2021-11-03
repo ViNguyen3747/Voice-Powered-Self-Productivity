@@ -1,10 +1,11 @@
-body {
+.container {
   background-color: #6d9773;
+  padding-top: 50px;
 }
 .calendar-root {
   width: 90%;
   height: 100%;
-  margin: 50px auto;
+  margin: auto;
   justify-content: center;
   background-color: #ffba00;
   border-radius: 20px;

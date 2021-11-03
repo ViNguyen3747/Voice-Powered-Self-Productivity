@@ -21,8 +21,8 @@ li a {
 }
 
 ul li a:hover {
-  color: yellow;
+  color: #ffba00;
 }
 .active {
-  color: yellow;
+  color: #ffba00;
 }

@@ -87,67 +87,65 @@ export default function Calendar({
   };
 
   return (
-    <div className="container">
-      <div className="calendar-wrapper">
-        <div className="navigation-header">
-          <div className="controller">
-            <Button.Group size="large">
-              {!isCurrentMonth && (
-                <Button
-                  icon
-                  labelPosition="left"
-                  color="orange"
-                  onClick={handleMonthNavBackButtonClick}
-                >
-                  <Icon name="left arrow" />
-                  Prev
-                </Button>
-              )}
-
+    <>
+      <div className="navigation-header">
+        <div className="controller">
+          <Button.Group size="large">
+            {!isCurrentMonth && (
               <Button
                 icon
-                labelPosition="right"
+                labelPosition="left"
                 color="orange"
-                onClick={handleMonthNavForwardButtonClick}
+                onClick={handleMonthNavBackButtonClick}
               >
-                Next
-                <Icon name="right arrow" />
+                <Icon name="left arrow" />
+                Prev
               </Button>
-            </Button.Group>
-          </div>
-        </div>
-        <div className="calendar">
-          <div className="calendar-label">
-            {monthString} {year}
-          </div>
-          <div className="days-of-week">
-            {daysOfWeek.map((day, index) => (
-              <div
-                key={day}
-                className={classNames("day-of-week-header-cell", {
-                  "weekend-day": [6, 0].includes(index),
-                })}
-              >
-                {day}
-              </div>
-            ))}
-          </div>
-          <div className="days-grid">
-            {calendarGridDayObjects.map((day) => (
-              <div
-                key={day.dateString}
-                className={classNames("day-grid-item-container", {
-                  "weekend-day": isWeekendDay(day.dateString),
-                  "current-month": day.isCurrentMonth,
-                })}
-              >
-                <div className="day-content-wrapper">{renderDay(day)}</div>
-              </div>
-            ))}
-          </div>
+            )}
+
+            <Button
+              icon
+              labelPosition="right"
+              color="orange"
+              onClick={handleMonthNavForwardButtonClick}
+            >
+              Next
+              <Icon name="right arrow" />
+            </Button>
+          </Button.Group>
         </div>
       </div>
-    </div>
+      <div className="calendar">
+        <div className="calendar-label">
+          {monthString} {year}
+        </div>
+        <div className="days-of-week">
+          {daysOfWeek.map((day, index) => (
+            <div
+              key={day}
+              className={classNames("day-of-week-header-cell", {
+                "weekend-day": [6, 0].includes(index),
+              })}
+            >
+              {day}
+            </div>
+          ))}
+        </div>
+        <div className="days-grid">
+          {calendarGridDayObjects.map((day) => (
+            <div
+              key={day.dateString}
+              className={classNames("day-grid-item-container", {
+                "weekend-day": isWeekendDay(day.dateString),
+                "current-month": day.isCurrentMonth,
+              })}
+            >
+              <div className="day-content-wrapper">{renderDay(day)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

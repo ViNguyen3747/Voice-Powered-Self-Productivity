@@ -1,8 +1,8 @@
 .container {
   background-color: #6d9773;
-  padding-top: 50px;
+  padding: 50px 0 50px 0;
 }
-.calendar-root {
+.calendar-wrapper {
   width: 90%;
   height: 100%;
   margin: auto;
@@ -11,7 +11,7 @@
   border-radius: 20px;
   padding-bottom: 50px;
 }
-.calendar-container {
+.calendar {
   width: 95%;
   margin-right: auto;
   margin-left: auto;
@@ -80,4 +80,10 @@
 
 .controller {
   margin: 20px auto;
+}
+
+.calendar-label {
+  font-size: 30px;
+  margin-bottom: 40px;
+  letter-spacing: 5px;
 }

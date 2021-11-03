@@ -5,15 +5,7 @@ import weekOfYear from "dayjs/plugin/weekOfYear";
 dayjs.extend(weekday);
 dayjs.extend(weekOfYear);
 
-export const daysOfWeek = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+export const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export function getNumberOfDaysInMonth(year, month) {
   return dayjs(`${year}-${month}-01`).daysInMonth();

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Button, Icon } from "semantic-ui-react";
@@ -14,12 +15,29 @@ Calendar.propTypes = {
   onYearAndMonthChange: PropTypes.func.isRequired,
   renderDay: PropTypes.func,
 };
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 export default function Calendar({
   yearAndMonth = [2021, 11],
   onYearAndMonthChange,
   renderDay = () => null,
 }) {
   const [year, month] = yearAndMonth;
+  const [isCurrentMonth, checkIsCurrentMonth] = useState(true);
+  const [monthString, setMontString] = useState(months[month - 1]);
 
   let currentMonthDays = createDaysForCurrentMonth(year, month);
   let previousMonthDays = createDaysForPreviousMonth(
@@ -42,6 +60,13 @@ export default function Calendar({
       nextYear = year - 1;
     }
     onYearAndMonthChange([nextYear, nextMonth]);
+    setMontString(months[nextMonth - 1]);
+    if (
+      nextYear === new Date().getFullYear() &&
+      nextMonth === new Date().getMonth() + 1
+    ) {
+      checkIsCurrentMonth(true);
+    } else checkIsCurrentMonth(false);
   };
 
   const handleMonthNavForwardButtonClick = () => {
@@ -52,23 +77,33 @@ export default function Calendar({
       nextYear = year + 1;
     }
     onYearAndMonthChange([nextYear, nextMonth]);
+    setMontString(months[nextMonth - 1]);
+    if (
+      nextYear === new Date().getFullYear() &&
+      nextMonth === new Date().getMonth() + 1
+    ) {
+      checkIsCurrentMonth(true);
+    } else checkIsCurrentMonth(false);
   };
 
   return (
     <div className="container">
-      <div className="calendar-root">
+      <div className="calendar-wrapper">
         <div className="navigation-header">
           <div className="controller">
             <Button.Group size="large">
-              <Button
-                icon
-                labelPosition="left"
-                color="orange"
-                onClick={handleMonthNavBackButtonClick}
-              >
-                <Icon name="left arrow" />
-                Prev
-              </Button>
+              {!isCurrentMonth && (
+                <Button
+                  icon
+                  labelPosition="left"
+                  color="orange"
+                  onClick={handleMonthNavBackButtonClick}
+                >
+                  <Icon name="left arrow" />
+                  Prev
+                </Button>
+              )}
+
               <Button
                 icon
                 labelPosition="right"
@@ -81,9 +116,9 @@ export default function Calendar({
             </Button.Group>
           </div>
         </div>
-        <div className="calendar-container">
-          <div>
-            {month} {year}
+        <div className="calendar">
+          <div className="calendar-label">
+            {monthString} {year}
           </div>
           <div className="days-of-week">
             {daysOfWeek.map((day, index) => (

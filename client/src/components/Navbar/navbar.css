@@ -1,0 +1,29 @@
+.navContainer {
+  background: #010606;
+  height: 80px;
+  align-items: center;
+  font-size: 1rem;
+  position: sticky;
+  color: white;
+  padding: 30px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  float: right;
+}
+li a {
+  margin: 0 20px 0 20px;
+  font-weight: bold;
+  font-size: larger;
+  text-decoration: none;
+  color: white;
+}
+
+ul li a:hover {
+  color: #ffba00;
+}
+.active {
+  color: #ffba00;
+}

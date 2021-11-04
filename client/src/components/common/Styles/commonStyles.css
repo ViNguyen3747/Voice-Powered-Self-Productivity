@@ -1,0 +1,14 @@
+.container {
+  background-color: #6d9773;
+  padding: 50px 0 50px 0;
+}
+.wrapper {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  justify-content: center;
+  background-color: #ffba00;
+  border-radius: 20px;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}

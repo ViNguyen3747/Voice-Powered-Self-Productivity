@@ -9,6 +9,20 @@
   justify-content: center;
   background-color: #ffba00;
   border-radius: 20px;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
+  padding: 20px 10px 50px 10px;
+  margin-bottom: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+.button-container {
+  /* min-width: max-content;
+  width: 50%; */
+  margin-top: 20px;
+}
+
+.datepicker {
+  margin: 20px;
 }

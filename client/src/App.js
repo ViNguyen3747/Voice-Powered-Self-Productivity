@@ -8,6 +8,12 @@ import UpcomingTasks from "./components/UpcomingTasks";
 import UserGuide from "./components/UserGuide";
 import Navbar from "./components/Navbar";
 function App() {
+<<<<<<< HEAD
+  return(
+    <div className="App">
+    </div>
+  ) 
+=======
   return (
     <Router>
       <Navbar />
@@ -20,6 +26,7 @@ function App() {
       </Switch>
     </Router>
   );
+>>>>>>> 09f6520cfeb892e90d6b1ac49211ac7bccc3c6cd
 }
 
 export default App;

@@ -1,6 +1,11 @@
 import React from "react";
 import { Form, Button, Grid } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
+import {
+  PushToTalkButton,
+  PushToTalkButtonContainer,
+  ErrorPanel,
+} from "@speechly/react-ui";
 import "./form.css";
 import "../../common/Styles/commonStyles.css";
 const options = [
@@ -38,25 +43,23 @@ const priorityOptions = [
 const index = () => {
   return (
     <Form className="form-container">
+      <div>this is form </div>
       <Grid>
-        <Grid.Row>this is form </Grid.Row>
-        <Grid.Row>
-          <Form.Input
-            label="Task Name"
-            placeholder="Task Name"
-            style={{ width: "50vw" }}
-          />
+        <Grid.Column mobile={16} tablet={8} computer={8}>
+          <Form.Input label="Task Name" placeholder="Task Name" />
+        </Grid.Column>
+        <Grid.Column mobile={16} tablet={8} computer={8}>
           <Form.Select
             label="Category"
             options={options}
             placeholder="Category"
-            style={{ width: "30vw" }}
           />
-        </Grid.Row>
-        <div className="button-container">
-          <Button.Group vertical>
+        </Grid.Column>
+
+        <Grid.Column mobile={16} tablet={8} computer={8}>
+          <Button.Group fluid vertical>
             {priorityOptions.map((p) => (
-              <Button color={p.color} style={{ width: "50vw" }}>
+              <Button className="button-container" color={p.color}>
                 {p.text}
               </Button>
             ))}
@@ -65,11 +68,18 @@ const index = () => {
             <Button color="olive">Events</Button>
             <Button color="teal">Photos</Button> */}
           </Button.Group>
-        </div>
-        <div className="datepicker">
-          <SemanticDatepicker label="Date" size="big" />
-        </div>
-
+        </Grid.Column>
+        <Grid.Column mobile={16} tablet={4} computer={4}>
+          <SemanticDatepicker label="Date" size="large" />
+          <Form.Input label="Duration" type="number" />
+          <Button color="twitter" size="big">
+            Submit
+          </Button>
+        </Grid.Column>
+        {/* <Grid.Column mobile={4} tablet={4} computer={4}></Grid.Column> */}
+        <PushToTalkButtonContainer>
+          <PushToTalkButton />
+        </PushToTalkButtonContainer>
         {/* <Form.Group>
           <Form.Input placeholder="8 Wide" width={8} />
           <Form.Input placeholder="6 Wide" width={6} />

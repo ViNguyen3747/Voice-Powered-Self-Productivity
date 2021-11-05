@@ -14,13 +14,10 @@
 }
 
 .form-container {
-  display: flex;
-  flex-flow: row wrap;
+  padding: 40px;
 }
 .button-container {
-  /* min-width: max-content;
-  width: 50%; */
-  margin-top: 20px;
+  justify-content: center;
 }
 
 .datepicker {

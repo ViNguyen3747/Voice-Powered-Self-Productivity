@@ -1,38 +1,38 @@
 [{
-    "name": "James King",
+    "name": "Teaching",
     "category": "Professional",
     "priorityLevel": "A",
     "duration": "(7*60)*60",
     "isDone": "true"
 }, 
 {
-    "name": "Alexander Bornaparte",
+    "name": "Running",
     "category": "Physical",
     "priorityLevel": "C",
     "duration": "(8*60)*60",
     "isDone": "true"
 }, 
 {
-    "name": "Elijah Robinson",
+    "name": "Coding",
     "category": "Pratical",
     "priorityLevel": "B",
     "duration": "(6*60)*60",
     "isDone": "false"
 }, 
 
-{"name": "Christopher Morningstar",
+{"name": "Praying",
     "category": "Spiritual",
     "priorityLevel": "C",
     "duration": "(5*60)*60",
     "isDone": "true"
 }, 
-{"name": "Arsen Lupin",
+{"name": "Meditation",
     "category": "Mental",
     "priorityLevel": "C",
     "duration": "(4*60)*60",
     "isDone": "true"
 }, 
-{"name": "Samuel Baker",
+{"name": "Preaching",
     "category": "Spiritual",
     "priorityLevel": "B",
     "duration": "(10*60)*60",

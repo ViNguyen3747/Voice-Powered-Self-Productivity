@@ -63,10 +63,6 @@ const index = () => {
                 {p.text}
               </Button>
             ))}
-            {/* <Button color="red">Feed</Button>
-            <Button color="orange">Messages</Button>
-            <Button color="olive">Events</Button>
-            <Button color="teal">Photos</Button> */}
           </Button.Group>
         </Grid.Column>
         <Grid.Column mobile={16} tablet={4} computer={4}>
@@ -76,15 +72,9 @@ const index = () => {
             Submit
           </Button>
         </Grid.Column>
-        {/* <Grid.Column mobile={4} tablet={4} computer={4}></Grid.Column> */}
         <PushToTalkButtonContainer>
           <PushToTalkButton />
         </PushToTalkButtonContainer>
-        {/* <Form.Group>
-          <Form.Input placeholder="8 Wide" width={8} />
-          <Form.Input placeholder="6 Wide" width={6} />
-          <Form.Input placeholder="2 Wide" width={2} />
-        </Form.Group> */}
       </Grid>
     </Form>
   );

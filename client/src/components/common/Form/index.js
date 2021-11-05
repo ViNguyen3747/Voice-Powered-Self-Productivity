@@ -4,7 +4,6 @@ import SemanticDatepicker from "react-semantic-ui-datepickers";
 import {
   PushToTalkButton,
   PushToTalkButtonContainer,
-  ErrorPanel,
 } from "@speechly/react-ui";
 import "./form.css";
 import "../../common/Styles/commonStyles.css";

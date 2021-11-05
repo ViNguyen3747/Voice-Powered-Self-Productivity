@@ -1,0 +1,14 @@
+.form-container {
+  padding: 40px;
+}
+.label {
+  margin: 5px;
+}
+.button-container {
+  justify-content: center;
+  margin: 2px;
+}
+
+.datepicker {
+  margin: 20px;
+}

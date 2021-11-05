@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button, Grid } from "semantic-ui-react";
+import { Form, Button, Grid, Label } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
 import {
   PushToTalkButton,
@@ -39,34 +39,46 @@ const priorityOptions = [
   },
 ];
 
+const LabelTag = ({ text }) => (
+  <div className="label">
+    <Label tag color="black" size="large">
+      {text}
+    </Label>
+  </div>
+);
 const index = () => {
   return (
     <Form className="form-container">
       <div>this is form </div>
       <Grid>
         <Grid.Column mobile={16} tablet={8} computer={8}>
-          <Form.Input label="Task Name" placeholder="Task Name" />
+          <LabelTag text="Task Name" />
+          <Form.Input placeholder="Task Name" />
         </Grid.Column>
         <Grid.Column mobile={16} tablet={8} computer={8}>
-          <Form.Select
-            label="Category"
-            options={options}
-            placeholder="Category"
-          />
+          <LabelTag text="Category" />
+          <Form.Select options={options} placeholder="Category" />
         </Grid.Column>
 
         <Grid.Column mobile={16} tablet={8} computer={8}>
+          <LabelTag text="Priority Level" />
           <Button.Group fluid vertical>
             {priorityOptions.map((p) => (
-              <Button className="button-container" color={p.color}>
-                {p.text}
-              </Button>
+              <div className="button-container">
+                <Button color={p.color}>{p.text}</Button>
+              </div>
             ))}
           </Button.Group>
         </Grid.Column>
         <Grid.Column mobile={16} tablet={4} computer={4}>
-          <SemanticDatepicker label="Date" size="large" />
-          <Form.Input label="Duration" type="number" />
+          <div>
+            <LabelTag text="Date" />
+            <SemanticDatepicker size="large" />
+          </div>
+          <div>
+            <LabelTag text="Duration" />
+            <Form.Input type="number" />
+          </div>
           <Button color="twitter" size="big">
             Submit
           </Button>

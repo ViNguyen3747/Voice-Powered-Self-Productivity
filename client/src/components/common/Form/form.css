@@ -2,11 +2,16 @@
   padding: 40px;
 }
 .label {
-  margin: 5px;
+  margin-bottom: 10px;
 }
-.button-container {
+
+.select-container {
   justify-content: center;
   margin: 2px;
+}
+
+.button-container {
+  margin-top: 25px;
 }
 
 .datepicker {

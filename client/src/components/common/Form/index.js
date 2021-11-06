@@ -7,6 +7,7 @@ import {
 } from "@speechly/react-ui";
 import "./form.css";
 import "../../common/Styles/commonStyles.css";
+
 const options = [
   { text: "Professional", value: "Professional" },
   { text: "Physical", value: "Physical" },
@@ -49,7 +50,6 @@ const LabelTag = ({ text }) => (
 const index = () => {
   return (
     <Form className="form-container">
-      <div>this is form </div>
       <Grid>
         <Grid.Column mobile={16} tablet={8} computer={8}>
           <LabelTag text="Task Name" />
@@ -64,7 +64,7 @@ const index = () => {
           <LabelTag text="Priority Level" />
           <Button.Group fluid vertical>
             {priorityOptions.map((p) => (
-              <div className="button-container">
+              <div className="select-container">
                 <Button color={p.color}>{p.text}</Button>
               </div>
             ))}
@@ -75,7 +75,7 @@ const index = () => {
             <LabelTag text="Date" />
             <SemanticDatepicker size="large" />
           </div>
-          <div>
+          <div className="button-container">
             <LabelTag text="Duration" />
             <Form.Input type="number" />
           </div>

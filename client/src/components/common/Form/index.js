@@ -79,7 +79,9 @@ const index = () => {
             <LabelTag text="Duration" />
             <Form.Input type="number" />
           </div>
-          <Button color="twitter" size="big">
+        </Grid.Column>
+        <Grid.Column mobile={16} tablet={16} computer={16}>
+          <Button color="black" size="big" fluid>
             Submit
           </Button>
         </Grid.Column>

@@ -1,7 +1,28 @@
 import React from "react";
 import "../common/Styles/commonStyles.css";
-const index = () => {
-  return <div className="container">this is Authentication Component!</div>;
-};
+import Register from "./registration"
+import Sinin from './signin'
+import {BrowserRouter as Router, Route, Switch,} from "react-router-dom"
+const Index = ()=>{
 
-export default index;
+
+  return (
+      <div>
+          <Router>
+        <Switch>
+            <Route exact path="/">
+                <Register/>
+            </Route>
+            <Route>
+                <Sinin/>
+            </Route>
+        </Switch>
+    </Router>
+      </div>
+    
+    
+  );
+}
+
+
+export default Index;

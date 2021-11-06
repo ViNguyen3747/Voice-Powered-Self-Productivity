@@ -8,6 +8,7 @@ const typeDefs = gql`
     Social
     Spiritual
     Mental
+    Emotional
   }
 
   enum PriorityLevel {

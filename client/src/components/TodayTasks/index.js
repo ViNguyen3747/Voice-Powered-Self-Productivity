@@ -7,6 +7,7 @@ import "./Today.css";
 import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
 import TaskCard from "./TaskCard";
+
 const GET_TASKS = gql`
   query Tasks {
     tasks {

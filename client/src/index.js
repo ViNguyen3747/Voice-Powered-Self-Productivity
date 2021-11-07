@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "./data/data.json",
+  uri: "/graphql",
 });
 
 ReactDOM.render(

@@ -2,13 +2,21 @@ import React from 'react'
 import { GoogleLogin } from "react-google-login";
 import {Link} from 'react-router-dom'
 import {useDispatch} from 'react-redux'
-import {Button} from '@material-ui/core'
 import {useHistory} from 'react-router-dom';
+import {Button, Form,Input,} from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 const dispatch = useDispatch;
 
 const AUTH = 'AUTH';
+const options = [
+  { key: 'p', text: 'Professional', value: 'proffessional' },
+  { key: 'c', text: 'Practical', value: 'practical' },
+  { key: 'm', text: 'Mental', value: 'mental' },
+  {key: 's', text: 'Spiritual', value: 'spiritual' },
+  {key: 'Mental', text: 'Mental', value: 'Mental' },
+]
 
-  
+ 
 const Register = () => {
 
   const history = useHistory();
@@ -31,90 +39,83 @@ const googleError = ()=>{
 }
 
     return (
-        <div>
-  <div className = 'Authwrapper'>
+    <div className='formContainer'>
       <div className = 'header'>
         <h6 className="back" >BACK</h6>
         <h6 className="up" > SIGNUP </h6>
       </div>
-      
-      <form className="form">
+     <div className = 'formWrapper'>
+       <Form >
+            <Form.Group widths='equal' >
+            <Form.Input
+              name ="firstName"
+              fluid
+              id='form-subcomponent-shorthand-input-first-name'
+              placeholder='First name'
+            />
+            <Form.Input
+              type ="text"
+              name ='lastName'
+              fluid
+              id='form-subcomponent-shorthand-input-last-name'
+              placeholder='Last name'
+            />
+          </Form.Group>
+          <Form.Input
+                  className='email'
+                  id='form-input-control-error-email'
+                  control={Input}
+                  name='email'
+                  placeholder='joe@schmoe.com'
+                  /*error={{
+                    content: '',
+                    pointing: 'below',
+                  }}*/
+            />
+          <Form.Group widths='equal'>
+            <Form.Input
+              type='text'
+              name='street'
+              fluid
+              id='form-subcomponent-shorthand-input-first-name'
+              placeholder='Enter Address'
+            />
+            <Form.Input
+              type='number'
+              nmae='unit'
+              fluid
+              id='form-subcomponent-shorthand-input-last-name'
+              placeholder='Unit #'
+            />
+        </Form.Group>
+        <Form.Group widths='equal'>
+                <Form.Input
+                  type='text'
+                  name='city'
+                  fluid
+                  id='form-subcomponent-shorthand-input-first-name'
+                  placeholder='Enter City'
+                />
+                <Form.Input
+                  name='state'
+                  type='text'
+                  fluid
+                  id='form-subcomponent-shorthand-input-last-name'
+                  placeholder='State'
+                />
+                
+        </Form.Group> 
+        <Form.Select
+
+            fluid
+            label='Category'
+            options={options}
+            placeholder='Category'
+            />
         
-        <input className='name' type="text" placeHolder = "First name" name="firstName"></input>
-        <input className='name' type="text" placeHolder = "Last name" name="lastName"></input><br></br>
-        <input className='email' type="text" placeHolder = "name@gmail.com" name="email"></input>
-        <input className='password' type="text" placeHolder = "password" name="password"></input>
-        <section className = "address">
-          <input className = "address" type='text' placeHolder='Enter street name' name='streetAddress'></input>
-          <input className = "address" type='number' placeHolder='Unit #' name='unit'></input>
-          <input className = "address" type='text' placeHolder='Enter street city' name='city'></input>
-          <label>State</label>
-      <select class="address">
-          <option value="">State</option>
-          <option value="AL">Alabama</option>
-          <option value="AK">Alaska</option>
-          <option value="AZ">Arizona</option>
-          <option value="AR">Arkansas</option>
-          <option value="CA">California</option>
-          <option value="CO">Colorado</option>
-          <option value="CT">Connecticut</option>
-          <option value="DE">Delaware</option>
-          <option value="DC">District Of Columbia</option>
-          <option value="FL">Florida</option>
-          <option value="GA">Georgia</option>
-          <option value="HI">Hawaii</option>
-          <option value="ID">Idaho</option>
-          <option value="IL">Illinois</option>
-          <option value="IN">Indiana</option>
-          <option value="IA">Iowa</option>
-          <option value="KS">Kansas</option>
-          <option value="KY">Kentucky</option>
-          <option value="LA">Louisiana</option>
-          <option value="ME">Maine</option>
-          <option value="MD">Maryland</option>
-          <option value="MA">Massachusetts</option>
-          <option value="MI">Michigan</option>
-          <option value="MN">Minnesota</option>
-          <option value="MS">Mississippi</option>
-          <option value="MO">Missouri</option>
-          <option value="MT">Montana</option>
-          <option value="NE">Nebraska</option>
-          <option value="NV">Nevada</option>
-          <option value="NH">New Hampshire</option>
-          <option value="NJ">New Jersey</option>
-          <option value="NM">New Mexico</option>
-          <option value="NY">New York</option>
-          <option value="NC">North Carolina</option>
-          <option value="ND">North Dakota</option>
-          <option value="OH">Ohio</option>
-          <option value="OK">Oklahoma</option>
-          <option value="OR">Oregon</option>
-          <option value="PA">Pennsylvania</option>
-          <option value="RI">Rhode Island</option>
-          <option value="SC">South Carolina</option>
-          <option value="SD">South Dakota</option>
-          <option value="TN">Tennessee</option>
-          <option value="TX">Texas</option>
-          <option value="UT">Utah</option>
-          <option value="VT">Vermont</option>
-          <option value="VA">Virginia</option>
-          <option value="WA">Washington</option>
-          <option value="WV">West Virginia</option>
-          <option value="WI">Wisconsin</option>
-          <option value="WY">Wyoming</option>
-      </select>
-      </section>
-      <label>Category</label>
-      <select clasName="category">
-        <option value="proffesional">Proffessional</option>
-        <option value="Physical">Phisical</option>
-        <option value="Menatl">Mental</option>
-        <option value="Psycological">Psycological</option>
-      </select><br></br>
-      <button className='btn' type='button'>SIGN UP</button>
-     </form>
-     <div>
-     <GoogleLogin
+        <Button secondary type='submit'>Submit</Button>
+        <div>
+        <GoogleLogin
           clientId="375983667598-fblbteage49sr5qmhit2deqvemsqurr5.apps.googleusercontent.com"
           render={(renderProps) => (
             <Button
@@ -136,10 +137,9 @@ const googleError = ()=>{
      <div className="signin">
         <p>Already have an acount? <Link to='/login'>Sig in</Link></p>
       </div>
+      </Form>
+      </div>
     </div>
-
-
-        </div>
     )
 }
 

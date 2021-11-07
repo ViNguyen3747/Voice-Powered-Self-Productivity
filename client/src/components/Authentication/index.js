@@ -10,10 +10,10 @@ const Index = ()=>{
       <div>
           <Router>
         <Switch>
-            <Route exact path="/">
+            <Route exact path='/'>
                 <Register/>
             </Route>
-            <Route>
+            <Route exact path='/login'>
                 <Sinin/>
             </Route>
         </Switch>

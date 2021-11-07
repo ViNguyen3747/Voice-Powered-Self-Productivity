@@ -1,0 +1,29 @@
+.container {
+  background-color: #6d9773;
+  padding: 50px 0 50px 0;
+  min-height: 100vh;
+}
+.wrapper {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  justify-content: center;
+  background-color: #ffba00;
+  border-radius: 20px;
+  padding: 20px 10px 50px 10px;
+  margin-bottom: 20px;
+}
+
+/*Added this for Authentication*/
+.formContainer{
+  border: 2px solid black;
+  width: 50vw;
+  height: auto;
+  margin: 10px auto;
+  text-align: center;
+}
+.formWrapper{
+  
+  padding: 20px;
+
+}

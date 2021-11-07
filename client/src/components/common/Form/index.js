@@ -34,7 +34,7 @@ const index = () => {
           <Button.Group fluid vertical>
             {priorityOptions.map((p) => (
               <div className="select-container" key={p.text}>
-                <Button color={p.color}>{p.text}</Button>
+                <Button color={p.colorText}>{p.text}</Button>
               </div>
             ))}
           </Button.Group>

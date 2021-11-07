@@ -19,21 +19,25 @@ export const categoriesOptions = [
 export const priorityOptions = [
   {
     color: "AF2020",
+    colorText: "red",
     value: "A",
     text: "Urgent AND Important",
   },
   {
     color: "C25A16",
+    colorText: "orange",
     value: "B",
     text: "Important NOT Urgent",
   },
   {
     color: "91A313",
+    colorText: "olive",
     value: "C",
     text: "Urgent NOT Important",
   },
   {
     color: "00918A",
+    colorText: "teal",
     value: "D",
     text: "NOT Urgent OR Important",
   },

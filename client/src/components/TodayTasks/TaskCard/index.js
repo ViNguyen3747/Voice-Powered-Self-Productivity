@@ -2,12 +2,12 @@ import React from "react";
 import { Image } from "semantic-ui-react";
 import { priorityOptions } from "../../common/Data";
 import "./TaskCard.css";
-const TaskDetail = ({ priority, task }) => {
+const TaskDetail = ({ task }) => {
   const color = priorityOptions.find((p) => {
     return p.value === task.priorityLevel;
   });
   return (
-    <div className="task-detail" style={{ backgroundColor: `${color.color}` }}>
+    <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>
       {task.name}
     </div>
   );

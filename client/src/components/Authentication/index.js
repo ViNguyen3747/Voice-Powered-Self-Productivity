@@ -1,28 +1,23 @@
 import React from "react";
-import "../common/Styles/commonStyles.css";
-import Register from "./registration"
-import Sinin from './signin'
-import {BrowserRouter as Router, Route, Switch,} from "react-router-dom"
-const Index = ()=>{
-
-
+import Register from "./registration";
+import Sinin from "./signin";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./Auth.css";
+const Index = () => {
   return (
-      <div>
-          <Router>
+    <div>
+      <Router>
         <Switch>
-            <Route exact path="/">
-                <Register/>
-            </Route>
-            <Route>
-                <Sinin/>
-            </Route>
+          <Route exact path="/">
+            <Register />
+          </Route>
+          <Route>
+            <Sinin />
+          </Route>
         </Switch>
-    </Router>
-      </div>
-    
-    
+      </Router>
+    </div>
   );
-}
-
+};
 
 export default Index;

@@ -18,7 +18,7 @@ const resolvers = {
       return task;
     },
     updateTask: async (_, { id, input }) => {
-      const task = await Post.findByIdAndUpdate(
+      const task = await Task.findByIdAndUpdate(
         id,
         { ...input },
         { new: true }
@@ -26,7 +26,7 @@ const resolvers = {
       return task;
     },
     deleteTask: async (_, { id }) => {
-      await Post.findByIdAndDelete(id);
+      await Task.findByIdAndDelete(id);
       return "Deleted";
     },
   },

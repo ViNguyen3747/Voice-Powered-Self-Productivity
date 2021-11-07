@@ -2,6 +2,16 @@ import React from "react";
 import { Image } from "semantic-ui-react";
 import { priorityOptions } from "../../common/Data";
 import "./TaskCard.css";
+const TaskDetail = ({ priority, task }) => {
+  const color = priorityOptions.find((p) => {
+    return p.value === task.priorityLevel;
+  });
+  return (
+    <div className="task-detail" style={{ backgroundColor: `${color.color}` }}>
+      {task.name}
+    </div>
+  );
+};
 const index = ({ category, tasks }) => {
   console.log(tasks);
   return (
@@ -15,7 +25,7 @@ const index = ({ category, tasks }) => {
       />
       {tasks.map((task) => (
         <div className="task-container">
-          <h3>{task.name}</h3>
+          <TaskDetail priority={task.priorityLevel} task={task} />
         </div>
       ))}
     </div>

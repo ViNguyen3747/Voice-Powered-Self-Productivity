@@ -4,7 +4,7 @@ import Mental from "../images/mental.svg";
 import Pratical from "../images/pratical.svg";
 import Social from "../images/social.svg";
 import Spiritual from "../images/spiritual.svg";
-import Emotional from "../images/spiritual.svg";
+import Emotional from "../images/emotional.svg";
 
 export const categoriesOptions = [
   { text: "Professional", value: "Professional", illustration: Professional },

@@ -1,8 +1,10 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
+import { Image } from "semantic-ui-react";
 
 import "../common/Styles/commonStyles.css";
 import "./Today.css";
+import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
 import TaskCard from "./TaskCard";
 const GET_TASKS = gql`
@@ -29,7 +31,7 @@ const Today = () => {
       </div>
       <div className="tasks-container">
         {data &&
-          data.tasks.map((task) => <TaskCard key={task.id} task={task} />)}
+          categoriesOptions.map((category) => <TaskCard category={category} />)}
       </div>
     </div>
   );

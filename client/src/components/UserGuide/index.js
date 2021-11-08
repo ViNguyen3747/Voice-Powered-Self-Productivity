@@ -1,7 +1,16 @@
 import React from "react";
 import "../common/Styles/commonStyles.css";
+import "./UserGuide.css";
+import Goals from "./Goals";
+import { Guide } from "./Guide";
+
 const index = () => {
-  return <div className="container">This is UserGuide Component!</div>;
+  return (
+    <>
+      <Goals />
+      <Guide />
+    </>
+  );
 };
 
 export default index;

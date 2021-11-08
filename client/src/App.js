@@ -33,7 +33,6 @@ function App() {
         <Route path="/today">
           <TodayTasks tasks={data} />
         </Route>
-
         <Route path="/upcoming" component={UpcomingTasks} />
         <Route path="/report">
           <Report data={data} />

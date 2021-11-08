@@ -25,7 +25,13 @@ export const Guide = () => {
       </div>
       <div className="info-wrapper">
         {userGuide.map((g) => (
-          <div className="Card" style={{ backgroundColor: `${g.color}` }}>
+          <div
+            className="Card"
+            style={{
+              backgroundColor: `${g.color}`,
+              textAlign: "left",
+            }}
+          >
             {g.value}
           </div>
         ))}

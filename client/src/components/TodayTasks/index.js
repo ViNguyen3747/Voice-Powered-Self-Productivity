@@ -1,5 +1,4 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
 
 import "../common/Styles/commonStyles.css";
 import "./Today.css";
@@ -7,23 +6,7 @@ import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
 import TaskCard from "./TaskCard";
 
-const GET_TASKS = gql`
-  query Tasks {
-    tasks {
-      id
-      name
-      category
-      priorityLevel
-      duration
-      isDone
-    }
-  }
-`;
-const Today = () => {
-  const { loading, error, data } = useQuery(GET_TASKS);
-  console.log(data);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>There was an error</div>;
+const Today = ({ tasks }) => {
   const getTasks = (category, allTasks) => {
     const tasks = allTasks.filter((task) => {
       return task.category === category.value;
@@ -37,8 +20,8 @@ const Today = () => {
         <Form />
       </div>
       <div className="tasks-container">
-        {data &&
-          categoriesOptions.map((category) => getTasks(category, data.tasks))}
+        {tasks &&
+          categoriesOptions.map((category) => getTasks(category, tasks.tasks))}
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
-import { Image } from "semantic-ui-react";
 
 import "../common/Styles/commonStyles.css";
 import "./Today.css";
@@ -25,7 +24,6 @@ const Today = () => {
   console.log(data);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>There was an error</div>;
-
   const getTasks = (category, allTasks) => {
     const tasks = allTasks.filter((task) => {
       return task.category === category.value;

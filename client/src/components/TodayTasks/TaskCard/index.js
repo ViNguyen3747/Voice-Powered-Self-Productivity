@@ -1,5 +1,5 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
+import { Image, Checkbox, Icon } from "semantic-ui-react";
 import { priorityOptions } from "../../common/Data";
 import "./TaskCard.css";
 const TaskDetail = ({ task }) => {
@@ -8,7 +8,12 @@ const TaskDetail = ({ task }) => {
   });
   return (
     <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>
-      {task.name}
+      <Checkbox />
+      <div className="task-name">{task.name}</div>
+      <div>
+        <Icon color="white" name="pencil alternate" />
+        <Icon color="white" name="trash alternate" />
+      </div>
     </div>
   );
 };

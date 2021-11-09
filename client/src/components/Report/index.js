@@ -18,12 +18,11 @@ const Report = ({ data }) => {
       {
         data: filteredCategories.map((c) => c.total),
         backgroundColor: filteredCategories.map((c) => c.color),
-        // borderColor: "rgb(109, 151, 115)",
-        // borderWidth: 2,
       },
     ],
     labels: filteredCategories.map((c) => c.text),
   };
+
   return (
     <div className="chart-container">
       <Pie data={charData} />

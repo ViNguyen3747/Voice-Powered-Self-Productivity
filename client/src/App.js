@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 import "./App.css";
@@ -7,7 +8,7 @@ import TodayTasks from "./components/TodayTasks";
 import UpcomingTasks from "./components/UpcomingTasks";
 import UserGuide from "./components/UserGuide";
 import Navbar from "./components/Navbar";
-
+import Sidebar from "./components/Sidebar";
 const GET_TASKS = gql`
   query Tasks {
     tasks {
@@ -22,12 +23,19 @@ const GET_TASKS = gql`
 `;
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   const { loading, error, data } = useQuery(GET_TASKS);
   if (loading) return <div>Loading...</div>;
   if (error) return <div>There was an error</div>;
   return (
     <Router>
-      <Navbar />
+      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Navbar toggle={toggle} />
       <Switch>
         <Route path="/" exact component={UserGuide} />
         <Route path="/today">

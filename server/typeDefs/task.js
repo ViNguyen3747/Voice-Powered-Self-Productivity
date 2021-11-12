@@ -57,17 +57,5 @@ const typeDefs = gql`
     updatedAt: Date!
   }
 `;
-// type Task {
-//   id: ID!
-//   name: String!
-//   category: Category!
-//   priorityLevel: PriorityLevel!
-//   duration: Float!
-//   isDone: Boolean!
-//   date: Date!
-//   user: User!
-//   createdAt: Date!
-//   updatedAt: Date!
-// }
 
 module.exports = typeDefs;

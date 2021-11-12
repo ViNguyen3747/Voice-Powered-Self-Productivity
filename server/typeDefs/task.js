@@ -17,6 +17,7 @@ const typeDefs = gql`
     C
     D
   }
+
   extend type Query {
     tasks(category: Category): [Task!]!
     task(id: ID!): Task!

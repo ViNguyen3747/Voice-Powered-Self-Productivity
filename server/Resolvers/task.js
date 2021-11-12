@@ -4,8 +4,11 @@ const resolvers = {
   Query: {
     tasks: async (_, { category }) => {
       if (category)
-        return await (await Task.find()).filter((t) => t.category == category);
-      return await Task.find();
+        return await (
+          await Task.find().sort({ priorityLevel: 1 })
+        ).filter((t) => t.category == category);
+
+      return await Task.find().sort({ priorityLevel: 1 });
     },
     task: async (_, { id }) => {
       return await Task.findById(id);

@@ -1,42 +1,40 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-    extend type Query {
-        user: User
-    }
+  extend type Query {
+    user(username: String!): User
+  }
 
-    extend Mutation{
-        signup(input: signupInput): User
-        signin(input: signinInput): Token
-    }
+  extend type Mutation {
+    signup(input: signupInput): Auth
+    signin(input: signinInput): Auth
+  }
 
-    input signupInput{
-        firstName: String!
-        lastName: String!
-        email: String!
-        userName: String!
-        password: String!
-    }
-    type Token{
-        token: String!
-    }
-    input signinInput {
-        userName: String!
-        password: String!
-    }
-    type User {
-        id: ID!
-        firstName: String!
-        lastName: String!
-        email: String!
-        userName: String!
-        tasks: [Task!]
-        createdAt: Date!
-        updatedAt: Date!
-    }
+  input signupInput {
+    firstName: String!
+    lastName: String!
+    email: String!
+    userName: String!
+    password: String!
+  }
 
-    extend type Subscription {
-        userCreated: User
-    }
+  input signinInput {
+    email: String!
+    password: String!
+  }
+  type User {
+    id: ID!
+    firstName: String!
+    lastName: String!
+    email: String!
+    userName: String!
+    createdAt: Date!
+    updatedAt: Date!
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
 `;
 module.exports = typeDefs;

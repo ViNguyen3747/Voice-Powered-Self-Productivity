@@ -1,6 +1,6 @@
 const { gql } = require("apollo-server-express");
 
-// const userTypeDefs = require("./user");
+const userTypeDefs = require("./user");
 const taskTypeDefs = require("./task");
 
 const typeDefs = gql`
@@ -12,10 +12,4 @@ const typeDefs = gql`
     _: String
   }
 `;
-
-// type Subscription {
-//   _: String
-// }
-
-// module.exports = [typeDefs, userTypeDefs, taskTypeDefs];
-module.exports = [typeDefs, taskTypeDefs];
+module.exports = [typeDefs, userTypeDefs, taskTypeDefs];

@@ -1,5 +1,4 @@
 const Task = require("../Database/Models/Task");
-// const User = require("../Database/models/User");
 const task = require("../typeDefs/task");
 const resolvers = {
   Query: {

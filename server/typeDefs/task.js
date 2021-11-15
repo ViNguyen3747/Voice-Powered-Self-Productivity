@@ -17,6 +17,7 @@ const typeDefs = gql`
     C
     D
   }
+
   extend type Query {
     tasks(category: Category): [Task!]!
     task(id: ID!): Task!
@@ -56,17 +57,5 @@ const typeDefs = gql`
     updatedAt: Date!
   }
 `;
-// type Task {
-//   id: ID!
-//   name: String!
-//   category: Category!
-//   priorityLevel: PriorityLevel!
-//   duration: Float!
-//   isDone: Boolean!
-//   date: Date!
-//   user: User!
-//   createdAt: Date!
-//   updatedAt: Date!
-// }
 
 module.exports = typeDefs;

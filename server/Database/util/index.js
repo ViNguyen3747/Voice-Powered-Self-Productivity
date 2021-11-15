@@ -15,5 +15,6 @@ const connection = async () => {
   }
 };
 const isValidObjectId = (id) => {
-  return mongoose.Types.ObjectId.isValid(id)}
-module.exports = {isValidObjectId, connection};
+  return mongoose.Types.ObjectId.isValid(id);
+};
+module.exports = { isValidObjectId, connection };

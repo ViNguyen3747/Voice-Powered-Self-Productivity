@@ -14,10 +14,10 @@ const AUTH = "AUTH";
 
 const Register = () => {
 
-  //signup
+  //initial form values
 
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error }] = useMutation(signup);
+  const [formState, setFormState] = useState({ firstName: '',lastName: '', username: '', email: '', password: '', retypePassword:'' });
+  const [addUser, { error }] = useMutation(signup);
 
   // update state based on form input changes
   const handleChange = event => {
@@ -34,11 +34,12 @@ const Register = () => {
       event.preventDefault();
 
       try {
-          const { data } = await login({
+        //Getting data from the form
+          const { data } = await addUser({
               variables: { ...formState }
           });
-
-          Auth.login(data.login.token);
+          //Authorizing the user
+          Auth.login(data.addUser.token);
       } catch (error) {
           console.log(error);
       }

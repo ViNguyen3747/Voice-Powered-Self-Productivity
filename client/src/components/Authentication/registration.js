@@ -1,21 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 import { Button, Form, Input } from "semantic-ui-react";
-const dispatch = useDispatch;
+import { useMutation } from "@apollo/client";
+import { signup } from "../../utils/mutation";
+import Auth from "../../utils/auth";
+// const dispatch = useDispatch;
 
-const AUTH = "AUTH";
+// const AUTH = "AUTH";
 
 const Register = () => {
+  //initial form values
+
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    // retypePassword: "",
+  });
+  const [addUser, { error }] = useMutation(signup);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // Handle form submit
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      //Getting data from the form
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+      //Authorizing the user
+      Auth.login(data.addUser.token);
+      // history.pushState("/");
+    } catch (error) {
+      console.log(error);
+    }
+
+    // clear form values
+    setFormState({
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+      // retypePassword: "",
+    });
+  };
+
+  //useHistory
   const history = useHistory();
   const googleSuccess = (res) => {
     const result = res.profileObj;
     const token = res.tokenId;
     try {
-      dispatch({ type: AUTH, data: { result, token } });
-      history.pushState("/");
+      Auth.login(token);
+      // history.pushState("/");
     } catch (error) {
       console.log(error);
     }
@@ -30,7 +83,7 @@ const Register = () => {
       <div className="formContainer">
         <div className="header">Sign Up</div>
         <div className="formWrapper">
-          <Form>
+          <Form onSubmit={handleFormSubmit}>
             <Form.Group widths="equal">
               <Form.Input
                 name="firstName"
@@ -38,6 +91,8 @@ const Register = () => {
                 fluid
                 id="form-subcomponent-shorthand-input-first-name"
                 placeholder="First name"
+                onChange={handleChange}
+                value={formState.firstName}
               />
               <Form.Input
                 type="text"
@@ -46,6 +101,8 @@ const Register = () => {
                 fluid
                 id="form-subcomponent-shorthand-input-last-name"
                 placeholder="Last name"
+                onChange={handleChange}
+                value={formState.lastName}
               />
             </Form.Group>
             <Form.Input
@@ -55,6 +112,8 @@ const Register = () => {
               control={Input}
               name="email"
               placeholder="joe@schmoe.com"
+              onChange={handleChange}
+              value={formState.email}
               /*error={{
                     content: '',
                     pointing: 'below',
@@ -66,6 +125,8 @@ const Register = () => {
               control={Input}
               name="username"
               placeholder="username"
+              onChange={handleChange}
+              value={formState.username}
               /*error={{
                     content: '',
                     pointing: 'below',
@@ -78,14 +139,18 @@ const Register = () => {
                 label="Password"
                 fluid
                 placeholder="password"
+                onChange={handleChange}
+                value={formState.password}
               />
-              <Form.Input
+              {/* <Form.Input
                 type="password"
                 name="retypePassword"
                 label="Retype Password"
                 fluid
                 placeholder="retype password"
-              />
+                onChange={handleChange}
+                value={formState.retypePassword}
+              /> */}
             </Form.Group>
             <div className="authButton">
               <Button secondary type="submit">
@@ -97,7 +162,7 @@ const Register = () => {
                 clientId="375983667598-fblbteage49sr5qmhit2deqvemsqurr5.apps.googleusercontent.com"
                 render={(renderProps) => (
                   <Button
-                    color="primary"
+                    color="blue"
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                     variant="contained"

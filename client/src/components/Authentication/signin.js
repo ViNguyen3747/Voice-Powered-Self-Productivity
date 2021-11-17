@@ -1,20 +1,62 @@
-import React from "react";
+//Importing files and packages
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Button, Form, Input } from "semantic-ui-react";
-import { useHistory } from "react-router-dom";
-const dispatch = useDispatch;
-const AUTH = "AUTH";
+import { useMutation } from "@apollo/client";
+import { signin } from "../../utils/mutation";
+import Auth from "../../utils/auth";
 
-const Sinin = () => {
-  const history = useHistory();
+// const dispatch = useDispatch;
+// const AUTH = "AUTH";
+
+//Function Signin that is exported
+const Signin = (_props) => {
+  const [formState, setFormState] = useState({ email: "", password: "" });
+  const [login, { error }] = useMutation(signin);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // Handle form submit
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+      // history.pushState("/");
+    } catch (error) {
+      console.log(error);
+    }
+
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
+  };
+
+  // //use history
+  // const history = useHistory();
   const googleSuccess = (res) => {
     const result = res.profileObj;
     const token = res.tokenId;
     try {
-      dispatch({ type: AUTH, data: { result, token } });
-      history.pushState("/");
+      Auth.login(token);
+      // history.pushState("/");
     } catch (error) {
       console.log(error);
     }
@@ -28,13 +70,15 @@ const Sinin = () => {
       <div className="formContainer">
         <div className="header">Sign In</div>
         <div className="formWrapper">
-          <Form>
+          <Form onSubmit={handleFormSubmit}>
             <Form.Field
               name="email"
               id="form-input-control-error-email"
               control={Input}
               placeholder="joe@schmoe.com"
               label="Email"
+              onChange={handleChange}
+              value={formState.email}
               /*error={{
               content: 'Please enter a valid email address',
               pointing: 'below',
@@ -46,6 +90,8 @@ const Sinin = () => {
               placeholder="Enter password"
               label="Password"
               control={Input}
+              onChange={handleChange}
+              value={formState.password}
             />
 
             <div className="authButton">
@@ -58,8 +104,7 @@ const Sinin = () => {
                 clientId="375983667598-fblbteage49sr5qmhit2deqvemsqurr5.apps.googleusercontent.com"
                 render={(renderProps) => (
                   <Button
-                    color="primary"
-                    //fullWidth
+                    color="blue"
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                     variant="contained"
@@ -86,4 +131,4 @@ const Sinin = () => {
   );
 };
 
-export default Sinin;
+export default Signin;

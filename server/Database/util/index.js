@@ -14,7 +14,8 @@ const connection = async () => {
     throw error;
   }
 };
-const isValidObjectId = (id) => {
-  return mongoose.Types.ObjectId.isValid(id);
-};
-module.exports = { isValidObjectId, connection };
+// const isValidObjectId = (id) => {
+//   return mongoose.Types.ObjectId.isValid(id);
+// };
+// module.exports = { isValidObjectId, connection };
+module.exports = { connection };

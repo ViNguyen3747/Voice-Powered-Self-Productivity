@@ -12,6 +12,7 @@
   font-weight: bold;
   letter-spacing: 3px;
   margin: 20px;
+  justify-content: start;
 }
 
 .info-wrapper {
@@ -32,4 +33,78 @@
   border-radius: 10px;
   justify-content: center;
   line-height: 25px;
+}
+
+.Joinus {
+  text-transform: uppercase;
+  position: relative;
+  width: 298px;
+  height: 95px;
+  left: 125px;
+  top: 10px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: xx-large;
+  line-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.InfoRow {
+  display: grid;
+  grid-auto-columns: minmax(auto, 1fr);
+  align-items: center;
+  grid-template-areas: "col1 col2";
+  @media screen and (max-width: 770px) {
+    grid-template-areas: "col1" "col2";
+  }
+}
+
+.Column1 {
+  margin-bottom: 15px;
+  padding: 0 15px;
+  grid-area: col1;
+}
+
+.TextWrapper {
+  max-width: 540px;
+  padding-top: 0;
+  padding-bottom: 60px;
+}
+
+.TopLine {
+  color: Green;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.Subtitle {
+  max-width: 440px;
+  margin-bottom: 35px;
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+}
+
+.Column2 {
+  margin-bottom: 15px;
+  margin-left: 15px;
+  padding: 0 15px;
+  grid-area: col2;
+}
+
+.ImgWrap {
+  max-width: 555px;
+  height: 100%;
+}
+
+.Img {
+  width: 100%;
+  max-height: 450px;
+  margin: 0 0 10px 0;
+  padding-right: 0;
 }

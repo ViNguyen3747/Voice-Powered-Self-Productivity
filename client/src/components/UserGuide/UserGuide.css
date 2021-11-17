@@ -35,21 +35,6 @@
   line-height: 25px;
 }
 
-.Joinus {
-  text-transform: uppercase;
-  position: relative;
-  width: 298px;
-  height: 95px;
-  left: 125px;
-  top: 10px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: xx-large;
-  line-height: 44px;
-  display: flex;
-  align-items: center;
-}
-
 .InfoRow {
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
@@ -80,6 +65,7 @@
   letter-spacing: 1.4px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  font-size: xx-large;
 }
 
 .Subtitle {
@@ -88,6 +74,8 @@
   font-size: 18px;
   line-height: 24px;
   color: black;
+  text-align: left;
+  margin-left: 70px;
 }
 
 .Column2 {

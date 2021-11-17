@@ -4,11 +4,54 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Button, Form, Input } from "semantic-ui-react";
+import {useMutation} from '@apollo/client';
+import { signup } from "../../utils/mutation";
+import Auth from "../../utils/auth"
+import { useState } from "react";
 const dispatch = useDispatch;
 
 const AUTH = "AUTH";
 
 const Register = () => {
+
+  //initial form values
+
+  const [formState, setFormState] = useState({ firstName: '',lastName: '', username: '', email: '', password: '', retypePassword:'' });
+  const [addUser, { error }] = useMutation(signup);
+
+  // update state based on form input changes
+  const handleChange = event => {
+      const { name, value } = event.target;
+
+      setFormState({
+          ...formState,
+          [name]: value
+      });
+  };
+
+  // Handle form submit
+  const handleFormSubmit = async event => {
+      event.preventDefault();
+
+      try {
+        //Getting data from the form
+          const { data } = await addUser({
+              variables: { ...formState }
+          });
+          //Authorizing the user
+          Auth.login(data.addUser.token);
+      } catch (error) {
+          console.log(error);
+      }
+
+      // clear form values
+      setFormState({
+          email: '',
+          password: ''
+      });
+  };
+
+  //useHistory
   const history = useHistory();
   const googleSuccess = (res) => {
     const result = res.profileObj;
@@ -30,7 +73,7 @@ const Register = () => {
       <div className="formContainer">
         <div className="header">Sign Up</div>
         <div className="formWrapper">
-          <Form>
+          <Form onSubmit={handleFormSubmit}>
             <Form.Group widths="equal">
               <Form.Input
                 name="firstName"
@@ -38,6 +81,8 @@ const Register = () => {
                 fluid
                 id="form-subcomponent-shorthand-input-first-name"
                 placeholder="First name"
+                onChange={handleChange}
+                value={formState.firstName}
               />
               <Form.Input
                 type="text"
@@ -46,6 +91,8 @@ const Register = () => {
                 fluid
                 id="form-subcomponent-shorthand-input-last-name"
                 placeholder="Last name"
+                onChange={handleChange}
+                value={formState.lastName}
               />
             </Form.Group>
             <Form.Input
@@ -55,6 +102,8 @@ const Register = () => {
               control={Input}
               name="email"
               placeholder="joe@schmoe.com"
+              onChange={handleChange}
+              value={formState.email}
               /*error={{
                     content: '',
                     pointing: 'below',
@@ -66,6 +115,8 @@ const Register = () => {
               control={Input}
               name="username"
               placeholder="username"
+              onChange={handleChange}
+              value={formState.username}
               /*error={{
                     content: '',
                     pointing: 'below',
@@ -78,6 +129,8 @@ const Register = () => {
                 label="Password"
                 fluid
                 placeholder="password"
+                onChange={handleChange}
+                value={formState.password}
               />
               <Form.Input
                 type="password"
@@ -85,6 +138,8 @@ const Register = () => {
                 label="Retype Password"
                 fluid
                 placeholder="retype password"
+                onChange={handleChange}
+                value={formState.retypePassword}
               />
             </Form.Group>
             <div className="authButton">

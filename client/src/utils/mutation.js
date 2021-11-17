@@ -1,5 +1,3 @@
-//complete this file
-
 import { gql } from "@apollo/client";
 
 export const UPDATE_TASK = gql`

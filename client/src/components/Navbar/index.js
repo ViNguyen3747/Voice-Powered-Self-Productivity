@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 import "./navbar.css";
+import Auth from "../../utils/auth";
 
 const Link = ({ to, routeName }) => (
   <li>
@@ -9,7 +11,11 @@ const Link = ({ to, routeName }) => (
     </NavLink>
   </li>
 );
-const index = () => {
+const Navbar = () => {
+  const logout = (e) => {
+    e.preventDefault();
+    Auth.logout();
+  };
   return (
     <div className="navContainer">
       <ul className="linkContainer">
@@ -17,10 +23,16 @@ const index = () => {
         <Link to="/today" routeName="Today" />
         <Link to="/upcoming" routeName="Upcoming" />
         <Link to="/report" routeName="Report" />
-        <Link to="/auth" routeName="Sign In" />
+        {Auth.loggedIn() ? (
+          <Button color="olive" onClick={logout}>
+            Logout
+          </Button>
+        ) : (
+          <Link to="/auth" routeName="Sign In" />
+        )}
       </ul>
     </div>
   );
 };
 
-export default index;
+export default Navbar;

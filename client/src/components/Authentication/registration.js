@@ -1,54 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 import { Button, Form, Input } from "semantic-ui-react";
-import {useMutation} from '@apollo/client';
+import { useMutation } from "@apollo/client";
 import { signup } from "../../utils/mutation";
-import Auth from "../../utils/auth"
-import { useState } from "react";
-const dispatch = useDispatch;
+import Auth from "../../utils/auth";
+// const dispatch = useDispatch;
 
-const AUTH = "AUTH";
+// const AUTH = "AUTH";
 
 const Register = () => {
-
   //initial form values
 
-  const [formState, setFormState] = useState({ firstName: '',lastName: '', username: '', email: '', password: '', retypePassword:'' });
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    // retypePassword: "",
+  });
   const [addUser, { error }] = useMutation(signup);
 
   // update state based on form input changes
-  const handleChange = event => {
-      const { name, value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-      setFormState({
-          ...formState,
-          [name]: value
-      });
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
   // Handle form submit
-  const handleFormSubmit = async event => {
-      event.preventDefault();
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-      try {
-        //Getting data from the form
-          const { data } = await addUser({
-              variables: { ...formState }
-          });
-          //Authorizing the user
-          Auth.login(data.addUser.token);
-      } catch (error) {
-          console.log(error);
-      }
-
-      // clear form values
-      setFormState({
-          email: '',
-          password: ''
+    try {
+      //Getting data from the form
+      const { data } = await addUser({
+        variables: { ...formState },
       });
+      //Authorizing the user
+      Auth.login(data.addUser.token);
+      // history.pushState("/");
+    } catch (error) {
+      console.log(error);
+    }
+
+    // clear form values
+    setFormState({
+      firstName: "",
+      lastName: "",
+      username: "",
+      email: "",
+      password: "",
+      // retypePassword: "",
+    });
   };
 
   //useHistory
@@ -57,8 +67,8 @@ const Register = () => {
     const result = res.profileObj;
     const token = res.tokenId;
     try {
-      dispatch({ type: AUTH, data: { result, token } });
-      history.pushState("/");
+      Auth.login(token);
+      // history.pushState("/");
     } catch (error) {
       console.log(error);
     }
@@ -132,7 +142,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={formState.password}
               />
-              <Form.Input
+              {/* <Form.Input
                 type="password"
                 name="retypePassword"
                 label="Retype Password"
@@ -140,7 +150,7 @@ const Register = () => {
                 placeholder="retype password"
                 onChange={handleChange}
                 value={formState.retypePassword}
-              />
+              /> */}
             </Form.Group>
             <div className="authButton">
               <Button secondary type="submit">
@@ -152,7 +162,7 @@ const Register = () => {
                 clientId="375983667598-fblbteage49sr5qmhit2deqvemsqurr5.apps.googleusercontent.com"
                 render={(renderProps) => (
                   <Button
-                    color="primary"
+                    color="blue"
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                     variant="contained"

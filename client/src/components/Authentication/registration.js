@@ -5,13 +5,8 @@ import { Button, Form, Input } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { signup } from "../../utils/mutation";
 import Auth from "../../utils/auth";
-// const dispatch = useDispatch;
-
-// const AUTH = "AUTH";
 
 const Register = () => {
-  //initial form values
-
   const [formState, setFormState] = useState({
     firstName: "",
     lastName: "",
@@ -45,7 +40,6 @@ const Register = () => {
       console.log(data);
       //Authorizing the user
       Auth.login(data.signup.token);
-      // history.pushState("/");
     } catch (error) {
       console.log(error);
       console.log("signup error");
@@ -62,14 +56,11 @@ const Register = () => {
     });
   };
 
-  //useHistory
-  // const history = useHistory();
   const googleSuccess = (res) => {
     const result = res.profileObj;
     const token = res.tokenId;
     try {
       Auth.login(token);
-      // history.pushState("/");
     } catch (error) {
       console.log(error);
     }

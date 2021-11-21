@@ -1,4 +1,3 @@
-//Importing files and packages
 import React, { useState } from "react";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
@@ -46,14 +45,11 @@ const Signin = (_props) => {
     });
   };
 
-  // //use history
-  // const history = useHistory();
   const googleSuccess = (res) => {
     const result = res.profileObj;
     const token = res.tokenId;
     try {
       Auth.login(token);
-      // history.pushState("/");
     } catch (error) {
       console.log(error);
     }

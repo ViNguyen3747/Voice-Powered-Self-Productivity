@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Form, Button, Grid, Label, Dropdown } from "semantic-ui-react";
+import { Form, Button, Grid, Label } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
 import {
   PushToTalkButton,
@@ -89,18 +89,6 @@ const TaskForm = () => {
             value={formState.priorityLevel}
             placeholder="priority level"
           />
-          {/* <Button.Group fluid vertical>
-            {priorityOptions.map((p) => (
-              <div className="select-container" key={p.text}>
-                <Button
-                  color={p.colorText}
-                  onClick={() => getPriority(p.value)}
-                >
-                  {p.text}
-                </Button>
-              </div>
-            ))}
-          </Button.Group> */}
         </Grid.Column>
         <Grid.Column mobile={16} tablet={4} computer={4}>
           <div>

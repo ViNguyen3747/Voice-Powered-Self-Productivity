@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useQuery } from "@apollo/client";
 import "./App.css";
 import Authentication from "./components/Authentication";
 import Report from "./components/Report";
@@ -9,7 +8,6 @@ import UpcomingTasks from "./components/UpcomingTasks";
 import UserGuide from "./components/UserGuide";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import { GET_TASKS } from "./utils/query";
 import {
   ApolloClient,
   InMemoryCache,
@@ -40,7 +38,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  // const { loading, error, data } = useQuery(GET_TASKS);
   // const [isOpen, setIsOpen] = useState(false);
 
   // const toggle = () => {

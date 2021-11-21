@@ -53,6 +53,7 @@ const TaskForm = () => {
         },
       });
       console.log(data);
+      window.location.assign("/today");
     } catch (error) {
       console.log(error);
     }

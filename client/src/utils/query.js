@@ -27,3 +27,12 @@ export const GET_TASK = gql`
     }
   }
 `;
+
+export const Auth_User = gql`
+  query authUser {
+    authUser {
+      username
+      email
+    }
+  }
+`;

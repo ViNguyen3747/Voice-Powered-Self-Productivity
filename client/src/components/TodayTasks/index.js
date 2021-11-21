@@ -1,12 +1,18 @@
 import React from "react";
-
+import { useQuery } from "@apollo/client";
 import "../common/Styles/commonStyles.css";
 import "./Today.css";
 import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
 import TaskCard from "./TaskCard";
+import { GET_TASKS } from "../../utils/query";
 
-const Today = ({ tasks }) => {
+const Today = () => {
+  const { loading, error, data } = useQuery(GET_TASKS);
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>There was an error</div>;
+  console.log(data);
+  console.log(error);
   const getTasks = (category, allTasks) => {
     const tasks = allTasks.filter((task) => {
       return task.category === category.value;
@@ -20,8 +26,8 @@ const Today = ({ tasks }) => {
         <Form />
       </div>
       <div className="tasks-container">
-        {tasks &&
-          categoriesOptions.map((category) => getTasks(category, tasks.tasks))}
+        {data &&
+          categoriesOptions.map((category) => getTasks(category, data.tasks))}
       </div>
     </div>
   );

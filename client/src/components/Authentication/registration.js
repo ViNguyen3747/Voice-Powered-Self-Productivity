@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { signup } from "../../utils/mutation";
@@ -37,17 +35,20 @@ const Register = () => {
   // Handle form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
       //Getting data from the form
+      console.log(formState);
+
       const { data } = await addUser({
-        variables: { ...formState },
+        variables: { newUser: { ...formState } },
       });
+      console.log(data);
       //Authorizing the user
-      Auth.login(data.addUser.token);
+      Auth.login(data.signup.token);
       // history.pushState("/");
     } catch (error) {
       console.log(error);
+      console.log("signup error");
     }
 
     // clear form values
@@ -62,7 +63,7 @@ const Register = () => {
   };
 
   //useHistory
-  const history = useHistory();
+  // const history = useHistory();
   const googleSuccess = (res) => {
     const result = res.profileObj;
     const token = res.tokenId;

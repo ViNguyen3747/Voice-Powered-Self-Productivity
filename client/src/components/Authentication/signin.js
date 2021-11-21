@@ -1,21 +1,19 @@
 //Importing files and packages
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
-// import { useDispatch } from "react-redux";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
-import { signin } from "../../utils/mutation";
+import { LOG_IN } from "../../utils/mutation";
 import Auth from "../../utils/auth";
 
-// const dispatch = useDispatch;
-// const AUTH = "AUTH";
-
-//Function Signin that is exported
 const Signin = (_props) => {
+  const [showPassword, setShowPassword] = useState(false);
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error }] = useMutation(signin);
+  const [login, { error }] = useMutation(LOG_IN);
+
+  const handleShowPassword = () =>
+    setShowPassword((prevShowPassword) => !prevShowPassword);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -33,11 +31,10 @@ const Signin = (_props) => {
 
     try {
       const { data } = await login({
-        variables: { ...formState },
+        variables: { email: formState.email, password: formState.password },
       });
-
-      Auth.login(data.login.token);
-      // history.pushState("/");
+      console.log(data);
+      Auth.login(data.signin.token, data);
     } catch (error) {
       console.log(error);
     }
@@ -91,6 +88,8 @@ const Signin = (_props) => {
               label="Password"
               control={Input}
               onChange={handleChange}
+              type={showPassword ? "text" : "password"}
+              handleShowPassword={handleShowPassword}
               value={formState.password}
             />
 

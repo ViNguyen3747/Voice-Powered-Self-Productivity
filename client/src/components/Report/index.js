@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
 import { Pie } from "react-chartjs-2";
 import "./Report.css";
 import "../common/Styles/commonStyles.css";
 import { categoriesOptions } from "../common/Data";
-
-const Report = ({ data }) => {
+import { GET_TASKS } from "../../utils/query";
+const Report = () => {
+  const { loading, error, data } = useQuery(GET_TASKS);
   const tasks = data.tasks;
   const total = tasks.reduce((acc, currVal) => (acc += currVal.duration), 0);
 

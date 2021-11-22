@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import "../common/Styles/commonStyles.css";
 import "./Today.css";
@@ -11,19 +11,22 @@ const Today = () => {
   const { loading, error, data } = useQuery(GET_TASKS);
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>There was an error</div>;
-  console.log(data);
-  console.log(error);
+
+  const [currentId, setCurrentId] = useState(null);
+
   const getTasks = (category, allTasks) => {
     const tasks = allTasks.filter((task) => {
       return task.category === category.value;
     });
-    return <TaskCard category={category} tasks={tasks} />;
+    return (
+      <TaskCard category={category} tasks={tasks} setCurrentId={setCurrentId} />
+    );
   };
 
   return (
     <div className="container">
       <div className="wrapper">
-        <Form />
+        <Form setCurrentId={setCurrentId} currentId={currentId} />
       </div>
       <div className="tasks-container">
         {data &&

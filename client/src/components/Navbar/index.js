@@ -24,13 +24,18 @@ const Navbar = () => {
   };
   return (
     <div className="navContainer">
+      {data && <div className="userName">Hi {data.authUser.username}</div>}
       <ul className="linkContainer">
         <Link to="/" routeName="User Guide" />
         <Link to="/today" routeName="Today" />
         <Link to="/upcoming" routeName="Upcoming" />
         <Link to="/report" routeName="Report" />
         {Auth.loggedIn() ? (
-          <Button color="olive" onClick={logout}>
+          <Button
+            color="olive"
+            onClick={logout}
+            style={{ margin: "-5px 20px" }}
+          >
             Logout
           </Button>
         ) : (

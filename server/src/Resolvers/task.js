@@ -25,7 +25,11 @@ const resolvers = {
   },
   Mutation: {
     addTask: async (_, { input }, { user }) => {
-      const task = await new Task({ ...input, owner: user._id }).save();
+      const task = await new Task({
+        ...input,
+        owner: user._id,
+        createdAt: new Date().toISOString(),
+      }).save();
       return task;
     },
     updateTask: async (_, { id, input }, { user }) => {

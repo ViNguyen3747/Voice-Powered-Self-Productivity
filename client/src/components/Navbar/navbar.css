@@ -27,3 +27,12 @@ ul li a:hover {
 .active {
   color: #ffba00;
 }
+
+.userName {
+  margin: 0 20px 0 20px;
+  font-weight: bold;
+  font-size: larger;
+  text-decoration: none;
+  color: #ffba00;
+  position: absolute;
+}

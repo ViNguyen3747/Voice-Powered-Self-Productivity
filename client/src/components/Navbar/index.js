@@ -14,9 +14,7 @@ const Link = ({ to, routeName }) => (
   </li>
 );
 const Navbar = () => {
-  const { client, loading, error, data } = useQuery(Auth_User, {
-    fetchPolicy: "network-only",
-  });
+  const { client, loading, error, data } = useQuery(Auth_User);
   console.log(data);
   const logout = (e) => {
     e.preventDefault();

@@ -12,6 +12,8 @@ import { categoriesOptions, priorityOptions } from "../Data";
 import { ADD_TASK } from "../../../utils/mutation";
 import { GET_TASK } from "../../../utils/query";
 
+const format = "HH:mm";
+
 const LabelTag = ({ text }) => (
   <div className="label">
     <Label tag color="black" size="large">
@@ -24,13 +26,14 @@ const initialState = {
   name: "",
   category: "",
   priorityLevel: "",
-  duration: 0,
   isDone: false,
   date: new Date(),
+  duration: 0,
 };
 
 const TaskForm = ({ currentId, setCurrentId }) => {
   const [formState, setFormState] = useState(initialState);
+  const [timerange, setTime] = useState({ start: null, finish: null });
   const {
     data,
     loading,
@@ -62,7 +65,9 @@ const TaskForm = ({ currentId, setCurrentId }) => {
           variables: {
             input: {
               ...formState,
-              duration: parseFloat(formState.duration),
+              duration: parseFloat(
+                timeConvert(timerange.finish) - timeConvert(timerange.start)
+              ),
               isDone: false,
             },
           },
@@ -76,6 +81,19 @@ const TaskForm = ({ currentId, setCurrentId }) => {
   const clear = () => {
     setFormState(initialState);
     setCurrentId(null);
+  };
+
+  const timeChange = (event, { name, value }) => {
+    setTime({
+      ...timerange,
+      [name]: value,
+    });
+    console.log(value);
+  };
+
+  const timeConvert = (time) => {
+    let t = time.split(":");
+    return +t[0] * 60 * 60 + +t[1] * 60;
   };
   return (
     <Form className="form-container" onSubmit={handleFormSubmit}>
@@ -101,17 +119,17 @@ const TaskForm = ({ currentId, setCurrentId }) => {
         </Grid.Column>
 
         <Grid.Column mobile={16} tablet={8} computer={8}>
-          <LabelTag text="Priority Level" />
-          <Form.Select
-            options={priorityOptions}
-            name="priorityLevel"
-            onChange={handleChange}
-            value={formState.priorityLevel}
-            placeholder="priority level"
-          />
-        </Grid.Column>
-        <Grid.Column mobile={16} tablet={4} computer={4}>
           <div>
+            <LabelTag text="Priority Level" />
+            <Form.Select
+              options={priorityOptions}
+              name="priorityLevel"
+              onChange={handleChange}
+              value={formState.priorityLevel}
+              placeholder="priority level"
+            />
+          </div>
+          <div className="button-container">
             <LabelTag text="Date" />
             <SemanticDatepicker
               size="large"
@@ -120,16 +138,31 @@ const TaskForm = ({ currentId, setCurrentId }) => {
               value={formState.date}
             />
           </div>
-          <div className="button-container">
-            <LabelTag text="Duration" />
-            <Form.Input
-              type="number"
-              name="duration"
-              onChange={handleChange}
-              value={formState.duration}
-            />
-          </div>
         </Grid.Column>
+
+        <Grid.Column mobile={8} tablet={8} computer={8}>
+          <>
+            <LabelTag text="Start" />
+            <Form.Input
+              size="small"
+              type="time"
+              name="start"
+              value={timerange.start}
+              onChange={timeChange}
+            />
+          </>
+          <>
+            <LabelTag text="Finish" />
+            <Form.Input
+              size="small"
+              type="time"
+              name="finish"
+              value={timerange.finish}
+              onChange={timeChange}
+            />
+          </>
+        </Grid.Column>
+
         <Grid.Column mobile={16} tablet={16} computer={16}>
           <Button color="black" size="big" fluid type="submit">
             Submit

@@ -32,7 +32,6 @@ class AuthService {
   login(idToken, data) {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
-    localStorage.setItem("userInfo", data);
     window.location.assign("/today");
   }
 
@@ -40,7 +39,6 @@ class AuthService {
     // Clear user token and profile data from localStorage
     // axios.defaults.headers.common["Authorization"] = null;
     localStorage.removeItem("id_token");
-    localStorage.removeItem("userInfo");
 
     // this will reload the page and reset the state of the application
     window.location.assign("/today");

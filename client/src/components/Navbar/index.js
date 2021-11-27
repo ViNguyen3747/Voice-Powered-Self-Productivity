@@ -25,8 +25,8 @@ const Navbar = () => {
       {data && <div className="userName">Hi {data.authUser.username}</div>}
       <ul className="linkContainer">
         <Link to="/" routeName="User Guide" />
-        <Link to="/today" routeName="Today" />
-        <Link to="/upcoming" routeName="Upcoming" />
+        <Link to="/today" routeName="Today Tasks" />
+        <Link to="/upcoming" routeName="Future Tasks" />
         <Link to="/report" routeName="Report" />
         {Auth.loggedIn() ? (
           <Button

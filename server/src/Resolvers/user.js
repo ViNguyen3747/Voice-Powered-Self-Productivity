@@ -13,13 +13,13 @@ const resolvers = {
       });
       //user not foud
       if (!user) {
-        throw new ApolloError("Username not found", "404");
+        throw new ApolloError("Email not found", "404");
       }
       // If user is found then compare the password
       let isMatch = compare(password, user.password);
       // If Password don't match
       if (!isMatch) {
-        throw new ApolloError("Username not found", "403");
+        throw new ApolloError("Email not found", "403");
       }
       user = await serializeUser(user);
       // Issue Token

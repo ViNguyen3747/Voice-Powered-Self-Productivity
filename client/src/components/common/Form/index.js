@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useSpeechContext } from "@speechly/react-client";
+
 import { useMutation, useQuery } from "@apollo/client";
 import { Form, Button, Grid, Label } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
-import {
-  PushToTalkButton,
-  PushToTalkButtonContainer,
-} from "@speechly/react-ui";
 import "./form.css";
 import "../../common/Styles/commonStyles.css";
 import { categoriesOptions, priorityOptions } from "../Data";
@@ -25,13 +23,14 @@ const LabelTag = ({ text }) => (
 const initialState = {
   name: "",
   category: "",
-  priorityLevel: "",
+  prioritylevel: "",
   isDone: false,
   date: new Date(),
   duration: 0,
 };
 
 const TaskForm = ({ currentId, setCurrentId }) => {
+  const { segment } = useSpeechContext();
   const [formState, setFormState] = useState(initialState);
   const [timerange, setTime] = useState({ start: null, finish: null });
   const {
@@ -51,10 +50,40 @@ const TaskForm = ({ currentId, setCurrentId }) => {
 
   useEffect(() => {
     if (data) setFormState(data.task);
-  }, [data]);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+    if (segment) {
+      if (segment.isFinal) {
+        if (segment.intent.intent === "create") {
+          setCurrentId(null);
+          setFormState(initialState);
+          segment.entities.forEach((e) => {
+            if (e.type !== "start" || e.type !== "finish") {
+              setFormState({ ...formState, [e.type]: e.value });
+            } else {
+              setTime({ ...timerange, [e.type]: e.value });
+            }
+          });
+        } else if (segment.intent.intent.includes("update")) {
+          let intent = segment.intent.intent.replace("update_", "");
+          if (currentId) {
+            if (intent !== "duration") {
+              setFormState({
+                ...formState,
+                [segment.entities[0].type]: segment.entities[0].value,
+              });
+            } else {
+              segment.entities.forEach((e) => {
+                setTime({ ...timerange, [e.type]: e.value });
+              });
+            }
+          }
+        }
+        handleFormSubmit();
+      }
+    }
+  }, [data, segment]);
+
+  const handleFormSubmit = async () => {
     try {
       if (currentId) {
         //add Update_Task function
@@ -96,7 +125,7 @@ const TaskForm = ({ currentId, setCurrentId }) => {
     return +t[0] * 60 * 60 + +t[1] * 60;
   };
   return (
-    <Form className="form-container" onSubmit={handleFormSubmit}>
+    <Form className="form-container">
       <Grid>
         <Grid.Column mobile={16} tablet={8} computer={8}>
           <LabelTag text="Task Name" />
@@ -123,9 +152,9 @@ const TaskForm = ({ currentId, setCurrentId }) => {
             <LabelTag text="Priority Level" />
             <Form.Select
               options={priorityOptions}
-              name="priorityLevel"
+              name="prioritylevel"
               onChange={handleChange}
-              value={formState.priorityLevel}
+              value={formState.prioritylevel}
               placeholder="priority level"
             />
           </div>
@@ -164,7 +193,7 @@ const TaskForm = ({ currentId, setCurrentId }) => {
         </Grid.Column>
 
         <Grid.Column mobile={16} tablet={16} computer={16}>
-          <Button color="black" size="big" fluid type="submit">
+          <Button color="black" size="big" fluid onClick={handleFormSubmit}>
             Submit
           </Button>
         </Grid.Column>
@@ -175,9 +204,6 @@ const TaskForm = ({ currentId, setCurrentId }) => {
             </Button>
           </Grid.Column>
         )}
-        <PushToTalkButtonContainer>
-          <PushToTalkButton />
-        </PushToTalkButtonContainer>
       </Grid>
     </Form>
   );

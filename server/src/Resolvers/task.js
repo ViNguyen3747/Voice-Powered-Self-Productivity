@@ -6,15 +6,15 @@ const resolvers = {
       let tasks;
       if (user) {
         tasks = await (
-          await Task.find().sort({ priorityLevel: 1 })
+          await Task.find().sort({ prioritylevel: 1 })
         ).filter((t) => t.owner == user.id);
       } else
         tasks = await (
-          await Task.find().sort({ priorityLevel: 1 })
+          await Task.find().sort({ prioritylevel: 1 })
         ).filter((t) => t.owner == "mock");
       if (category)
         return await (
-          await Task.find().sort({ priorityLevel: 1 })
+          await Task.find().sort({ prioritylevel: 1 })
         ).filter((t) => t.category == category && t.owner == user.id);
 
       return tasks;

@@ -28,7 +28,7 @@ export const ADD_TASK = gql`
       id
       name
       category
-      priorityLevel
+      prioritylevel
       duration
       isDone
       date
@@ -43,7 +43,7 @@ export const UPDATE_TASK = gql`
       id
       name
       category
-      priorityLevel
+      prioritylevel
       duration
       isDone
       date
@@ -59,7 +59,7 @@ export const DELETE_TASK = gql`
       id
       name
       category
-      priorityLevel
+      prioritylevel
       isDone
       duration
       date

@@ -4,7 +4,7 @@ import { priorityOptions } from "../../common/Data";
 import "./TaskCard.css";
 const TaskDetail = ({ task, setCurrentId }) => {
   const color = priorityOptions.find((p) => {
-    return p.value === task.priorityLevel;
+    return p.value === task.prioritylevel;
   });
   const handleChange = () => {
     setCurrentId(task.id);

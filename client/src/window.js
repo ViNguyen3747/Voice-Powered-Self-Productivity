@@ -11,7 +11,7 @@ import UserGuide from "./components/UserGuide";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Auth from "./utils/auth";
-import { Auth_User } from "./utils/query";
+import { Auth_User } from "./utils/graphQL/query";
 const Window = () => {
   const { segment } = useSpeechContext();
   const { client, loading, error, data } = useQuery(Auth_User);

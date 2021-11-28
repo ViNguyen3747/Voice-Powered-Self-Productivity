@@ -7,8 +7,8 @@ import SemanticDatepicker from "react-semantic-ui-datepickers";
 import "./form.css";
 import "../../common/Styles/commonStyles.css";
 import { categoriesOptions, priorityOptions } from "../Data";
-import { ADD_TASK } from "../../../utils/mutation";
-import { GET_TASK } from "../../../utils/query";
+import { ADD_TASK } from "../../../utils/graphQL/mutation";
+import { GET_TASK } from "../../../utils/graphQL/query";
 
 const format = "HH:mm";
 

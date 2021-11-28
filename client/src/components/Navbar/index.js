@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import "./navbar.css";
 import Auth from "../../utils/auth";
-import { Auth_User } from "../../utils/query";
+import { Auth_User } from "../../utils/graphQL/query";
 
 const Link = ({ to, routeName }) => (
   <li>

@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import Auth from "../../../utils/auths";
+import Auth from "../auth";
 import { Auth_User } from "../../utils/graphQL/query";
 
 export default function useAuth() {

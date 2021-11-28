@@ -1,0 +1,15 @@
+li a {
+  margin: 0 20px 0 20px;
+  font-weight: bold;
+  font-size: large;
+  text-decoration: none;
+  color: white;
+}
+
+ul li a:hover {
+  color: #ffba00;
+}
+
+.active {
+  color: #ffba00;
+}

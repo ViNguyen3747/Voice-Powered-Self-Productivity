@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import "./navbar.css";
 import Auth from "../../utils/auth";
-import { Auth_User } from "../../utils/graphQL/query";
+import useAuth from "../../utils/Hooks/useAuth";
 
 const Link = ({ to, routeName }) => (
   <li>
@@ -14,12 +14,7 @@ const Link = ({ to, routeName }) => (
   </li>
 );
 const Navbar = () => {
-  const { client, loading, error, data } = useQuery(Auth_User);
-  console.log(data);
-  const logout = (e) => {
-    e.preventDefault();
-    Auth.logout().then(() => client.resetStore());
-  };
+  const [client, logout, data] = useAuth();
   return (
     <div className="navContainer">
       {data && <div className="userName">Hi {data.authUser.username}</div>}

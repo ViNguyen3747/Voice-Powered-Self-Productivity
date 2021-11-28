@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSpeechContext } from "@speechly/react-client";
 
@@ -10,20 +9,18 @@ import UpcomingTasks from "./components/UpcomingTasks";
 import UserGuide from "./components/UserGuide";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
-import Auth from "./utils/auth";
-import { Auth_User } from "./utils/graphQL/query";
+import useAuth from "./utils/Hooks/useAuth";
+
 const Window = () => {
   const { segment } = useSpeechContext();
-  const { client, loading, error, data } = useQuery(Auth_User);
-
-  const [route, setRoute] = useState("/");
+  const [logout] = useAuth();
   useEffect(() => {
     if (segment) {
       if (segment.isFinal) {
         console.log(segment);
         switch (segment.intent.intent) {
           case "authentication":
-            Auth.logout().then(() => client.resetStore());
+            logout();
             break;
           case "routing":
             switch (segment.entities[0].value) {

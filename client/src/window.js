@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSpeechContext } from "@speechly/react-client";
 
@@ -14,6 +14,10 @@ import useAuth from "./utils/Hooks/useAuth";
 const Window = () => {
   const { segment } = useSpeechContext();
   const [logout] = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
   useEffect(() => {
     if (segment) {
       if (segment.isFinal) {
@@ -48,8 +52,8 @@ const Window = () => {
   }, [segment]);
   return (
     <Router>
-      {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
-      <Navbar />
+      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Navbar toggle={toggle} />
       <Switch>
         <Route path="/" exact component={UserGuide} />
         <Route path="/today">

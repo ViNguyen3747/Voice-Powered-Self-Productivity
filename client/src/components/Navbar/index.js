@@ -13,11 +13,14 @@ const Link = ({ to, routeName }) => (
     </NavLink>
   </li>
 );
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   const [client, logout, data] = useAuth();
   return (
     <div className="navContainer">
       {data && <div className="userName">Hi {data.authUser.username}</div>}
+      <div id="mobileicon">
+        <Button icon="content" onClick={toggle} />
+      </div>
       <ul className="linkContainer">
         <Link to="/" routeName="User Guide" />
         <Link to="/today" routeName="Today Tasks" />

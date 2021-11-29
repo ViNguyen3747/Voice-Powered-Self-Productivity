@@ -36,3 +36,22 @@ ul li a:hover {
   color: #ffba00;
   position: absolute;
 }
+
+#mobileicon {
+  display: none;
+}
+@media screen and (max-width: 920px) {
+  ul {
+    display: none;
+  }
+  #mobileicon {
+    display: block;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}

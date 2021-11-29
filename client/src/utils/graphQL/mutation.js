@@ -56,16 +56,8 @@ export const UPDATE_TASK = gql`
 export const DELETE_TASK = gql`
   mutation DeleteTask($deleteTaskId: ID!) {
     deleteTask(id: $deleteTaskId) {
-      id
-      name
-      category
-      prioritylevel
-      isDone
-      duration
-      date
-      owner
-      createdAt
-      updatedAt
+      message
+      success
     }
   }
 `;

@@ -1,8 +1,19 @@
-import React from "react";
-import { Image, Checkbox, Icon } from "semantic-ui-react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { DELETE_TASK } from "../../../utils/graphQL/mutation";
+import {
+  Image,
+  Checkbox,
+  Icon,
+  Button,
+  Header,
+  Modal,
+} from "semantic-ui-react";
 import { priorityOptions } from "../../common/Data";
 import "./TaskCard.css";
 const TaskDetail = ({ task, setCurrentId }) => {
+  const [deleteTask, { error }] = useMutation(DELETE_TASK);
+  const [open, setOpen] = useState(false);
   const color = priorityOptions.find((p) => {
     return p.value === task.prioritylevel;
   });
@@ -10,6 +21,14 @@ const TaskDetail = ({ task, setCurrentId }) => {
     setCurrentId(task.id);
   };
   //add Delete_Task function
+  const handleDelete = async () => {
+    const { data } = await deleteTask({
+      variables: {
+        deleteTaskId: task.id,
+      },
+    });
+    window.location.assign("/today");
+  };
 
   return (
     <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>
@@ -22,11 +41,46 @@ const TaskDetail = ({ task, setCurrentId }) => {
           name="pencil alternate"
           onClick={handleChange}
         />
-        <Icon color="white" className="icon" name="trash alternate" />
+        <Modal
+          basic
+          onClose={() => setOpen(false)}
+          onOpen={() => setOpen(true)}
+          open={open}
+          size="small"
+          trigger={
+            <Icon color="white" className="icon" name="trash alternate" />
+          }
+        >
+          <Header icon>
+            <Icon name="archive" />
+            Delete Task
+          </Header>
+          <Modal.Content>
+            <p className="message">
+              Are you sure you want to delete the task ?
+            </p>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button basic color="red" inverted onClick={() => setOpen(false)}>
+              <Icon name="remove" /> No
+            </Button>
+            <Button
+              color="green"
+              inverted
+              onClick={() => {
+                setOpen(false);
+                handleDelete();
+              }}
+            >
+              <Icon name="checkmark" /> Yes
+            </Button>
+          </Modal.Actions>
+        </Modal>
       </div>
     </div>
   );
 };
+
 const index = ({ category, tasks, setCurrentId }) => {
   console.log(tasks);
   return (

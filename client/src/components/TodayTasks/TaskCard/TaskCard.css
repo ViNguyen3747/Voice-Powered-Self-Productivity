@@ -39,3 +39,7 @@
   color: #ffba00;
   transition: all 0.1s ease-in-out;
 }
+.message {
+  text-align: center;
+  font-size: larger;
+}

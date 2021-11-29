@@ -11,9 +11,14 @@
 }
 
 .button-container {
-  margin-top: 25px;
+  margin-top: 13px;
 }
 
 .datepicker {
   margin: 20px;
+}
+
+.time {
+  display: flex;
+  justify-content: column wrap;
 }

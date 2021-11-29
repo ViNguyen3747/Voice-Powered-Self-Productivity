@@ -3,7 +3,7 @@ import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
-import { LOG_IN } from "../../utils/mutation";
+import { LOG_IN } from "../../utils/graphQL/mutation";
 import Auth from "../../utils/auth";
 
 const Signin = (_props) => {

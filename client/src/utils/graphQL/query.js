@@ -7,7 +7,7 @@ export const GET_TASKS = gql`
       id
       name
       category
-      priorityLevel
+      prioritylevel
       duration
       isDone
       createdAt
@@ -20,7 +20,7 @@ export const GET_TASK = gql`
       name
       id
       category
-      priorityLevel
+      prioritylevel
       duration
       isDone
       createdAt

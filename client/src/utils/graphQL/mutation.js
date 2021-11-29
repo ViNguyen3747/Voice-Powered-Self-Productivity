@@ -28,7 +28,7 @@ export const ADD_TASK = gql`
       id
       name
       category
-      priorityLevel
+      prioritylevel
       duration
       isDone
       date
@@ -43,7 +43,7 @@ export const UPDATE_TASK = gql`
       id
       name
       category
-      priorityLevel
+      prioritylevel
       duration
       isDone
       date
@@ -56,16 +56,8 @@ export const UPDATE_TASK = gql`
 export const DELETE_TASK = gql`
   mutation DeleteTask($deleteTaskId: ID!) {
     deleteTask(id: $deleteTaskId) {
-      id
-      name
-      category
-      priorityLevel
-      isDone
-      duration
-      date
-      owner
-      createdAt
-      updatedAt
+      message
+      success
     }
   }
 `;

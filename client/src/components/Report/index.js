@@ -4,7 +4,7 @@ import { Pie } from "react-chartjs-2";
 import "./Report.css";
 import "../common/Styles/commonStyles.css";
 import { categoriesOptions } from "../common/Data";
-import { GET_TASKS } from "../../utils/query";
+import { GET_TASKS } from "../../utils/graphQL/query";
 const Report = () => {
   const { loading, error, data } = useQuery(GET_TASKS);
   const tasks = data.tasks;

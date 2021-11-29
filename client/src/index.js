@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { SpeechProvider } from "@speechly/react-client";
 import "semantic-ui-css/semantic.min.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SpeechProvider
+      appId="bf7c0a90-856e-447d-ae11-7e3b09e1b880"
+      language="en-US"
+    >
+      <App />
+    </SpeechProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

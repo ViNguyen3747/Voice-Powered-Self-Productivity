@@ -5,7 +5,7 @@ import "./Today.css";
 import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
 import TaskCard from "./TaskCard";
-import { GET_TASKS } from "../../utils/query";
+import { GET_TASKS } from "../../utils/graphQL/query";
 
 const Today = () => {
   const { loading, error, data } = useQuery(GET_TASKS);

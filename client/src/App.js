@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
-import Authentication from "./components/Authentication";
-import Report from "./components/Report";
-import TodayTasks from "./components/TodayTasks";
-import UpcomingTasks from "./components/UpcomingTasks";
-import UserGuide from "./components/UserGuide";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import {
+  PushToTalkButton,
+  PushToTalkButtonContainer,
+} from "@speechly/react-ui";
+import { SpeechState, useSpeechContext } from "@speechly/react-client";
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -15,13 +13,12 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
+import Window from "./window";
 const link = createHttpLink({ uri: "/graphql" });
 
 const authLink = setContext((_, { headers }) => {
   // Retrieve the authorization token from local storage.
   const token = localStorage.getItem("id_token");
-  console.log(localStorage.getItem("userInfo"));
 
   // Set the HTTP headers
   return {
@@ -38,6 +35,16 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const { speechState } = useSpeechContext();
+  // const main = useRef(null);
+
+  // const executeScroll = () => main.current.scrollIntoView();
+
+  // useEffect(() => {
+  //   if (speechState === SpeechState.Recording) {
+  //     executeScroll();
+  //   }
+  // }, [speechState]);
   // const [isOpen, setIsOpen] = useState(false);
 
   // const toggle = () => {
@@ -47,23 +54,14 @@ function App() {
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>There was an error</div>;
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
-        <Navbar />
-        <Switch>
-          <Route path="/" exact component={UserGuide} />
-          <Route path="/today">
-            <TodayTasks />
-          </Route>
-          <Route path="/upcoming" component={UpcomingTasks} />
-          <Route path="/report">
-            <Report />
-          </Route>
-          <Route path="/auth" component={Authentication} />
-        </Switch>
-      </Router>
-    </ApolloProvider>
+    <>
+      <ApolloProvider client={client}>
+        <Window />
+      </ApolloProvider>
+      <PushToTalkButtonContainer>
+        <PushToTalkButton />
+      </PushToTalkButtonContainer>
+    </>
   );
 }
 

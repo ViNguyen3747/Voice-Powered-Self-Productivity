@@ -8,8 +8,10 @@ const TaskDetail = ({ task, setCurrentId }) => {
   });
   const handleChange = () => {
     setCurrentId(task.id);
+    
   };
   //add Delete_Task function
+  
 
   return (
     <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>

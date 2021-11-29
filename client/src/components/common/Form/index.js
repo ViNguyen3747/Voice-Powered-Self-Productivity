@@ -60,7 +60,7 @@ const TaskForm = ({ currentId, setCurrentId }) => {
         //add Update_Task function
         const { data } = await updateTask({
           variables: {
-            updateTaskId: setCurrentId,
+            updateTaskId: task.id,
             input: {
               ...formState,
               duration: parseFloat(formState.duration),

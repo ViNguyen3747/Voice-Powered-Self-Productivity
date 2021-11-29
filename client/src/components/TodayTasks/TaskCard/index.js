@@ -22,9 +22,6 @@ const TaskDetail = ({ task, setCurrentId }) => {
     
   };
   //add Delete_Task function
-<<<<<<< HEAD
-  
-=======
   const handleDelete = async () => {
     const { data } = await deleteTask({
       variables: {
@@ -33,7 +30,6 @@ const TaskDetail = ({ task, setCurrentId }) => {
     });
     window.location.assign("/today");
   };
->>>>>>> 20468d7ae25264c38dc4bfee3b8843f938a72671
 
   return (
     <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>

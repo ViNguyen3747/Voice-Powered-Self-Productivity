@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useSpeechContext } from "@speechly/react-client";
-
 import { useMutation, useQuery } from "@apollo/client";
 import { Form, Button, Grid, Label } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
+import {
+  PushToTalkButton,
+  PushToTalkButtonContainer,
+} from "@speechly/react-ui";
 import "./form.css";
 import "../../common/Styles/commonStyles.css";
 import { categoriesOptions, priorityOptions } from "../Data";
-import { ADD_TASK } from "../../../utils/graphQL/mutation";
-import { GET_TASK } from "../../../utils/graphQL/query";
-
-const format = "HH:mm";
+import { ADD_TASK } from "../../../utils/mutation";
+import { GET_TASK } from "../../../utils/query";
+import { UPDATE_TASK } from "../../../utils/mutation";
 
 const LabelTag = ({ text }) => (
   <div className="label">
@@ -23,16 +24,14 @@ const LabelTag = ({ text }) => (
 const initialState = {
   name: "",
   category: "",
-  prioritylevel: "",
+  priorityLevel: "",
+  duration: 0,
   isDone: false,
   date: new Date(),
-  duration: 0,
 };
 
 const TaskForm = ({ currentId, setCurrentId }) => {
-  const { segment } = useSpeechContext();
   const [formState, setFormState] = useState(initialState);
-  const [timerange, setTime] = useState({ start: null, finish: null });
   const {
     data,
     loading,
@@ -48,55 +47,34 @@ const TaskForm = ({ currentId, setCurrentId }) => {
     });
   };
 
+  const [updateTask, { error}] = useMutation(UPDATE_TASK);
+
   useEffect(() => {
     if (data) setFormState(data.task);
+  }, [data]);
 
-    if (segment) {
-      if (segment.isFinal) {
-        if (segment.intent.intent === "create") {
-          setCurrentId(null);
-          setFormState(initialState);
-          segment.entities.forEach((e) => {
-            if (e.type !== "start" || e.type !== "finish") {
-              setFormState({ ...formState, [e.type]: e.value });
-            } else {
-              setTime({ ...timerange, [e.type]: e.value });
-            }
-          });
-        } else if (segment.intent.intent.includes("update")) {
-          let intent = segment.intent.intent.replace("update_", "");
-          if (currentId) {
-            if (intent !== "duration") {
-              setFormState({
-                ...formState,
-                [segment.entities[0].type]: segment.entities[0].value,
-              });
-            } else {
-              segment.entities.forEach((e) => {
-                setTime({ ...timerange, [e.type]: e.value });
-              });
-            }
-          }
-        }
-        handleFormSubmit();
-      }
-    }
-  }, [data, segment]);
-
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
     try {
       if (currentId) {
         //add Update_Task function
-
+        const { data } = await updateTask({
+          variables: {
+            updateTaskId: setCurrentId,
+            input: {
+              ...formState,
+              duration: parseFloat(formState.duration),
+              isDone: false,
+            },
+          },
+        });
         clear();
       } else {
         const { data } = await addTask({
           variables: {
             input: {
               ...formState,
-              duration: parseFloat(
-                timeConvert(timerange.finish) - timeConvert(timerange.start)
-              ),
+              duration: parseFloat(formState.duration),
               isDone: false,
             },
           },
@@ -111,21 +89,8 @@ const TaskForm = ({ currentId, setCurrentId }) => {
     setFormState(initialState);
     setCurrentId(null);
   };
-
-  const timeChange = (event, { name, value }) => {
-    setTime({
-      ...timerange,
-      [name]: value,
-    });
-    console.log(value);
-  };
-
-  const timeConvert = (time) => {
-    let t = time.split(":");
-    return +t[0] * 60 * 60 + +t[1] * 60;
-  };
   return (
-    <Form className="form-container">
+    <Form className="form-container" onSubmit={handleFormSubmit}>
       <Grid>
         <Grid.Column mobile={16} tablet={8} computer={8}>
           <LabelTag text="Task Name" />
@@ -148,17 +113,17 @@ const TaskForm = ({ currentId, setCurrentId }) => {
         </Grid.Column>
 
         <Grid.Column mobile={16} tablet={8} computer={8}>
+          <LabelTag text="Priority Level" />
+          <Form.Select
+            options={priorityOptions}
+            name="priorityLevel"
+            onChange={handleChange}
+            value={formState.priorityLevel}
+            placeholder="priority level"
+          />
+        </Grid.Column>
+        <Grid.Column mobile={16} tablet={4} computer={4}>
           <div>
-            <LabelTag text="Priority Level" />
-            <Form.Select
-              options={priorityOptions}
-              name="prioritylevel"
-              onChange={handleChange}
-              value={formState.prioritylevel}
-              placeholder="priority level"
-            />
-          </div>
-          <div className="button-container">
             <LabelTag text="Date" />
             <SemanticDatepicker
               size="large"
@@ -167,33 +132,18 @@ const TaskForm = ({ currentId, setCurrentId }) => {
               value={formState.date}
             />
           </div>
-        </Grid.Column>
-
-        <Grid.Column mobile={8} tablet={8} computer={8}>
-          <>
-            <LabelTag text="Start" />
+          <div className="button-container">
+            <LabelTag text="Duration" />
             <Form.Input
-              size="small"
-              type="time"
-              name="start"
-              value={timerange.start}
-              onChange={timeChange}
+              type="number"
+              name="duration"
+              onChange={handleChange}
+              value={formState.duration}
             />
-          </>
-          <>
-            <LabelTag text="Finish" />
-            <Form.Input
-              size="small"
-              type="time"
-              name="finish"
-              value={timerange.finish}
-              onChange={timeChange}
-            />
-          </>
+          </div>
         </Grid.Column>
-
         <Grid.Column mobile={16} tablet={16} computer={16}>
-          <Button color="black" size="big" fluid onClick={handleFormSubmit}>
+          <Button color="black" size="big" fluid type="submit">
             Submit
           </Button>
         </Grid.Column>
@@ -204,6 +154,9 @@ const TaskForm = ({ currentId, setCurrentId }) => {
             </Button>
           </Grid.Column>
         )}
+        <PushToTalkButtonContainer>
+          <PushToTalkButton />
+        </PushToTalkButtonContainer>
       </Grid>
     </Form>
   );

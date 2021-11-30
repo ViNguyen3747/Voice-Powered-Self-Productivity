@@ -40,7 +40,6 @@ const resolvers = {
           { new: true }
         );
         if (!task) throw new error("Unathorized Access");
-        await task.populate("owner").execPopulate();
 
         return task;
       } catch (error) {

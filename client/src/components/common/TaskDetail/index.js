@@ -68,7 +68,7 @@ const TaskDetail = ({ task, setCurrentId, today }) => {
         >
           <Header icon>
             <Icon name="archive" />
-            Delete Task
+            Delete "{task.name}" Task
           </Header>
           <Modal.Content>
             <p className="message">

@@ -1,0 +1,31 @@
+.task-detail {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin: 4px;
+    border-radius: 5px;
+    min-height: 15px;
+    text-align: left;
+    letter-spacing: 1px;
+    padding: 5px;
+    color: white;
+  }
+  
+  .task-name {
+    margin-left: 5px;
+  }
+  
+  .icon {
+    cursor: pointer;
+  }
+  .icon:hover {
+    color: #ffba00;
+    transition: all 0.1s ease-in-out;
+  }
+  .message {
+    text-align: center;
+    font-size: larger;
+  }
+  .edit {
+    margin: 0 auto;
+  }

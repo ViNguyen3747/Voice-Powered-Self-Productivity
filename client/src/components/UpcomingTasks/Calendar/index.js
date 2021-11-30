@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_TASKS } from "../../../utils/graphQL/query";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Button, Icon } from "semantic-ui-react";
@@ -9,6 +11,8 @@ import {
   createDaysForPreviousMonth,
   isWeekendDay,
 } from "./helpers";
+import TaskDetail from "../../common/TaskDetail";
+import formatDate from "../../../utils/formatDate";
 import "./calendar.css";
 Calendar.propTypes = {
   yearAndMonth: PropTypes.arrayOf(PropTypes.number).isRequired, // e.g. [2021, 6] for June 2021
@@ -33,8 +37,10 @@ const months = [
 export default function Calendar({
   yearAndMonth = [2021, 11],
   onYearAndMonthChange,
+  setCurrentId,
   renderDay = () => null,
 }) {
+  const { loading, error, data } = useQuery(GET_TASKS);
   const [year, month] = yearAndMonth;
   const [isCurrentMonth, checkIsCurrentMonth] = useState(true);
   const [monthString, setMontString] = useState(months[month - 1]);
@@ -84,6 +90,13 @@ export default function Calendar({
     ) {
       checkIsCurrentMonth(true);
     } else checkIsCurrentMonth(false);
+  };
+
+  const getTask = (task, date) => {
+    if (formatDate(task.date) === date) {
+      console.log(task);
+      return <TaskDetail task={task} setCurrentId={setCurrentId} />;
+    }
   };
 
   return (
@@ -140,7 +153,10 @@ export default function Calendar({
                 "current-month": day.isCurrentMonth,
               })}
             >
-              <div className="day-content-wrapper">{renderDay(day)}</div>
+              <div className="day-content-wrapper">
+                {renderDay(day)}
+                {data && data.tasks.map((t) => getTask(t, day.dateString))}
+              </div>
             </div>
           ))}
         </div>

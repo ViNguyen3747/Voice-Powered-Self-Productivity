@@ -21,7 +21,6 @@ const Window = () => {
   useEffect(() => {
     if (segment) {
       if (segment.isFinal) {
-        console.log(segment);
         switch (segment.intent.intent) {
           case "authentication":
             logout();

@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import "./App.css";
 import {
   PushToTalkButton,
   PushToTalkButtonContainer,
 } from "@speechly/react-ui";
-import { SpeechState, useSpeechContext } from "@speechly/react-client";
 
 import {
   ApolloClient,
@@ -35,24 +34,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const { speechState } = useSpeechContext();
-  // const main = useRef(null);
-
-  // const executeScroll = () => main.current.scrollIntoView();
-
-  // useEffect(() => {
-  //   if (speechState === SpeechState.Recording) {
-  //     executeScroll();
-  //   }
-  // }, [speechState]);
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // const toggle = () => {
-  //   setIsOpen(!isOpen);
-  // };
-
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>There was an error</div>;
   return (
     <>
       <ApolloProvider client={client}>

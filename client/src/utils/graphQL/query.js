@@ -8,6 +8,7 @@ export const GET_TASKS = gql`
       name
       category
       prioritylevel
+      date
       duration
       isDone
       createdAt
@@ -19,10 +20,14 @@ export const GET_TASK = gql`
     task(id: $taskId) {
       name
       id
+      start
+      finish
       category
       prioritylevel
       duration
+      date
       isDone
+      date
       createdAt
     }
   }

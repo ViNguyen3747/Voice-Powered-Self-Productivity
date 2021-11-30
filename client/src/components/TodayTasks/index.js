@@ -1,16 +1,15 @@
 import React, { useState } from "react";
+
 import { useQuery } from "@apollo/client";
 import "../common/Styles/commonStyles.css";
 import "./Today.css";
 import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
-import TaskCard from "./TaskCard";
+import CategoryCard from "./CategoryCard";
 import { GET_TASKS } from "../../utils/graphQL/query";
 
 const Today = () => {
   const { loading, error, data } = useQuery(GET_TASKS);
-  // if (loading) return <div>Loading...</div>;
-  // if (error) return <div>There was an error</div>;
 
   const [currentId, setCurrentId] = useState(null);
 
@@ -19,7 +18,11 @@ const Today = () => {
       return task.category === category.value;
     });
     return (
-      <TaskCard category={category} tasks={tasks} setCurrentId={setCurrentId} />
+      <CategoryCard
+        category={category}
+        tasks={tasks}
+        setCurrentId={setCurrentId}
+      />
     );
   };
 

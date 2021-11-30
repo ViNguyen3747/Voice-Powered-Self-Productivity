@@ -1,0 +1,17 @@
+.card-container {
+  min-height: 400px;
+  width: 20vw;
+  min-width: 300px;
+  margin: 20px;
+  border-radius: 10px;
+  letter-spacing: 3px;
+  line-height: 25px;
+  background-color: white;
+  border: 5px solid #ffba00;
+  padding: 10px;
+  text-align: center;
+}
+
+.task-container {
+  width: 100%;
+}

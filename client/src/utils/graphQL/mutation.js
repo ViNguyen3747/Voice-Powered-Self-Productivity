@@ -29,6 +29,8 @@ export const ADD_TASK = gql`
       name
       category
       prioritylevel
+      start
+      finish
       duration
       isDone
       date
@@ -45,6 +47,8 @@ export const UPDATE_TASK = gql`
       category
       prioritylevel
       duration
+      start
+      finish
       isDone
       date
       owner

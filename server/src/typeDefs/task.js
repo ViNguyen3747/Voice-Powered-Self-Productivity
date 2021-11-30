@@ -11,7 +11,7 @@ const typeDefs = gql`
     Emotional
   }
 
-  enum prioritylevel {
+  enum PriorityLevel {
     A
     B
     C
@@ -26,15 +26,19 @@ const typeDefs = gql`
   input addTaskInput {
     name: String!
     category: Category!
-    prioritylevel: prioritylevel!
+    prioritylevel: PriorityLevel!
+    start: String!
+    finish: String!
     duration: Float!
     isDone: Boolean!
-    date: Date
+    date: Date!
   }
   input updateTaskInput {
     name: String
     category: Category
-    prioritylevel: prioritylevel
+    prioritylevel: PriorityLevel
+    start: String
+    finish: String
     duration: Float
     isDone: Boolean
     date: Date
@@ -53,7 +57,9 @@ const typeDefs = gql`
     id: ID!
     name: String!
     category: Category!
-    prioritylevel: prioritylevel!
+    prioritylevel: PriorityLevel!
+    start: String!
+    finish: String!
     duration: Float!
     isDone: Boolean!
     date: Date!

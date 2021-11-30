@@ -5,6 +5,10 @@ import TaskDetail from "../../common/TaskDetail";
 import "./CategoryCard.css";
 
 const CategoryCard = ({ category, tasks, setCurrentId }) => {
+  const isToday = (date) => {
+    let dateString = new Date(date);
+    return dateString.getDate() === new Date().getDate();
+  };
   return (
     <div className="card-container">
       <h2>{category.value}</h2>
@@ -16,7 +20,9 @@ const CategoryCard = ({ category, tasks, setCurrentId }) => {
       />
       {tasks.map((task) => (
         <div className="task-container">
-          <TaskDetail task={task} setCurrentId={setCurrentId} today="true" />
+          {isToday(task.date) ? (
+            <TaskDetail task={task} setCurrentId={setCurrentId} today="true" />
+          ) : null}
         </div>
       ))}
     </div>

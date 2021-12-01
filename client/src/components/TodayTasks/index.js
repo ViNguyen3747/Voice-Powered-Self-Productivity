@@ -29,7 +29,11 @@ const Today = () => {
   return (
     <div className="container">
       <div className="wrapper">
-        <Form setCurrentId={setCurrentId} currentId={currentId} />
+        <Form
+          setCurrentId={setCurrentId}
+          currentId={currentId}
+          rerouting="today"
+        />
       </div>
       <div className="tasks-container">
         {data &&

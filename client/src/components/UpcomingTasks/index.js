@@ -12,7 +12,11 @@ const Upcoming = () => {
   return (
     <div className="container">
       <div className="wrapper">
-        <Form setCurrentId={setCurrentId} currentId={currentId} />
+        <Form
+          setCurrentId={setCurrentId}
+          currentId={currentId}
+          rerouting="upcoming"
+        />
       </div>
       <div className="wrapper">
         <Calendar

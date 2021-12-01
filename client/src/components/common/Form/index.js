@@ -27,7 +27,7 @@ const initialState = {
 
 const initialTime = { start: "00:00", finish: "00:00" };
 
-const TaskForm = ({ currentId, setCurrentId }) => {
+const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
   const { segment } = useSpeechContext();
   const [formState, setFormState] = useState(initialState);
   const [timerange, setTime] = useState(initialTime);
@@ -128,7 +128,7 @@ const TaskForm = ({ currentId, setCurrentId }) => {
           },
         });
       }
-      window.location.assign("/today");
+      window.location.assign(`/${rerouting}`);
     } catch (error) {
       console.log(error);
     }

@@ -4,7 +4,7 @@ import "./link.css";
 
 const Link = ({ to, routeName }) => (
   <li>
-    <NavLink to={to} className="link" activeClassName="active" exact>
+    <NavLink to={to} activeClassName="active" exact>
       {routeName}
     </NavLink>
   </li>

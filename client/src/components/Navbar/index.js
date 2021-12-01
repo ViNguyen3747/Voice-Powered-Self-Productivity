@@ -1,18 +1,9 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { NavLink } from "react-router-dom";
 import { Button } from "semantic-ui-react";
 import "./navbar.css";
 import Auth from "../../utils/auth";
 import useAuth from "../../utils/Hooks/useAuth";
-
-const Link = ({ to, routeName }) => (
-  <li>
-    <NavLink to={to} className="link" activeClassName="active" exact>
-      {routeName}
-    </NavLink>
-  </li>
-);
+import Link from "../common/Link";
 const Navbar = ({ toggle }) => {
   const [client, logout, data] = useAuth();
   return (

@@ -9,6 +9,7 @@ export const GET_TASKS = gql`
       category
       prioritylevel
       date
+      owner
       duration
       isDone
       createdAt
@@ -26,6 +27,7 @@ export const GET_TASK = gql`
       prioritylevel
       duration
       date
+      owner
       isDone
       date
       createdAt

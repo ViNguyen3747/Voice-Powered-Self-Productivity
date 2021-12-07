@@ -16,6 +16,7 @@ const typeDefs = gql`
     email: String!
     username: String!
     password: String!
+    retypePassword: String!
   }
 
   input signinInput {

@@ -21,7 +21,6 @@ const apolloServer = new ApolloServer({
   schemaDirectives,
   context: async ({ req }) => {
     const { user, isAuth } = await AuthMiddleware(req);
-    console.log(user, isAuth);
     return {
       req,
       user,

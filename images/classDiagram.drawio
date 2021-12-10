@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-12-10T06:54:08.275Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36" etag="4NDSMJUZ9Z7aRvXZCRfe" version="15.9.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-10T22:06:26.322Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36" etag="UbXtFcrdazQkuHGiwo0f" version="15.9.4" type="github">
   <diagram id="K6ruLTV1MkwrFcG2_J3V" name="Page-1">
-    <mxGraphModel dx="1597" dy="949" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="918" dy="1304" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -128,16 +128,16 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="aCAddTO829IJePSmZYyR-2" value="Report" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+        <mxCell id="aCAddTO829IJePSmZYyR-2" value="Report" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="57" y="35" width="160" height="121" as="geometry" />
         </mxCell>
-        <mxCell id="aCAddTO829IJePSmZYyR-3" value="props:&#xa;- getTasks()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="aCAddTO829IJePSmZYyR-2">
+        <mxCell id="aCAddTO829IJePSmZYyR-3" value="props:&#xa;- getTasks()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="aCAddTO829IJePSmZYyR-2" vertex="1">
           <mxGeometry y="26" width="160" height="42" as="geometry" />
         </mxCell>
-        <mxCell id="aCAddTO829IJePSmZYyR-4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="aCAddTO829IJePSmZYyR-2">
+        <mxCell id="aCAddTO829IJePSmZYyR-4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="aCAddTO829IJePSmZYyR-2" vertex="1">
           <mxGeometry y="68" width="160" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="aCAddTO829IJePSmZYyR-5" value="+ useWeeklyReport()&#xa;+ useDailyReport()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="aCAddTO829IJePSmZYyR-2">
+        <mxCell id="aCAddTO829IJePSmZYyR-5" value="+ useWeeklyReport()&#xa;+ useDailyReport()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="aCAddTO829IJePSmZYyR-2" vertex="1">
           <mxGeometry y="76" width="160" height="45" as="geometry" />
         </mxCell>
       </root>

@@ -1,34 +1,123 @@
-import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
-import { Pie } from "react-chartjs-2";
+import React from "react";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+import { Pie, Bar } from "react-chartjs-2";
 import "./Report.css";
 import "../common/Styles/commonStyles.css";
-import { categoriesOptions } from "../common/Data";
-import { GET_TASKS } from "../../utils/graphQL/query";
-const Report = () => {
-  const { loading, error, data } = useQuery(GET_TASKS);
-  const tasks = data.tasks;
-  const total = tasks.reduce((acc, currVal) => (acc += currVal.duration), 0);
+import useReport from "../../utils/Hooks/useReport";
+import useWeeklyReport from "../../utils/Hooks/useWeeklyReport";
 
-  tasks.forEach((t) => {
-    const category = categoriesOptions.find((c) => c.value === t.category);
-    if (category) category.total += t.duration;
-  });
-  const filteredCategories = categoriesOptions.filter((c) => c.total > 0);
-  const charData = {
-    datasets: [
-      {
-        data: filteredCategories.map((c) => c.total),
-        backgroundColor: filteredCategories.map((c) => c.color),
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const weeklyOptions = {
+  plugins: {
+    title: {
+      display: true,
+      text: "Weekly Report",
+      color: "white",
+      font: {
+        size: 25,
+        family: "Space Mono, monospace",
+        lineHeight: 1,
       },
-    ],
-    labels: filteredCategories.map((c) => c.text),
-  };
+      padding: 5,
+    },
+    legend: {
+      labels: {
+        color: "white",
+        font: {
+          size: 12,
+          family: "Space Mono, monospace",
+        },
+      },
+    },
+  },
+  responsive: true,
+  interaction: {
+    mode: "index",
+    intersect: false,
+  },
+  maintainAspectRatio: false,
+  scales: {
+    x: {
+      stacked: true,
+      ticks: {
+        color: "white",
+      },
+      grid: {
+        color: "white",
+      },
+    },
+    y: {
+      stacked: true,
+      ticks: {
+        color: "white",
+      },
+      grid: {
+        color: "white",
+      },
+    },
+  },
+};
+
+export const dailyOptions = {
+  plugins: {
+    title: {
+      display: true,
+      text: "Daily Report",
+      color: "black",
+      font: {
+        size: 25,
+        family: "Space Mono, monospace",
+      },
+    },
+    legend: {
+      labels: {
+        color: "black",
+        font: {
+          size: 12,
+          family: "Space Mono, monospace",
+          weight: "bold",
+        },
+      },
+    },
+  },
+  responsive: true,
+  interaction: {
+    mode: "index",
+    intersect: false,
+  },
+};
+const Report = () => {
+  const [dailyData] = useReport();
+  const [weeklyData] = useWeeklyReport();
 
   return (
-    <div className="chart-container">
-      <Pie data={charData} />
-    </div>
+    <>
+      <div className="pie-chart-container">
+        <Pie options={dailyOptions} data={dailyData} />
+      </div>
+      <div className="barchart-wrapper">
+        <div className="bar-chart-container">
+          <Bar options={weeklyOptions} data={weeklyData} />
+        </div>
+      </div>
+    </>
   );
 };
 

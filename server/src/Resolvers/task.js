@@ -1,5 +1,6 @@
 import { ApolloError } from "apollo-server-errors";
 import { Task } from "../Database/Models";
+
 const resolvers = {
   Query: {
     tasks: async (_, { category }, { user }) => {

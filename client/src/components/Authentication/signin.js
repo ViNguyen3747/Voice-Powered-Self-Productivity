@@ -1,48 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
-import { Button, Form, Input } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { LOG_IN } from "../../utils/graphQL/mutation";
 import Auth from "../../utils/auth";
-
+import { signinSchema } from "../../utils/validation/authenticationValidation";
 const Signin = (_props) => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(signinSchema) });
   const [login, { error }] = useMutation(LOG_IN);
 
-  const handleShowPassword = () =>
-    setShowPassword((prevShowPassword) => !prevShowPassword);
-
-  // update state based on form input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
   // Handle form submit
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
+  const handleFormSubmit = async (userData) => {
     try {
       const { data } = await login({
-        variables: { email: formState.email, password: formState.password },
+        variables: { ...userData },
       });
-      console.log(data);
       Auth.login(data.signin.token, data);
     } catch (error) {
       console.log(error);
     }
-
-    // clear form values
-    setFormState({
-      email: "",
-      password: "",
-    });
   };
 
   const googleSuccess = (res) => {
@@ -63,31 +46,21 @@ const Signin = (_props) => {
       <div className="formContainer">
         <div className="header">Sign In</div>
         <div className="formWrapper">
-          <Form onSubmit={handleFormSubmit}>
-            <Form.Field
-              name="email"
-              id="form-input-control-error-email"
-              control={Input}
-              placeholder="joe@schmoe.com"
-              label="Email"
-              onChange={handleChange}
-              value={formState.email}
-              /*error={{
-              content: 'Please enter a valid email address',
-              pointing: 'below',
-            }}*/
-            />
-
-            <Form.Field
-              name="password"
-              placeholder="Enter password"
-              label="Password"
-              control={Input}
-              onChange={handleChange}
-              type={showPassword ? "text" : "password"}
-              handleShowPassword={handleShowPassword}
-              value={formState.password}
-            />
+          <Form onSubmit={handleSubmit(handleFormSubmit)}>
+            <Form.Field required>
+              <label>Email</label>
+              <input type="email" placeholder="email" {...register("email")} />
+              <p className="error">{errors.email?.message}</p>
+            </Form.Field>
+            <Form.Field required>
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Enter password"
+                {...register("password")}
+              />
+              <p className="error">{errors.password?.message}</p>
+            </Form.Field>
 
             <div className="authButton">
               <Button secondary type="submit">

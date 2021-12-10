@@ -1,4 +1,3 @@
-/*Added this for Authentication*/
 .address {
   padding: 5px;
   margin: 10px;
@@ -76,4 +75,8 @@ a {
 
 .authButton {
   margin: 10px;
+}
+
+.error {
+  color: red;
 }

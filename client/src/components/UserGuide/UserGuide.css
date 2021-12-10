@@ -54,10 +54,10 @@
 }
 
 .userGuideimage{
-  width: 200px;
   margin: 0 auto;
   justify-content: center;
-  
+  width: 100vw;
+  padding: 20px;
 }
 .InfoRow {
   display: grid;
@@ -119,4 +119,12 @@
   max-height: 450px;
   margin: 0 0 10px 0;
   padding-right: 0;
+}
+
+.guide-container{
+  padding: 20px;
+}
+
+.title{
+  text-align: center;
 }

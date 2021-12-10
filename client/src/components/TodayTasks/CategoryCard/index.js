@@ -6,7 +6,6 @@ import "./CategoryCard.css";
 import Auth from "../../../utils/auth";
 
 const MockData = ({ tasks, setCurrentId }) => {
-  console.log(tasks);
   const mock = tasks.filter((t) => t.owner === "mock");
   return mock.map((task) => (
     <TaskDetail

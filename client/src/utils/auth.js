@@ -39,6 +39,8 @@ class AuthService {
     // Clear user token and profile data from localStorage
     // axios.defaults.headers.common["Authorization"] = null;
     localStorage.removeItem("id_token");
+    localStorage.removeItem("report");
+    localStorage.removeItem("weeklyreport");
 
     // this will reload the page and reset the state of the application
     window.location.assign("/today");

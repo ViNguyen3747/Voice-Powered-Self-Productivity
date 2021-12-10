@@ -14,4 +14,8 @@ const formatDate = (date) => {
   return [year, month, day].join("-");
 };
 
+export const timeConvert = (time) => {
+  let t = time.split(":");
+  return +t[0] * 60 * 60 + +t[1] * 60;
+};
 export default formatDate;

@@ -4,12 +4,22 @@ import Sinupimage from "../images/useGuide/signup.png"
 import deleteImage from "../images/useGuide/delete.png"
 import taskImage from "../images/useGuide/task.png"
 import voiceImage from "../images/useGuide/voice.png"
+import reportImage from "../images/useGuide/report.png"
+import goglelogin from "../images/useGuide/googleLogin.png"
+
 
 const userGuide = [
   {
     value:
     "To use the App you must register for an acount by filling up the join us page wich can be accessed by clicking the join us link bellow or by Sing in if you already have an account",
     image: Sinupimage,
+    color: "#6D9773",
+  },
+
+  {
+    value:
+    "The App also supports google login, you can use your google account to access the app ",
+    image: goglelogin,
     color: "#6D9773",
   },
 
@@ -32,6 +42,12 @@ const userGuide = [
       image: voiceImage ,
     color: "#FFBA00",
   },
+  {
+    value:
+      "You can track your progress in tasks activities by viewing a weekly report under report",
+      image: reportImage ,
+    color: "#FFBA00",
+  },
   
 ];
 export const Guide = () => {
@@ -40,7 +56,7 @@ export const Guide = () => {
       <div className="title" style={{ color: "white" }}>
         User Guides
       </div>
-      <div className="guide-wrapper">
+      <div className="info-wrapper">
         {userGuide.map((g) => (
           <div
             className="guideCard"

@@ -1,10 +1,10 @@
 .calendar {
-  width: 95%;
-  margin-right: auto;
-  margin-left: auto;
+  position: relative;
+  margin: 0 auto;
   background-color: white;
   padding: 20px;
-  border-radius: 20px;
+  overflow: auto;
+  border-radius: 7px;
 }
 
 .day-of-week-header-cell {
@@ -17,20 +17,38 @@
 
 .days-of-week,
 .days-grid {
-  width: 100%;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 20vw);
   grid-column-gap: 0.8px;
   grid-row-gap: 0.8px;
   background-color: white;
 }
 
 .days-grid {
-  height: 600px;
+  height: 500px;
+  width: 140.4vw;
   position: relative;
   border: 0.5px solid #bbb7b7;
   background-color: #bbb7b7;
+}
+@media screen and (max-width: 1070px) {
+  .days-of-week,
+  .days-grid {
+    grid-template-columns: repeat(7, 50vw);
+  }
+  .days-grid {
+    width: 351.2vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  .days-of-week,
+  .days-grid {
+    grid-template-columns: repeat(7, 80vw);
+  }
+  .days-grid {
+    width: 491.7vw;
+  }
 }
 
 .day-grid-item-container {
@@ -49,7 +67,6 @@
   color: black;
   padding: 8px;
   padding-bottom: 0;
-  flex-shrink: 0;
   font-weight: bold;
 }
 
@@ -73,6 +90,7 @@
 
 .calendar-label {
   font-size: 30px;
-  margin-bottom: 40px;
   letter-spacing: 5px;
+  line-height: 1.2;
+  padding-bottom: 10px;
 }

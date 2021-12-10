@@ -94,7 +94,6 @@ export default function Calendar({
 
   const getTask = (task, date) => {
     if (formatDate(task.date) === date) {
-      console.log(task);
       return <TaskDetail task={task} setCurrentId={setCurrentId} />;
     }
   };
@@ -128,10 +127,10 @@ export default function Calendar({
           </Button.Group>
         </div>
       </div>
+      <div className="calendar-label">
+        {monthString} {year}
+      </div>
       <div className="calendar">
-        <div className="calendar-label">
-          {monthString} {year}
-        </div>
         <div className="days-of-week">
           {daysOfWeek.map((day, index) => (
             <div

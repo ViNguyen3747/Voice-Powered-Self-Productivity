@@ -57,6 +57,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
   const [updateTask, { error: updateError }] = useMutation(UPDATE_TASK);
 
   useEffect(() => {
+    reset();
     if (data) {
       clearErrors();
       scroll.scrollToTop();
@@ -67,6 +68,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
       );
     }
     if (segment) {
+      console.log(segment.intent.intent);
       if (
         segment.intent.intent === "create" ||
         segment.intent.intent === "reset"
@@ -91,7 +93,6 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
         getValues("finish")
       ) {
         handleFormSubmit();
-        clear();
       }
     }
   }, [data, segment]);
@@ -131,7 +132,6 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
     }
   };
   const clear = () => {
-    reset();
     setCurrentId(null);
     clearErrors();
   };

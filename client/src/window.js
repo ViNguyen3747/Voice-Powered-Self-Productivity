@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSpeechContext } from "@speechly/react-client";
-
+import { useQuery } from "@apollo/client";
 import Authentication from "./components/Authentication";
 import Report from "./components/Report";
 import TodayTasks from "./components/TodayTasks";
@@ -10,9 +10,11 @@ import UserGuide from "./components/UserGuide";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import useAuth from "./utils/Hooks/useAuth";
-
+import Auth from "./utils/auth";
+import { Auth_User } from "./utils/graphQL/query";
 const Window = () => {
   const { segment } = useSpeechContext();
+  const { client, loading, error, data } = useQuery(Auth_User);
   const [logout] = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
@@ -23,7 +25,7 @@ const Window = () => {
       if (segment.isFinal) {
         switch (segment.intent.intent) {
           case "authentication":
-            logout();
+            Auth.logout().then(() => client.resetStore());
             break;
           case "routing":
             let route = segment.entities[0].value.toLowerCase();

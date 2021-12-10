@@ -1,3 +1,5 @@
+//format string date to YYYY-MM-DD
+// Wed Oct 05 2011 16:48:00 GMT+0200 (CEST) to 2011-10-05
 const formatDate = (date) => {
   const d = new Date(date);
   let month = `${d.getMonth() + 1}`;

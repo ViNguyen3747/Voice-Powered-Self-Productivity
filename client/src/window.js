@@ -26,17 +26,19 @@ const Window = () => {
             logout();
             break;
           case "routing":
-            switch (segment.entities[0].value) {
-              case "TODAY":
+            let route = segment.entities[0].value.toLowerCase();
+            console.log(segment);
+            switch (route) {
+              case "today":
                 window.location.assign("/today");
                 break;
-              case "USER GUIDE":
+              case "user guide":
                 window.location.assign("/");
                 break;
-              case "FUTURE":
+              case "upcoming":
                 window.location.assign("/upcoming");
                 break;
-              case "REPORT":
+              case "report":
                 window.location.assign("/report");
                 break;
               default:

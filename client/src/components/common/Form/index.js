@@ -12,6 +12,7 @@ import { categoriesOptions, priorityOptions } from "../Data";
 import { ADD_TASK, UPDATE_TASK } from "../../../utils/graphQL/mutation";
 import { GET_TASK } from "../../../utils/graphQL/query";
 import { taskSchema } from "../../../utils/validation/taskFormValidation";
+import { resultKeyNameFromField } from "@apollo/client/utilities";
 const LabelTag = ({ text }) => (
   <div className="label">
     <Label tag color="black" size="large">
@@ -59,21 +60,20 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
     if (data) {
       clearErrors();
       scroll.scrollToTop();
-      console.log(data.task);
       let { createdAt, id, isDone, owner, __typename, ...task } = data.task;
 
       Object.entries(task).map(([key, value]) =>
         setValue(key, key === "date" ? new Date(value) : value)
       );
     }
-
     if (segment) {
-      reset();
-      if (segment.intent.intent === "create") {
-        setCurrentId(null);
+      if (
+        segment.intent.intent === "create" ||
+        segment.intent.intent === "reset"
+      ) {
+        clear();
       }
       segment.entities.forEach((e) => {
-        console.log(e);
         let value = e.value;
         if (e.type === "date") value = new Date(e.value);
         if (e.type === "name") value = e.value.toLowerCase();
@@ -91,6 +91,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
         getValues("finish")
       ) {
         handleFormSubmit();
+        clear();
       }
     }
   }, [data, segment]);
@@ -113,7 +114,6 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
             },
           },
         });
-        console.log(currentId);
         clear();
       } else {
         const { data } = await addTask({

@@ -29,13 +29,13 @@
   align-items: center;
 }
 .Card {
-  width: 20vw;
-  min-height: 200px;
+  min-width: 20vw;
+  min-height: 20vw;
   display: flex;
   margin: 2vw;
   padding: 20px;
   align-items: center;
-  font-size: x-large;
+  font-size: 2.4vw;
   border-radius: 10px;
   justify-content: center;
   line-height: 25px;
@@ -43,48 +43,57 @@
 
 .guideCard {
   min-width: 20vw;
+  max-width: 80vw;
   min-height: 200px;
   margin: 2vw;
   padding: 20px;
   align-items: center;
-  font-size: x-large;
+  font-size: 2vw;
+  line-height: 3vw;
   border-radius: 10px;
-  line-height: 25px;
-  justify-content: center;
+  
+  
 }
+  
+
 
 .userGuideimage{
   margin: 0 auto;
-  justify-content: center;
-  width: 100vw;
   padding: 20px;
+}
+
+.userGuideimage img {
+  width: 50vw;
 }
 .InfoRow {
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
+
   grid-template-areas: "col1 col2";
-  @media screen and (max-width: 770px) {
-    grid-template-areas: "col1" "col2";
+  
+}
+@media screen and (max-width: 770px) {
+  .InfoRow{
+  grid-template-areas: "col1" "col2";
   }
 }
 
 .Column1 {
-  margin-bottom: 15px;
   padding: 0 15px;
+  margin: 0 auto;
   grid-area: col1;
 }
 
 .TextWrapper {
   max-width: 540px;
-  padding-top: 0;
+  padding-top: 0;  
   padding-bottom: 60px;
 }
 
 .TopLine {
   color: Green;
-  font-size: 16px;
-  line-height: 16px;
+  line-height: 30px;
   font-weight: 700;
   letter-spacing: 1.4px;
   text-transform: uppercase;
@@ -94,12 +103,11 @@
 
 .Subtitle {
   max-width: 440px;
-  margin-bottom: 35px;
-  font-size: 18px;
-  line-height: 24px;
+  margin-bottom: 35px;  
+  font-size: 2vw;
+  line-height: 2.5vw;
   color: black;
   text-align: left;
-  margin-left: 70px;
 }
 
 .Column2 {

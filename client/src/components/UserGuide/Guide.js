@@ -41,7 +41,7 @@ export const Guide = () => {
              {g.value}
             </div>
             <div>
-            <img src={g.image} alt=''/>
+            <img className='userGuideimage' src={g.image} alt=''/>
             </div>
           </div>
         ))}

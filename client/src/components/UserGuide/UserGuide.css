@@ -42,18 +42,23 @@
 }
 
 .guideCard {
-  width: 20vw;
+  min-width: 20vw;
   min-height: 200px;
-  display: flex;
   margin: 2vw;
   padding: 20px;
   align-items: center;
   font-size: x-large;
   border-radius: 10px;
-  justify-content: column wrap;
   line-height: 25px;
+  justify-content: center;
 }
 
+.userGuideimage{
+  width: 200px;
+  margin: 0 auto;
+  justify-content: center;
+  
+}
 .InfoRow {
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);

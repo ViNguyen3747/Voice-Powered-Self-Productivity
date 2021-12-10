@@ -1,43 +1,48 @@
 import React from "react";
 import  "../common/Styles/commonStyles.css"
+import image from "../images/categories/emotional.svg"
 
 const userGuide = [
   {
     value:
     "To use the App you must register for an acount by filling up the join us page wich can be accessed by clicking the join us link bellow or by Sing in if you already have an account",
-    image: "./images/categories/emotional.svg",
+    image: image,
     color: "#6D9773",
   },
   {
     value:
       "To ",
-      image: "./images/categories/emotional.svg",
+      image: image ,
     color: "#FFBA00",
   },
   {
     value:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
     color: "#6D9773",
-    image: "./images/categories/emotional.svg",
+    image: image,
   },
 ];
 export const Guide = () => {
   return (
-    <div className="info-container" style={{ backgroundColor: "#304B30" }}>
+    <div className="guide-container" style={{ backgroundColor: "#304B30" }}>
       <div className="title" style={{ color: "white" }}>
         User Guides
       </div>
       <div className="info-wrapper">
         {userGuide.map((g) => (
           <div
-            className="Card"
+            className="guideCard"
             style={{
               backgroundColor: `${g.color}`,
               textAlign: "left",
             }}
           >
-            {g.value}
+            <div>
+             {g.value}
+            </div>
+            <div>
             <img src={g.image} alt=''/>
+            </div>
           </div>
         ))}
       </div>

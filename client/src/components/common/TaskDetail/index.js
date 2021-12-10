@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import Link from "../Link";
 import { NavLink } from "react-router-dom";
 import { DELETE_TASK, UPDATE_TASK } from "../../../utils/graphQL/mutation";
 import { Checkbox, Icon, Button, Header, Modal } from "semantic-ui-react";
@@ -53,13 +52,9 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
   };
   return (
     <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>
-      {today && (
-        <>
-          <Checkbox checked={task.isDone} onChange={handleCheck} />
-          <div className="task-name">{task.name}</div>
-        </>
-      )}
-      <div className={!today ? "edit" : ""}>
+      {today && <Checkbox checked={task.isDone} onChange={handleCheck} />}
+      <div className="task-name">{task.name}</div>
+      <div>
         <Icon
           color="white"
           className="iconTask"
@@ -122,18 +117,18 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
             <Button basic color="red" inverted onClick={() => setMock(false)}>
               <Icon name="remove" /> No
             </Button>
-            <Button
-              color="green"
-              className="linkModal"
-              inverted
-              onClick={() => setMock(false)}
-            >
-              <NavLink to="/auth">
+            <NavLink to="/auth">
+              <Button
+                color="green"
+                className="linkModal"
+                inverted
+                onClick={() => setMock(false)}
+              >
                 {" "}
                 <Icon name="checkmark" onClick={() => setMock(false)} />
                 Yes
-              </NavLink>
-            </Button>
+              </Button>
+            </NavLink>
           </Modal.Actions>
         </Modal>
       </div>

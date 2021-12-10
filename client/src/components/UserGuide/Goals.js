@@ -10,7 +10,7 @@ const goals = [
     color: "#FFBA00",
   },
   {
-    value: "Pripritise tasks",
+    value: "Priorities tasks",
     color: "#6D9773",
   },
   {

@@ -11,9 +11,8 @@ const Signin = () => {
           <div className="TextWrapper">
             <p className="TopLine">Join us</p>
             <p className="Subtitle">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam
+              Easy to access, easy to understand. Join us now to exprience the
+              best way to develope your healthy livestyle!
             </p>
             <Link to="/auth">
               <Button

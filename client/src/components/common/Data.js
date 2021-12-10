@@ -17,7 +17,7 @@ export const categoriesOptions = [
     value: "Professional",
     illustration: Professional,
     total: 0,
-    color: "#AE2012",
+    color: "#F94144",
   },
   {
     key: "Physical",
@@ -25,7 +25,7 @@ export const categoriesOptions = [
     value: "Physical",
     illustration: Physical,
     total: 0,
-    color: "#005F73",
+    color: "#F3722C",
   },
   {
     key: "Pratical",
@@ -33,7 +33,7 @@ export const categoriesOptions = [
     value: "Pratical",
     illustration: Pratical,
     total: 0,
-    color: "#606C38",
+    color: "#F9C74F",
   },
   {
     key: "Social",
@@ -41,7 +41,7 @@ export const categoriesOptions = [
     value: "Social",
     illustration: Social,
     total: 0,
-    color: "#FFCDB2",
+    color: "#90BE6D",
   },
   {
     key: "Spiritual",
@@ -49,7 +49,7 @@ export const categoriesOptions = [
     value: "Spiritual",
     illustration: Spiritual,
     total: 0,
-    color: "#335C67",
+    color: "#43AA8B",
   },
   {
     key: "Mental",
@@ -57,7 +57,7 @@ export const categoriesOptions = [
     value: "Mental",
     illustration: Mental,
     total: 0,
-    color: "#9D4EDD",
+    color: "#4D908E",
   },
   {
     key: "Emotional",
@@ -65,7 +65,59 @@ export const categoriesOptions = [
     value: "Emotional",
     illustration: Emotional,
     total: 0,
-    color: "#1F1C1F",
+    color: "#577590",
+  },
+];
+
+export const weeklyCategoriesOptions = [
+  {
+    key: "Professional",
+    text: "Professional",
+    value: "Professional",
+    total: 0,
+    color: "#F94144",
+  },
+  {
+    key: "Physical",
+    text: "Physical",
+    value: "Physical",
+    total: 0,
+    color: "#F3722C",
+  },
+  {
+    key: "Pratical",
+    text: "Pratical",
+    value: "Pratical",
+    total: 0,
+    color: "#F9C74F",
+  },
+  {
+    key: "Social",
+    text: "Social",
+    value: "Social",
+    total: 0,
+    color: "#90BE6D",
+  },
+  {
+    key: "Spiritual",
+    text: "Spiritual",
+    value: "Spiritual",
+    total: 0,
+    color: "#43AA8B",
+  },
+  {
+    key: "Mental",
+    text: "Mental/Intellectual",
+    value: "Mental",
+    total: 0,
+    color: "#4D908E",
+  },
+  {
+    key: "Emotional",
+    text: "Emotional",
+    value: "Emotional",
+    total: 0,
+    color: "#577590",
   },
 ];
 

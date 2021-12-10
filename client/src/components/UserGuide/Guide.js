@@ -56,7 +56,7 @@ export const Guide = () => {
       <div className="title" style={{ color: "white" }}>
         User Guides
       </div>
-      <div className="guide-wrapper">
+      <div className="info-wrapper">
         {userGuide.map((g) => (
           <div
             className="guideCard"

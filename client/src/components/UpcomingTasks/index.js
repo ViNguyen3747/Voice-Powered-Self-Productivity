@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import Calendar, { CalendarDayHeader } from "./Calendar";
-import "../common/Styles/commonStyles.css";
 import Form from "../common/Form";
 const Upcoming = () => {
   const [yearAndMonth, setYearAndMonth] = useState([

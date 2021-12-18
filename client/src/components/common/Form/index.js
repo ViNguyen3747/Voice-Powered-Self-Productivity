@@ -6,15 +6,14 @@ import { useSpeechContext } from "@speechly/react-client";
 import { useMutation, useQuery } from "@apollo/client";
 import { Form, Button, Grid, Label, Typo } from "semantic-ui-react";
 import SemanticDatepicker from "react-semantic-ui-datepickers";
-import "./form.css";
-import "../../common/Styles/commonStyles.css";
+import { formContainer, buttonContainer, label } from "./form.scss";
 import { categoriesOptions, priorityOptions } from "../Data";
 import { ADD_TASK, UPDATE_TASK } from "../../../utils/graphQL/mutation";
 import { GET_TASK } from "../../../utils/graphQL/query";
 import { taskSchema } from "../../../utils/validation/taskFormValidation";
-import { resultKeyNameFromField } from "@apollo/client/utilities";
+import { errortext } from "../Styles/commonStyles.scss";
 const LabelTag = ({ text }) => (
-  <div className="label">
+  <div className={label}>
     <Label tag color="black" size="large">
       {text}
     </Label>
@@ -68,7 +67,6 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
       );
     }
     if (segment) {
-      console.log(segment.intent.intent);
       if (
         segment.intent.intent === "create" ||
         segment.intent.intent === "reset"
@@ -141,7 +139,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
     return +t[0] * 60 * 60 + +t[1] * 60;
   };
   return (
-    <Form className="form-container" onSubmit={handleSubmit(handleFormSubmit)}>
+    <Form className={formContainer} onSubmit={handleSubmit(handleFormSubmit)}>
       <Grid>
         <Grid.Column mobile={16} tablet={16} computer={16}>
           {segment && segment.words.map((w) => w.value).join(" ")}
@@ -150,7 +148,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
           <Form.Field required>
             <LabelTag text="Task Name" />
             <input type="text" placeholder="task name" {...register("name")} />
-            <p className="error">{errors.name?.message}</p>
+            <p className="errorText">{errors.name?.message}</p>
           </Form.Field>
         </Grid.Column>
         <Grid.Column mobile={16} tablet={8} computer={8}>
@@ -167,7 +165,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
                     value={getValues("category")}
                     placeholder="category"
                   />
-                  <p className="error">{errors.category?.message}</p>
+                  <p className="errorText">{errors.category?.message}</p>
                 </>
               )}
             />
@@ -188,12 +186,12 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
                     onChange={(event, data) => onChange(data.value)}
                     placeholder="priority level"
                   />
-                  <p className="error">{errors.prioritylevel?.message}</p>
+                  <p className="errorText">{errors.prioritylevel?.message}</p>
                 </>
               )}
             />
           </Form.Field>
-          <div className="button-container">
+          <div className={buttonContainer}>
             <Form.Field>
               <LabelTag text="Date" />
               <Controller
@@ -205,7 +203,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
                       value={getValues("date")}
                       onChange={(event, data) => field.onChange(data.value)}
                     />
-                    <p className="error">{errors.date?.message}</p>
+                    <p className="errorText">{errors.date?.message}</p>
                   </>
                 )}
               />
@@ -221,7 +219,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
           <LabelTag text="Finish" />
           <Form.Field size="small">
             <input type="time" name="finish" {...register("finish")} />
-            <p className="error">{errors.finish?.message}</p>
+            <p className="errorText">{errors.finish?.message}</p>
           </Form.Field>
         </Grid.Column>
 

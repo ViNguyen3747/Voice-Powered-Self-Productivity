@@ -12,6 +12,7 @@ import Sidebar from "./components/Sidebar";
 import useAuth from "./utils/Hooks/useAuth";
 import Auth from "./utils/auth";
 import { Auth_User } from "./utils/graphQL/query";
+
 const Window = () => {
   const { segment } = useSpeechContext();
   const { client, loading, error, data } = useQuery(Auth_User);
@@ -28,24 +29,24 @@ const Window = () => {
             Auth.logout().then(() => client.resetStore());
             break;
           case "routing":
-            let route = segment.entities[0].value.toLowerCase();
-            console.log(segment);
-            switch (route) {
-              case "today":
-                window.location.assign("/today");
-                break;
-              case "user guide":
-                window.location.assign("/");
-                break;
-              case "upcoming":
-                window.location.assign("/upcoming");
-                break;
-              case "report":
-                window.location.assign("/report");
-                break;
-              default:
-                break;
-            }
+            // let route = segment.entities[0].value.toLowerCase();
+            console.log(segment.entities);
+            // switch (route) {
+            //   case "today":
+            //     window.location.assign("/today");
+            //     break;
+            //   case "user guide":
+            //     window.location.assign("/");
+            //     break;
+            //   case "upcoming":
+            //     window.location.assign("/upcoming");
+            //     break;
+            //   case "report":
+            //     window.location.assign("/report");
+            //     break;
+            //   default:
+            //     break;
+            // }
             break;
           default:
             break;

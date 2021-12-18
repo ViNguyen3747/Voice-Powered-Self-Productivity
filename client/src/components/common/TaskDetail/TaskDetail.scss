@@ -1,4 +1,6 @@
-.task-detail {
+@import "../Styles/global.scss";
+
+.taskDetailContainer {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -9,27 +11,23 @@
   letter-spacing: 1px;
   padding: 5px;
   color: white;
+
+  p {
+    text-align: center;
+    font-size: larger;
+  }
 }
 
-.task-name {
+.name {
   margin-left: 5px;
 }
-
-.iconTask {
+.icon {
   cursor: pointer;
+  &:hover {
+    color: $color-palette-2;
+    transition: all 0.1s ease-in-out;
+  }
 }
-.iconTask:hover {
-  color: #ffba00;
-  transition: all 0.1s ease-in-out;
-}
-.message {
-  text-align: center;
-  font-size: larger;
-}
-.edit {
-  margin: 0 auto;
-}
-
 .linkModal a {
   text-decoration: none;
   color: white;

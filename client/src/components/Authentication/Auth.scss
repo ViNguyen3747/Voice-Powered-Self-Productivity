@@ -1,0 +1,30 @@
+.formContainer {
+  width: 70vw;
+  margin: 10px auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    color: white;
+    font-size: 50px;
+    margin: 30px;
+    margin-bottom: 50px;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    justify-content: center;
+  }
+  .button {
+    padding: 15px 30px;
+    margin: 5px;
+    width: max-content;
+  }
+}
+
+.authlink {
+  text-align: right;
+  padding: 20px;
+}
+a {
+  text-decoration: none;
+}

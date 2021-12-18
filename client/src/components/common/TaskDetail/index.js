@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { DELETE_TASK, UPDATE_TASK } from "../../../utils/graphQL/mutation";
 import { Checkbox, Icon, Button, Header, Modal } from "semantic-ui-react";
 import { priorityOptions } from "../Data";
-import "./TaskDetail.css";
+import "./TaskDetail.scss";
 
 const TaskDetail = ({ task, setCurrentId, today, mock }) => {
   const [deleteTask, { error }] = useMutation(DELETE_TASK);
@@ -51,13 +51,16 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
     }
   };
   return (
-    <div className="task-detail" style={{ backgroundColor: `#${color.color}` }}>
+    <div
+      className="taskDetailContainer"
+      style={{ backgroundColor: `#${color.color}` }}
+    >
       {today && <Checkbox checked={task.isDone} onChange={handleCheck} />}
-      <div className="task-name">{task.name}</div>
+      <div className="name">{task.name}</div>
       <div>
         <Icon
           color="white"
-          className="iconTask"
+          className="icon"
           name="pencil alternate"
           onClick={handleChange}
         />
@@ -77,9 +80,7 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
             Delete "{task.name}" Task
           </Header>
           <Modal.Content>
-            <p className="message">
-              Are you sure you want to delete the task ?
-            </p>
+            <p>Are you sure you want to delete the task ?</p>
           </Modal.Content>
           <Modal.Actions>
             <Button basic color="red" inverted onClick={() => setOpen(false)}>
@@ -109,9 +110,7 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
             You're not signed in :(
           </Header>
           <Modal.Content>
-            <p className="message">
-              Sign in to create your own task list and make changes on it
-            </p>
+            <p>Sign in to create your own task list and make changes on it</p>
           </Modal.Content>
           <Modal.Actions>
             <Button basic color="red" inverted onClick={() => setMock(false)}>

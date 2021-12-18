@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import {
   PushToTalkButton,
   PushToTalkButtonContainer,
@@ -13,6 +13,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Window from "./window";
+import "./components/common/Styles/commonStyles.scss";
 const link = createHttpLink({ uri: "/graphql" });
 
 const authLink = setContext((_, { headers }) => {

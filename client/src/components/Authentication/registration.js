@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { signup } from "../../utils/graphQL/mutation";
+
 import Auth from "../../utils/auth";
 import { registerSchema } from "../../utils/validation/authenticationValidation";
 const Register = () => {
@@ -50,7 +51,7 @@ const Register = () => {
     <div className="container">
       <div className="formContainer">
         <div className="header">Sign Up</div>
-        <div className="formWrapper">
+        <div>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group widths="equal">
               <Form.Field required>
@@ -60,7 +61,7 @@ const Register = () => {
                   placeholder="First name"
                   {...register("firstName")}
                 />
-                <p className="error">{errors.firstName?.message}</p>
+                <p className="errorText">{errors.firstName?.message}</p>
               </Form.Field>
               <Form.Field required>
                 <label>Last Name</label>
@@ -69,13 +70,13 @@ const Register = () => {
                   placeholder="Last Name"
                   {...register("lastName")}
                 />
-                <p className="error">{errors.lastName?.message}</p>
+                <p className="errorText">{errors.lastName?.message}</p>
               </Form.Field>
             </Form.Group>
             <Form.Field required>
               <label>Email</label>
               <input type="email" placeholder="email" {...register("email")} />
-              <p className="error">{errors.email?.message}</p>
+              <p className="errorText">{errors.email?.message}</p>
             </Form.Field>
             <Form.Field required>
               <label>Username</label>
@@ -84,7 +85,7 @@ const Register = () => {
                 placeholder="Username"
                 {...register("username")}
               />
-              <p className="error">{errors.username?.message}</p>
+              <p className="errorText">{errors.username?.message}</p>
             </Form.Field>
 
             <Form.Group widths="equal">
@@ -95,7 +96,7 @@ const Register = () => {
                   placeholder="password"
                   {...register("password")}
                 />
-                <p className="error">{errors.password?.message}</p>
+                <p className="errorText">{errors.password?.message}</p>
               </Form.Field>
               <Form.Field required>
                 <label>Retype Password</label>
@@ -104,10 +105,10 @@ const Register = () => {
                   placeholder="Retype Password"
                   {...register("retypePassword")}
                 />
-                <p className="error">{errors.retypePassword?.message}</p>
+                <p className="errorText">{errors.retypePassword?.message}</p>
               </Form.Field>
             </Form.Group>
-            <div className="authButton">
+            <div>
               <Button secondary type="submit">
                 Submit
               </Button>
@@ -131,7 +132,7 @@ const Register = () => {
                 cookiePolicy="single_host_origin"
               />
             </div>
-            <div className="signin">
+            <div className="authlink">
               <p>
                 Already have an acount? <Link to="/login">Sign in</Link>
               </p>

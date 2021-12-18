@@ -37,7 +37,6 @@ class AuthService {
 
   logout() {
     // Clear user token and profile data from localStorage
-    // axios.defaults.headers.common["Authorization"] = null;
     localStorage.removeItem("id_token");
     localStorage.removeItem("report");
     localStorage.removeItem("weeklyreport");

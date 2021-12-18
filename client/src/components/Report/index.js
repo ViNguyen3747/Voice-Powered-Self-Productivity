@@ -11,7 +11,6 @@ import {
 
 import { Pie, Bar } from "react-chartjs-2";
 import "./Report.css";
-import "../common/Styles/commonStyles.css";
 import useReport from "../../utils/Hooks/useReport";
 import useWeeklyReport from "../../utils/Hooks/useWeeklyReport";
 

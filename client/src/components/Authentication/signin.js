@@ -5,16 +5,17 @@ import { GoogleLogin } from "react-google-login";
 import { Link } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
-import { LOG_IN } from "../../utils/graphQL/mutation";
+import { signin } from "../../utils/graphQL/mutation";
 import Auth from "../../utils/auth";
 import { signinSchema } from "../../utils/validation/authenticationValidation";
+
 const Signin = (_props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(signinSchema) });
-  const [login, { error }] = useMutation(LOG_IN);
+  const [login, { error }] = useMutation(signin);
 
   // Handle form submit
   const handleFormSubmit = async (userData) => {
@@ -45,12 +46,12 @@ const Signin = (_props) => {
     <div className="container">
       <div className="formContainer">
         <div className="header">Sign In</div>
-        <div className="formWrapper">
+        <div>
           <Form onSubmit={handleSubmit(handleFormSubmit)}>
             <Form.Field required>
               <label>Email</label>
               <input type="email" placeholder="email" {...register("email")} />
-              <p className="error">{errors.email?.message}</p>
+              <p className="errorText">{errors.email?.message}</p>
             </Form.Field>
             <Form.Field required>
               <label>Password</label>
@@ -59,10 +60,10 @@ const Signin = (_props) => {
                 placeholder="Enter password"
                 {...register("password")}
               />
-              <p className="error">{errors.password?.message}</p>
+              <p className="errorText">{errors.password?.message}</p>
             </Form.Field>
 
-            <div className="authButton">
+            <div>
               <Button secondary type="submit">
                 Submit
               </Button>
@@ -77,7 +78,6 @@ const Signin = (_props) => {
                     disabled={renderProps.disabled}
                     variant="contained"
                     width="10px"
-                    className="authButton"
                   >
                     Sign in with Google
                   </Button>
@@ -87,7 +87,7 @@ const Signin = (_props) => {
                 cookiePolicy="single_host_origin"
               />
             </div>
-            <div className="signin">
+            <div className="authlink">
               <p>
                 Don't have an account? <Link to="/">Sign Up</Link>
               </p>

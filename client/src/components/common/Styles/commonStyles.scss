@@ -1,5 +1,7 @@
+@import "./global.scss";
+
 .container {
-  background-color: #6d9773;
+  background-color: $color-palette-1;
   padding: 50px 0 50px 0;
   min-height: 100vh;
 }
@@ -8,12 +10,16 @@
   height: 100%;
   margin: auto;
   justify-content: center;
-  background-color: #ffba00;
+  background-color: $color-palette-2;
   border-radius: 20px;
   padding: 20px 10px 50px 10px;
   margin-bottom: 20px;
 }
 
-.image{
+.image {
   width: 30px;
+}
+
+.errortext {
+  color: red;
 }

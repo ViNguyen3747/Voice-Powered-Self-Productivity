@@ -2,7 +2,7 @@ import React from "react";
 import { Image } from "semantic-ui-react";
 
 import TaskDetail from "../../common/TaskDetail";
-import "./CategoryCard.css";
+import "./Category.scss";
 import Auth from "../../../utils/auth";
 
 const MockData = ({ tasks, setCurrentId }) => {
@@ -23,7 +23,7 @@ const CategoryCard = ({ category, tasks, setCurrentId }) => {
     return dateString.getDate() === new Date().getDate();
   };
   return (
-    <div className="card-container">
+    <div className="categoryContainer">
       <h2>{category.value}</h2>
       <Image
         src={category.illustration}
@@ -33,7 +33,7 @@ const CategoryCard = ({ category, tasks, setCurrentId }) => {
       />
       {Auth.loggedIn() ? (
         tasks.map((task) => (
-          <div className="task-container">
+          <div className="detail">
             {isToday(task.date) ? (
               <TaskDetail
                 task={task}

@@ -13,7 +13,7 @@ import {
 } from "./helpers";
 import TaskDetail from "../../common/TaskDetail";
 import formatDate from "../../../utils/formatDate";
-import "./calendar.css";
+import "./calendar.scss";
 Calendar.propTypes = {
   yearAndMonth: PropTypes.arrayOf(PropTypes.number).isRequired, // e.g. [2021, 6] for June 2021
   onYearAndMonthChange: PropTypes.func.isRequired,
@@ -100,7 +100,7 @@ export default function Calendar({
 
   return (
     <>
-      <div className="navigation-header">
+      <div className="navigationHeader">
         <div className="controller">
           <Button.Group size="large">
             {!isCurrentMonth && (
@@ -127,7 +127,7 @@ export default function Calendar({
           </Button.Group>
         </div>
       </div>
-      <div className="calendar-label">
+      <div className="calendarLabel">
         {monthString} {year}
       </div>
       <div className="calendar">

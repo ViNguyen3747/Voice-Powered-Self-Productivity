@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 import { useQuery } from "@apollo/client";
-import "../common/Styles/commonStyles.css";
-import "./Today.css";
+import "./Today.scss";
 import { categoriesOptions } from "../common/Data";
 import Form from "../common/Form";
 import CategoryCard from "./CategoryCard";
@@ -35,7 +34,7 @@ const Today = () => {
           rerouting="today"
         />
       </div>
-      <div className="tasks-container">
+      <div className="tasksContainer">
         {data &&
           categoriesOptions.map((category) => getTasks(category, data.tasks))}
       </div>

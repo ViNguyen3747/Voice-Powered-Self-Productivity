@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-export const signup = gql`
+export const SIGN_UP = gql`
   mutation signup($newUser: signupInput!) {
     signup(newUser: $newUser) {
       token
@@ -11,9 +11,41 @@ export const signup = gql`
   }
 `;
 
-export const signin = gql`
+export const SIGN_IN = gql`
   mutation signin($email: String!, $password: String!) {
     signin(email: $email, password: $password) {
+      token
+      user {
+        id
+        username
+      }
+    }
+  }
+`;
+
+export const ACTIVATE_USER = gql`
+  mutation activateEmail($token: String!) {
+    activateEmail(token: $token) {
+      token
+      user {
+        id
+        username
+      }
+    }
+  }
+`;
+
+export const FORGOT_PASSWORD = gql`
+  mutation forgotPassword($email: String!) {
+    forgotPassword(email: $email) {
+      message
+    }
+  }
+`;
+
+export const RESET_PASSWORD = gql`
+  mutation resetPassword($token: String!, $newPassword: String!) {
+    resetPassword(token: $token, newPassword: $newPassword) {
       token
       user {
         id
@@ -32,7 +64,6 @@ export const ADD_TASK = gql`
       start
       finish
       duration
-      isDone
       date
       owner
       createdAt
@@ -49,7 +80,6 @@ export const UPDATE_TASK = gql`
       duration
       start
       finish
-      isDone
       date
       owner
       createdAt

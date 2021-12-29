@@ -10,8 +10,8 @@ import {
 } from "chart.js";
 
 import { Pie, Bar } from "react-chartjs-2";
-import "./Report.css";
-import useReport from "../../utils/Hooks/useReport";
+import "./Report.scss";
+import useDailyReport from "../../utils/Hooks/useDailyReport";
 import useWeeklyReport from "../../utils/Hooks/useWeeklyReport";
 
 ChartJS.register(
@@ -28,9 +28,9 @@ export const weeklyOptions = {
     title: {
       display: true,
       text: "Weekly Report",
-      color: "white",
+      color: "#fcf0e3",
       font: {
-        size: 25,
+        size: 30,
         family: "Space Mono, monospace",
         lineHeight: 1,
       },
@@ -38,9 +38,9 @@ export const weeklyOptions = {
     },
     legend: {
       labels: {
-        color: "white",
+        color: "#fcf0e3",
         font: {
-          size: 12,
+          size: 17,
           family: "Space Mono, monospace",
         },
       },
@@ -55,20 +55,32 @@ export const weeklyOptions = {
   scales: {
     x: {
       stacked: true,
+
       ticks: {
-        color: "white",
+        color: "#fcf0e3",
       },
       grid: {
-        color: "white",
+        color: "#fcf0e3",
       },
     },
     y: {
       stacked: true,
+      title: {
+        display: true,
+        text: "Minutes",
+        color: "#fcf0e3",
+        font: {
+          size: 20,
+          family: "monospace",
+          lineHeight: 1.2,
+          letterSpace: 3,
+        },
+      },
       ticks: {
-        color: "white",
+        color: "#fcf0e3",
       },
       grid: {
-        color: "white",
+        color: "#fcf0e3",
       },
     },
   },
@@ -79,17 +91,17 @@ export const dailyOptions = {
     title: {
       display: true,
       text: "Daily Report",
-      color: "black",
+      color: "#30243b",
       font: {
-        size: 25,
+        size: 30,
         family: "Space Mono, monospace",
       },
     },
     legend: {
       labels: {
-        color: "black",
+        color: "#30243b",
         font: {
-          size: 12,
+          size: 17,
           family: "Space Mono, monospace",
           weight: "bold",
         },
@@ -103,20 +115,23 @@ export const dailyOptions = {
   },
 };
 const Report = () => {
-  const [dailyData] = useReport();
+  const [dailyData, dailyEmpty] = useDailyReport();
   const [weeklyData] = useWeeklyReport();
 
   return (
-    <>
+    <div className="container">
       <div className="pie-chart-container">
         <Pie options={dailyOptions} data={dailyData} />
       </div>
+      {dailyEmpty && (
+        <div className="pieText">You haven't added any task for today yet</div>
+      )}
       <div className="barchart-wrapper">
         <div className="bar-chart-container">
           <Bar options={weeklyOptions} data={weeklyData} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

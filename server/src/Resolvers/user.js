@@ -1,68 +1,140 @@
-import { ApolloError } from "apollo-server-express";
+import { ApolloError, AuthenticationError } from "apollo-server-express";
+import dotenv from "dotenv";
 import { hash, compare } from "bcryptjs";
-import { serializeUser, issueAuthToken } from "../utils/Userfunctions.js";
+import {
+  serializeUser,
+  createActivationToken,
+  createRefreshToken,
+  verifyUser,
+  createAccessToken,
+  verifyId,
+} from "../utils/Userfunctions.js";
 import { User } from "../Database/Models";
+dotenv.config();
+import {
+  sendConfirmationEmail,
+  sendResetPasswordEmail,
+} from "../utils/emailService.js";
 const resolvers = {
   Query: {
     authUser: (_, __, { req: { user } }) => user,
   },
   Mutation: {
     signin: async (_, { email, password }) => {
-      let user = await User.findOne({
-        email,
-      });
-      //user not foud
-      if (!user) {
-        throw new ApolloError("Email not found", "404");
+      try {
+        let user = await User.findOne({
+          email,
+        });
+        if (!user) {
+          throw new AuthenticationError("Email not found");
+        }
+
+        const isMatch = await compare(password, user.password);
+
+        user = await serializeUser(user);
+        if (!isMatch) {
+          throw new AuthenticationError("Incorrect Password");
+        } else {
+          if (user.status === "Active") {
+            let token = await createActivationToken(user);
+            return {
+              user,
+              token,
+            };
+          } else {
+            throw new AuthenticationError(
+              "Pending Account. Please Verify Your Email"
+            );
+          }
+        }
+      } catch (err) {
+        throw new ApolloError(err.message);
       }
-      // If user is found then compare the password
-      let isMatch = compare(password, user.password);
-      // If Password don't match
-      if (!isMatch) {
-        throw new ApolloError("Email not found", "403");
-      }
-      user = await serializeUser(user);
-      // Issue Token
-      let token = await issueAuthToken(user);
-      return {
-        user,
-        token,
-      };
     },
     signup: async (_parent, { newUser }) => {
       try {
         let { email, username } = newUser;
 
-        // Check if the Username is taken
         let user = await User.findOne({
           username,
         });
         if (user) {
-          throw new ApolloError("Username is already taken.", "403");
+          throw new ApolloError("Username is already taken", "400");
         }
 
-        // Check is the Email address is already registred
         user = await User.findOne({
           email,
         });
         if (user) {
-          throw new ApolloError("Email is already registred.", "403");
+          throw new ApolloError("Email is already registred", "400");
         }
-
-        // New User's Account can be created
         user = new User(newUser);
 
-        // Hash the user password
-        user.password = await hash(user.password, 10);
-
-        // Save the user to the database
+        user.password = await hash(user.password, 12);
         let result = await user.save();
         result = await serializeUser(result);
-        // Issue Token
-        let token = await issueAuthToken(result);
+        let activation_token = await createActivationToken(result);
+        let verificationUrl = `${process.env.CLIENT_URL}/user/activate/${activation_token}`;
+        sendConfirmationEmail(result.email, result.username, verificationUrl);
+        return {
+          token: activation_token,
+          user: result,
+        };
+      } catch (err) {
+        throw new ApolloError(err.message);
+      }
+    },
+    activateEmail: async (_parent, { token }) => {
+      try {
+        let { id, status, iat, exp, ...input } = await verifyUser(token);
+        console.log(verifyUser(token));
+        const user = await User.findByIdAndUpdate(
+          { _id: id },
+          { ...input, status: "Active" },
+          { new: true }
+        );
+        if (!user) throw new AuthenticationError("User not found");
+
         return {
           token,
-          user: result,
+          user,
+        };
+      } catch (err) {
+        throw new ApolloError(err.message);
+      }
+    },
+
+    forgotPassword: async (_parent, { email }) => {
+      try {
+        let user = await User.findOne({
+          email,
+        });
+        if (!user) {
+          throw new AuthenticationError("Email not found");
+        }
+        let reset_token = await createAccessToken({ id: user._id });
+        let url = `${process.env.CLIENT_URL}/user/reset/${reset_token}`;
+        sendResetPasswordEmail(email, user.username, url);
+        return {
+          message: "Re-send the password, please check your email.",
+        };
+      } catch (err) {
+        throw new ApolloError(err.message);
+      }
+    },
+
+    resetPassword: async (_parent, { token, newPassword }) => {
+      try {
+        let { id } = await verifyId(token);
+        newPassword = await hash(newPassword, 12);
+        const user = await User.findOneAndUpdate(
+          { _id: id },
+          { password: newPassword }
+        );
+        if (!user) throw new AuthenticationError("User not found");
+        return {
+          token,
+          user,
         };
       } catch (err) {
         throw new ApolloError(err.message);

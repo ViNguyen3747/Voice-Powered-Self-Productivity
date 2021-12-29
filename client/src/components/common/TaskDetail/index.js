@@ -1,25 +1,24 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { NavLink } from "react-router-dom";
-import { DELETE_TASK, UPDATE_TASK } from "../../../utils/graphQL/mutation";
-import { Checkbox, Icon, Button, Header, Modal } from "semantic-ui-react";
+import { DELETE_TASK } from "../../../utils/graphQL/mutation";
+import { Icon, Button, Header, Modal } from "semantic-ui-react";
 import { priorityOptions } from "../Data";
 import "./TaskDetail.scss";
 
-const TaskDetail = ({ task, setCurrentId, today, mock }) => {
-  const [deleteTask, { error }] = useMutation(DELETE_TASK);
-  const [updateTask, { error: updateError }] = useMutation(UPDATE_TASK);
+const TaskDetail = ({ task, setCurrentId, mock }) => {
+  const history = useHistory();
+  const [deleteTask] = useMutation(DELETE_TASK);
   const [open, setOpen] = useState(false);
   const [mockModal, setMock] = useState(false);
   const color = priorityOptions.find((p) => {
     return p.value === task.prioritylevel;
   });
-  //get ID for update_Task
   const handleChange = () => {
     if (mock) setMock(true);
     else setCurrentId(task.id);
   };
-  //add Delete_Task function
   const handleDelete = async () => {
     if (mock) setMock(true);
     else {
@@ -28,41 +27,22 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
           deleteTaskId: task.id,
         },
       });
-      window.location.assign("/today");
+      history.push("/today");
     }
   };
 
-  const handleCheck = async () => {
-    if (mock) setMock(true);
-    else {
-      const { data } = await updateTask({
-        variables: {
-          updateTaskId: task.id,
-          input: {
-            name: task.name,
-            category: task.category,
-            prioritylevel: task.prioritylevel,
-            duration: task.duration,
-            date: task.date,
-            isDone: !task.isDone,
-          },
-        },
-      });
-    }
-  };
   return (
     <div
       className="taskDetailContainer"
       style={{ backgroundColor: `#${color.color}` }}
     >
-      {today && <Checkbox checked={task.isDone} onChange={handleCheck} />}
       <div className="name">{task.name}</div>
       <div>
         <Icon
           color="white"
           className="icon"
           name="pencil alternate"
-          onClick={handleChange}
+          onClick={() => handleChange()}
         />
 
         <Modal
@@ -87,7 +67,7 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
               <Icon name="remove" /> No
             </Button>
             <Button
-              color="green"
+              color="purple"
               inverted
               onClick={() => {
                 setOpen(false);
@@ -116,9 +96,9 @@ const TaskDetail = ({ task, setCurrentId, today, mock }) => {
             <Button basic color="red" inverted onClick={() => setMock(false)}>
               <Icon name="remove" /> No
             </Button>
-            <NavLink to="/auth">
+            <NavLink to="/signin">
               <Button
-                color="green"
+                color="purple"
                 className="linkModal"
                 inverted
                 onClick={() => setMock(false)}

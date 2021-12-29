@@ -1,24 +1,25 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { Image } from "semantic-ui-react";
 import Authentication from "../images/Authentication.svg";
 
 const Signin = () => {
   return (
-    <div className="info-container">
+    <div
+      className="info-container"
+      style={{ backgroundColor: "rgba(21, 10, 14, 0.671)" }}
+    >
       <div className="InfoRow">
         <div className="Column1">
           <div className="TextWrapper">
-            <p className="TopLine">Join us</p>
+            <p className="header">Join us</p>
             <p className="Subtitle">
               Easy to access, easy to understand. Join us now to exprience the
-              best way to develope your healthy livestyle!
+              best way to develope your healthy lifestyle!
             </p>
-            <Link to="/auth">
-              <Button
-                className="info-wrapper"
-                style={{ background: "#D14343", color: "white" }}
-              >
+            <Link to="/signin">
+              <Button color="violet" size="medium">
                 Sign in
               </Button>
             </Link>
@@ -26,7 +27,7 @@ const Signin = () => {
         </div>
         <div className="Column2">
           <div className="ImgWrap">
-            <img className="Img" src={Authentication} alt="Logo" />
+            <Image size="large" src={Authentication} alt="authentication" />
           </div>
         </div>
       </div>

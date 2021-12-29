@@ -1,6 +1,10 @@
 import { gql } from "apollo-server-express";
 
 const typeDefs = gql`
+  enum Status {
+    Pending
+    Active
+  }
   extend type Query {
     authUser: User! @isAuth
   }
@@ -8,6 +12,9 @@ const typeDefs = gql`
   extend type Mutation {
     signup(newUser: signupInput!): Auth!
     signin(email: String!, password: String!): Auth!
+    activateEmail(token: String!): Auth!
+    forgotPassword(email: String!): Message!
+    resetPassword(token: String!, newPassword: String!): Auth!
   }
 
   input signupInput {
@@ -16,19 +23,22 @@ const typeDefs = gql`
     email: String!
     username: String!
     password: String!
-    retypePassword: String!
+    status: Status!
   }
 
   input signinInput {
     email: String!
     password: String!
+    status: Status!
   }
+
   type User {
     id: ID!
     firstName: String!
     lastName: String!
     email: String!
     username: String!
+    status: Status!
     createdAt: Date!
     updatedAt: Date!
   }
@@ -36,6 +46,10 @@ const typeDefs = gql`
   type Auth {
     token: String!
     user: User!
+  }
+
+  type Message {
+    message: String!
   }
 `;
 export default typeDefs;

@@ -8,7 +8,7 @@ import CategoryCard from "./CategoryCard";
 import { GET_TASKS } from "../../utils/graphQL/query";
 
 const Today = () => {
-  const { loading, error, data } = useQuery(GET_TASKS);
+  const { data } = useQuery(GET_TASKS);
 
   const [currentId, setCurrentId] = useState(null);
 
@@ -18,6 +18,7 @@ const Today = () => {
     });
     return (
       <CategoryCard
+        key={category.text}
         category={category}
         tasks={tasks}
         setCurrentId={setCurrentId}
@@ -27,13 +28,12 @@ const Today = () => {
 
   return (
     <div className="container">
-      <div className="wrapper">
-        <Form
-          setCurrentId={setCurrentId}
-          currentId={currentId}
-          rerouting="today"
-        />
-      </div>
+      <Form
+        setCurrentId={setCurrentId}
+        currentId={currentId}
+        rerouting="today"
+      />
+
       <div className="tasksContainer">
         {data &&
           categoriesOptions.map((category) => getTasks(category, data.tasks))}

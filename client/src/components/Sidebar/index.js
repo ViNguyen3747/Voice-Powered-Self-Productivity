@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "semantic-ui-react";
 import Link from "../common/Link";
 import useAuth from "../../utils/Hooks/useAuth";
-import "./Sidebar.css";
+import "./Sidebar.scss";
 import Auth from "../../utils/auth";
 
 const Sidebar = ({ isOpen, toggle }) => {
@@ -11,11 +11,16 @@ const Sidebar = ({ isOpen, toggle }) => {
   return (
     <aside
       className="SidebarContainer"
-      onClick={toggle}
+      onClick={() => toggle()}
       style={{ opacity: isOpen ? "97%" : 0, top: isOpen ? "0" : "-100%" }}
     >
       <div id="Icon">
-        <Button icon="close" onClick={toggle} />
+        <Button
+          icon="close"
+          color="purple"
+          size="big"
+          onClick={() => toggle()}
+        />
       </div>
       <div className="sidebarwrapper">
         <ul className="sidebarMenu">
@@ -24,11 +29,11 @@ const Sidebar = ({ isOpen, toggle }) => {
           <Link to="/upcoming" routeName="Future Tasks" />
           <Link to="/report" routeName="Report" />
           {Auth.loggedIn() ? (
-            <Button color="olive" onClick={logout}>
+            <Button color="purple" onClick={logout}>
               Logout
             </Button>
           ) : (
-            <Link to="/auth" routeName="Sign In" />
+            <Link to="/signin" routeName="Sign In" />
           )}
         </ul>
       </div>

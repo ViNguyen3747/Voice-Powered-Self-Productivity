@@ -25,3 +25,14 @@ export const signinSchema = yup.object().shape({
     .required("Please enter your email"),
   password: yup.string().required("Please enter your password"),
 });
+
+export const passwordSchema = yup.object().shape({
+  password: yup
+    .string()
+    .min(7, "Password must contain at least 7 characters")
+    .required("Please enter your password"),
+  retypePassword: yup
+    .string()
+    .required("Please confirm your password")
+    .oneOf([yup.ref("password")], "Password does not match"),
+});

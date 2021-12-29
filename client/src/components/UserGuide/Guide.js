@@ -1,70 +1,81 @@
 import React from "react";
-import Sinupimage from "../images/useGuide/signup.png";
-import deleteImage from "../images/useGuide/delete.png";
-import taskImage from "../images/useGuide/task.png";
-import voiceImage from "../images/useGuide/voice.png";
-import reportImage from "../images/useGuide/report.png";
-import goglelogin from "../images/useGuide/googleLogin.png";
+import { Image } from "semantic-ui-react";
+import Professional from "../images/categories/professional.svg";
+import Physical from "../images/categories/physical.svg";
+import Mental from "../images/categories/mental.svg";
+import Pratical from "../images/categories/pratical.svg";
+import Social from "../images/categories/social.svg";
+import Spiritual from "../images/categories/spiritual.svg";
+import Emotional from "../images/categories/emotional.svg";
 
-const userGuide = [
+const Categories = [
   {
-    value:
-      "To use the App you must register for an acount by filling up the join us page wich can be accessed by clicking the join us link bellow or by Sing in if you already have an account",
-    image: Sinupimage,
-    color: "#6D9773",
-  },
-
-  {
-    value:
-      "The App also supports google login, you can use your google account to access the app ",
-    image: goglelogin,
-    color: "#6D9773",
-  },
-
-  {
-    value:
-      "To create tasks, fill in name of the task, task category, the priority level of the task, the task date, the task starting and finishing time",
-    color: "#6D9773",
-    image: taskImage,
+    description:
+      "Any activities and actions that support feeling balanced and fulfilled in your career",
+    example: "Taking courses, attending conferences, working with a mentor,etc",
+    image: Professional,
+    name: "Professional",
   },
   {
-    value:
-      "To update, edit or delete tasks use the the pencil symbol for edit and a trash symbol for delete",
-    image: deleteImage,
-    color: "#FFBA00",
-  },
-
-  {
-    value:
-      "The app is Voice powered, you can enter and edit tasks using voice by holding the microphone",
-    image: voiceImage,
-    color: "#FFBA00",
+    description:
+      "Any activities you deliberately engage in to enhance your physical well-being",
+    image: Physical,
+    example: "taking a nap, taking fitness class, etc",
+    name: "Physical",
   },
   {
-    value:
-      "You can track your progress in tasks activities by viewing a weekly report under report",
-    image: reportImage,
-    color: "#FFBA00",
+    description:
+      "Any actions you take to fulfill your core needs and reduce stress can be catalogued as practical self-care",
+    example: "Organizing mail box, Meal prepping, laundry, etc",
+    image: Pratical,
+    name: "Pratical",
+  },
+  {
+    description: "Any activities that nurture our relationships with others",
+    image: Social,
+    name: "Social",
+    example: "Calling Mom, hanging out with friends, etc",
+  },
+  {
+    description:
+      "Any activities you engage in to connect with and nurture your soul.",
+    image: Spiritual,
+    name: "Spiritual",
+    example: "Volunteering, Spending time in nature, Worshipping, etc",
+  },
+  {
+    description:
+      "Anything you do specifically to stimulate your mind and cultivate a healthy psyche",
+    image: Mental,
+    name: "Mental/Intellectual",
+    example: "Listening to podcast, Reading a book, etc",
+  },
+  {
+    description:
+      "Any actions we take to connect with our emotions and process them in a healthy way",
+    image: Emotional,
+    name: "Emotional",
+    example: "Journaling, Talking to therapist, Meditation, etc",
   },
 ];
 export const Guide = () => {
   return (
-    <div className="guide-container" style={{ backgroundColor: "#304B30" }}>
-      <div className="title" style={{ color: "white" }}>
-        User Guides
-      </div>
-      <div className="info-wrapper">
-        {userGuide.map((g) => (
-          <div
-            className="guideCard"
-            style={{
-              backgroundColor: `${g.color}`,
-              textAlign: "left",
-            }}
-          >
-            <div>{g.value}</div>
-            <div className="userGuideimage">
-              <img width="500px" src={g.image} alt="" />
+    <div className="info-container">
+      <div className="header">Self-Care Category Guide</div>
+      <div className="guide_wrapper">
+        {Categories.map((g) => (
+          <div className="guideCard" key={g.description}>
+            <div className="Column1">
+              <div className="title">{g.name}</div>
+              <div className="userGuideimage">
+                <Image src={g.image} size="medium" centered alt={g.name} />
+              </div>
+            </div>
+            <div className="Column2">
+              <div className="Subtitle">{g.description}</div>
+            </div>
+            <div className="Column3">
+              <div className="Subtitle">EX: {g.example}</div>
             </div>
           </div>
         ))}

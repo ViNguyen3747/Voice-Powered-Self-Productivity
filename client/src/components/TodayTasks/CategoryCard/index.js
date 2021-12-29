@@ -35,11 +35,7 @@ const CategoryCard = ({ category, tasks, setCurrentId }) => {
         tasks.map((task) => (
           <div className="detail">
             {isToday(task.date) ? (
-              <TaskDetail
-                task={task}
-                setCurrentId={setCurrentId}
-                today="true"
-              />
+              <TaskDetail task={task} setCurrentId={setCurrentId} />
             ) : null}
           </div>
         ))

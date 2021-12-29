@@ -7,3 +7,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  overflow-y: overlay;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 12px;
+  height: 13px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(228, 152, 159, 0.541);
+  border-radius: 5px;
+  border: 3px;
+}

@@ -30,7 +30,6 @@ const typeDefs = gql`
     start: String!
     finish: String!
     duration: Float!
-    isDone: Boolean!
     date: Date!
   }
   input updateTaskInput {
@@ -40,7 +39,6 @@ const typeDefs = gql`
     start: String
     finish: String
     duration: Float
-    isDone: Boolean
     date: Date
   }
 
@@ -61,7 +59,6 @@ const typeDefs = gql`
     start: String!
     finish: String!
     duration: Float!
-    isDone: Boolean!
     date: Date!
     owner: ID!
     createdAt: Date!

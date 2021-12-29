@@ -15,7 +15,7 @@ import TaskDetail from "../../common/TaskDetail";
 import formatDate from "../../../utils/formatDate";
 import "./calendar.scss";
 Calendar.propTypes = {
-  yearAndMonth: PropTypes.arrayOf(PropTypes.number).isRequired, // e.g. [2021, 6] for June 2021
+  yearAndMonth: PropTypes.arrayOf(PropTypes.number).isRequired,
   onYearAndMonthChange: PropTypes.func.isRequired,
   renderDay: PropTypes.func,
 };
@@ -40,7 +40,7 @@ export default function Calendar({
   setCurrentId,
   renderDay = () => null,
 }) {
-  const { loading, error, data } = useQuery(GET_TASKS);
+  const { data } = useQuery(GET_TASKS);
   const [year, month] = yearAndMonth;
   const [isCurrentMonth, checkIsCurrentMonth] = useState(true);
   const [monthString, setMontString] = useState(months[month - 1]);
@@ -107,8 +107,8 @@ export default function Calendar({
               <Button
                 icon
                 labelPosition="left"
-                color="orange"
-                onClick={handleMonthNavBackButtonClick}
+                color="black"
+                onClick={() => handleMonthNavBackButtonClick()}
               >
                 <Icon name="left arrow" />
                 Prev
@@ -118,8 +118,8 @@ export default function Calendar({
             <Button
               icon
               labelPosition="right"
-              color="orange"
-              onClick={handleMonthNavForwardButtonClick}
+              color="black"
+              onClick={() => handleMonthNavForwardButtonClick()}
             >
               Next
               <Icon name="right arrow" />

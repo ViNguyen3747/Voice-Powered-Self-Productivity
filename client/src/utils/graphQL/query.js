@@ -1,4 +1,3 @@
-//complete this file
 import { gql } from "@apollo/client";
 
 export const GET_TASKS = gql`
@@ -11,7 +10,6 @@ export const GET_TASKS = gql`
       date
       owner
       duration
-      isDone
       createdAt
     }
   }
@@ -28,7 +26,6 @@ export const GET_TASK = gql`
       duration
       date
       owner
-      isDone
       date
       createdAt
     }

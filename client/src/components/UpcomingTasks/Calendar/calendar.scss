@@ -1,10 +1,10 @@
+@import "../../common//Styles/global.scss";
 @mixin grid() {
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(7, 20vw);
   grid-column-gap: 0.8px;
   grid-row-gap: 0.8px;
-  background-color: white;
 }
 
 .navigationHeader {
@@ -23,30 +23,34 @@
   letter-spacing: 5px;
   line-height: 1.2;
   padding-bottom: 10px;
+  color: $text-color-3;
 }
 .calendar {
+  color: $text-color-3;
   position: relative;
   margin: 0 auto;
-  background-color: white;
   padding: 20px;
   overflow: auto;
   border-radius: 7px;
 }
 
 .day-of-week-header-cell {
-  color: black;
   padding: 8px 0;
   text-align: center;
   font-size: large;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  font-weight: 600;
+
+  text-transform: uppercase;
 }
 
 .days-of-week {
   @include grid();
-  @media screen and (max-width: 1070px) {
+  width: max-content;
+  @media screen and (max-width: $BP_XXLARGE) {
     grid-template-columns: repeat(7, 50vw);
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: $BP_MEDIUM) {
     grid-template-columns: repeat(7, 80vw);
   }
 }
@@ -56,12 +60,11 @@
   height: fit-content;
   width: max-content;
   position: relative;
-  border: 0.5px solid #bbb7b7;
-  @media screen and (max-width: 1070px) {
+  @media screen and (max-width: $BP_XXLARGE) {
     grid-template-columns: repeat(7, 50vw);
     width: 351.2vw;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: $BP_MEDIUM) {
     grid-template-columns: repeat(7, 80vw);
     width: 491.7vw;
   }
@@ -69,20 +72,19 @@
 
 .day-grid-item-container {
   position: relative;
-  background-color: white;
+  background-color: $color-palette-10;
   display: flex;
+  color: $text-color-1;
+  min-height: 150px;
   flex-direction: column;
-  border-left: 0.5px solid #bbb7b7;
-  border-bottom: 0.5px solid #bbb7b7;
 }
 
 .day-grid-item-container:not(.current-month) .day-grid-item-header {
-  color: #bbb7b7;
+  color: #919191;
 }
 
 /* Position the day label within the day cell */
 .day-grid-item-container .day-grid-item-header {
-  color: black;
   padding: 8px;
   padding-bottom: 0;
   font-weight: bold;

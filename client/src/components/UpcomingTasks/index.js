@@ -10,13 +10,12 @@ const Upcoming = () => {
   const [currentId, setCurrentId] = useState(null);
   return (
     <div className="container">
-      <div className="wrapper">
-        <Form
-          setCurrentId={setCurrentId}
-          currentId={currentId}
-          rerouting="upcoming"
-        />
-      </div>
+      <Form
+        setCurrentId={setCurrentId}
+        currentId={currentId}
+        rerouting="upcoming"
+      />
+
       <div className="wrapper">
         <Calendar
           yearAndMonth={yearAndMonth}

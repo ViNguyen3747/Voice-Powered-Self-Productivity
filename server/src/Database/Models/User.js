@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
     password: { type: String, required: true, minlength: 5 },
-    retypePasswor: { type: String, required: true, minlength: 5 },
+    status: { type: String, required: true },
   },
   {
     timestamps: true,

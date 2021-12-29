@@ -1,11 +1,6 @@
 import React from "react";
 import "./App.scss";
 import {
-  PushToTalkButton,
-  PushToTalkButtonContainer,
-} from "@speechly/react-ui";
-
-import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
@@ -17,10 +12,8 @@ import "./components/common/Styles/commonStyles.scss";
 const link = createHttpLink({ uri: "/graphql" });
 
 const authLink = setContext((_, { headers }) => {
-  // Retrieve the authorization token from local storage.
   const token = localStorage.getItem("id_token");
 
-  // Set the HTTP headers
   return {
     headers: {
       ...headers,
@@ -40,9 +33,6 @@ function App() {
       <ApolloProvider client={client}>
         <Window />
       </ApolloProvider>
-      <PushToTalkButtonContainer>
-        <PushToTalkButton />
-      </PushToTalkButtonContainer>
     </>
   );
 }

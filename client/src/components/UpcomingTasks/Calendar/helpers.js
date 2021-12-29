@@ -66,7 +66,6 @@ export function createDaysForNextMonth(year, month, currentMonthDays) {
   });
 }
 
-// sunday === 0, saturday === 6
 export function getWeekday(dateString) {
   return dayjs(dateString).weekday();
 }

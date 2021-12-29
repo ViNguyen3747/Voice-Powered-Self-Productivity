@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { link } from "./link.scss";
+import "./link.scss";
 
 const Link = ({ to, routeName }) => (
-  <li className={link}>
+  <li className="link">
     <NavLink to={to} activeClassName="active" exact>
       {routeName}
     </NavLink>

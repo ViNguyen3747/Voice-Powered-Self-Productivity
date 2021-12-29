@@ -3,29 +3,28 @@ import React from "react";
 const goals = [
   {
     value: "Task Management",
-    color: "#6D9773",
   },
   {
     value: "Project Goals",
-    color: "#FFBA00",
   },
   {
     value: "Priorities tasks",
-    color: "#6D9773",
   },
   {
     value: "Reports",
-    color: "#FFBA00",
   },
 ];
 
 const Goals = () => {
   return (
-    <div className="info-container">
-      <div className="title">App Goals</div>
+    <div
+      className="info-container"
+      style={{ backgroundColor: "rgba(143, 103, 114, 0.576)" }}
+    >
+      <div className="header">App Goals</div>
       <div className="info-wrapper">
         {goals.map((g) => (
-          <div className="Card" style={{ backgroundColor: `${g.color}` }}>
+          <div className="Card" key={g.value}>
             {g.value}
           </div>
         ))}

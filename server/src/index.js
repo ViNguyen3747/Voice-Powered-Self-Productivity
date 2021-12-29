@@ -6,11 +6,12 @@ import dotenv from "dotenv";
 import cors from "cors";
 import bodyParser from "body-parser";
 import { AuthMiddleware } from "./middleware/auth.js";
-dotenv.config();
 import { schemaDirectives } from "./directives/index.js";
 import * as AppModels from "./Database/Models/index.js";
 import typeDefs from "./typeDefs/index.js";
 import resolvers from "./resolvers/index.js";
+
+dotenv.config();
 const app = express();
 app.disable("x-powered-by");
 app.use(bodyParser.json());
@@ -34,7 +35,7 @@ const startServer = async () => {
   try {
     await apolloServer.start();
     apolloServer.applyMiddleware({ app, cors: true, path: "/graphql" });
-    const PORT = 5000;
+    const PORT = process.env.PORT || 6000;
     app.use("/", (req, res, next) => {
       res.send({ message: "Hello" });
     });

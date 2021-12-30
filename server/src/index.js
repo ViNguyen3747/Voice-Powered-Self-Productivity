@@ -9,7 +9,7 @@ import { AuthMiddleware } from "./middleware/auth.js";
 import { schemaDirectives } from "./directives/index.js";
 import * as AppModels from "./Database/Models/index.js";
 import typeDefs from "./typeDefs/index.js";
-import resolvers from "./resolvers/index.js";
+import resolvers from "./Resolvers/index.js";
 
 dotenv.config();
 const app = express();
@@ -35,7 +35,7 @@ const startServer = async () => {
   try {
     await apolloServer.start();
     apolloServer.applyMiddleware({ app, cors: true, path: "/graphql" });
-    const PORT = process.env.PORT || 6000;
+    const PORT = process.env.PORT;
     app.use("/", (req, res, next) => {
       res.send({ message: "Hello" });
     });

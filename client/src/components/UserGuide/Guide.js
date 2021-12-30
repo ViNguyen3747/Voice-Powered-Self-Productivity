@@ -61,12 +61,15 @@ const Categories = [
 export const Guide = () => {
   return (
     <div className="info-container">
-      <div className="header">Self-Care Category Guide</div>
+      <div className="header" style={{ color: "rgb(252, 240, 227)" }}>
+        Self-Care Category Guide
+      </div>
       <div className="guide_wrapper">
         {Categories.map((g) => (
           <div className="guideCard" key={g.description}>
             <div className="Column1">
               <div className="title">{g.name}</div>
+              <br />
               <div className="userGuideimage">
                 <Image src={g.image} size="medium" centered alt={g.name} />
               </div>

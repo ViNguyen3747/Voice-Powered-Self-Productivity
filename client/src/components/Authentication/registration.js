@@ -27,13 +27,13 @@ const Register = () => {
     },
   });
 
-  const onSubmit = (userData) => {
+  const onSubmit = async (userData) => {
     try {
       const { retypePassword, ...userInput } = userData;
-      const { data } = addUser({
+      const { data } = await addUser({
         variables: { newUser: { ...userInput, status: "Pending" } },
       });
-      if (data) setSuccess("Please check your email and verify your account");
+      if (data) setSuccess(data.signup.message);
     } catch (e) {
       console.log(e);
     }
@@ -99,12 +99,12 @@ const Register = () => {
                 <p className="errorText">{errors.retypePassword?.message}</p>
               </Form.Field>
             </Form.Group>
+            {success && <div>{success}</div>}
             <div>
               <Button secondary type="submit">
                 Submit
               </Button>
             </div>
-            {success && <div>{success}</div>}
             <div className="authlink">
               <p>
                 Already have an acount? <Link to="/signin">Sign in</Link>

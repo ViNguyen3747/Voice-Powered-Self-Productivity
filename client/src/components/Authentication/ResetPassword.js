@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { Button, Form } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 
 import { RESET_PASSWORD } from "../../utils/graphQL/mutation";
 import { passwordSchema } from "../../utils/validation/authenticationValidation";
@@ -15,17 +16,19 @@ const ResetPassword = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(passwordSchema) });
-  const [err, setErr] = useState("");
-  const [success, setSuccess] = useState("");
+  const [err, setErr] = useState();
+  const [success, setSuccess] = useState();
   const [resetPassword] = useMutation(RESET_PASSWORD);
 
-  const onSubmit = (userData) => {
+  const onSubmit = async (userData) => {
     try {
       const { password } = userData;
-      const { data } = resetPassword({
+      const { data } = await resetPassword({
         variables: { token: reset_token, newPassword: password },
       });
-      if (data) setSuccess("Password is reset successfully");
+      if (data) {
+        setSuccess(data.resetPassword.message);
+      }
     } catch (e) {
       setErr("Fail to change password");
     }
@@ -55,10 +58,21 @@ const ResetPassword = () => {
               <p className="errorText">{errors.retypePassword?.message}</p>
             </Form.Field>
             <div>
-              <Button secondary type="submit">
+              <Button secondary size="medium" type="submit">
                 Submit
               </Button>
             </div>
+            {success && (
+              <>
+                <br />
+                <NavLink to="/signin">
+                  <Button size="medium" color="black">
+                    {" "}
+                    Sign In
+                  </Button>
+                </NavLink>
+              </>
+            )}
           </Form>
         </div>
       </div>

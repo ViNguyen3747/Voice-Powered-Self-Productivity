@@ -2,11 +2,7 @@ import { gql } from "@apollo/client";
 export const SIGN_UP = gql`
   mutation signup($newUser: signupInput!) {
     signup(newUser: $newUser) {
-      token
-      user {
-        id
-        username
-      }
+      message
     }
   }
 `;
@@ -26,11 +22,7 @@ export const SIGN_IN = gql`
 export const ACTIVATE_USER = gql`
   mutation activateEmail($token: String!) {
     activateEmail(token: $token) {
-      token
-      user {
-        id
-        username
-      }
+      message
     }
   }
 `;
@@ -46,11 +38,7 @@ export const FORGOT_PASSWORD = gql`
 export const RESET_PASSWORD = gql`
   mutation resetPassword($token: String!, $newPassword: String!) {
     resetPassword(token: $token, newPassword: $newPassword) {
-      token
-      user {
-        id
-        username
-      }
+      message
     }
   }
 `;

@@ -10,11 +10,11 @@ const typeDefs = gql`
   }
 
   extend type Mutation {
-    signup(newUser: signupInput!): Auth!
+    signup(newUser: signupInput!): Message!
     signin(email: String!, password: String!): Auth!
     activateEmail(token: String!): Auth!
     forgotPassword(email: String!): Message!
-    resetPassword(token: String!, newPassword: String!): Auth!
+    resetPassword(token: String!, newPassword: String!): Message!
   }
 
   input signupInput {

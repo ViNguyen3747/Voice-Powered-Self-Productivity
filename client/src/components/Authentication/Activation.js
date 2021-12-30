@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
+import { Button } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 
 import { ACTIVATE_USER } from "../../utils/graphQL/mutation";
 
@@ -13,7 +15,9 @@ const Activation = () => {
     if (activation_token)
       try {
         let { data } = activateUSer({ variables: { token: activation_token } });
-        setSuccess("Account is activated successfully");
+        if (data) {
+          setSuccess(data.activateEmail.message);
+        }
       } catch (e) {
         setErr("Fail to activate account");
       }
@@ -21,7 +25,20 @@ const Activation = () => {
   return (
     <div className="container">
       <div className="formWrapper">
-        {err && <div>{err}</div>} {success && <div>{success}</div>}
+        {err && <div>{err}</div>}{" "}
+        {success && (
+          <div>
+            {success}
+            <br />
+            <br />
+            <NavLink to="/signin">
+              <Button color="black" className="linkModal">
+                {" "}
+                Sign In
+              </Button>
+            </NavLink>
+          </div>
+        )}
       </div>
     </div>
   );

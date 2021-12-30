@@ -13,7 +13,9 @@ const Signin = () => {
       <div className="InfoRow">
         <div className="Column1">
           <div className="TextWrapper">
-            <p className="header">Join us</p>
+            <p className="header" style={{ color: "rgb(252, 240, 227)" }}>
+              Join us
+            </p>
             <p className="Subtitle">
               Easy to access, easy to understand. Join us now to exprience the
               best way to develope your healthy lifestyle!

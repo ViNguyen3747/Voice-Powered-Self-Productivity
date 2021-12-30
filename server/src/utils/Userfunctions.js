@@ -18,13 +18,6 @@ const createAccessToken = async (jwtPayload) => {
   return token;
 };
 
-const createRefreshToken = async (jwtPayload) => {
-  let token = await jwt.sign(jwtPayload, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: "7d",
-  });
-  return token;
-};
-
 const verifyUser = async (token) => {
   return jwt.verify(token, process.env.ACTIVATION_TOKEN_SECRET);
 };
@@ -47,6 +40,5 @@ export {
   createActivationToken,
   serializeUser,
   createAccessToken,
-  createRefreshToken,
   verifyId,
 };

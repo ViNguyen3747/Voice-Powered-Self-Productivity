@@ -4,17 +4,14 @@ import { hash, compare } from "bcryptjs";
 import {
   serializeUser,
   createActivationToken,
-  createRefreshToken,
   verifyUser,
   createAccessToken,
   verifyId,
 } from "../utils/Userfunctions.js";
 import { User } from "../Database/Models";
+import { sendEmail } from "../utils/EmailService.js";
+
 dotenv.config();
-import {
-  sendConfirmationEmail,
-  sendResetPasswordEmail,
-} from "../utils/emailService.js";
 const resolvers = {
   Query: {
     authUser: (_, __, { req: { user } }) => user,
@@ -75,10 +72,14 @@ const resolvers = {
         result = await serializeUser(result);
         let activation_token = await createActivationToken(result);
         let verificationUrl = `${process.env.CLIENT_URL}/user/activate/${activation_token}`;
-        sendConfirmationEmail(result.email, result.username, verificationUrl);
+        sendEmail(
+          result.email,
+          result.username,
+          verificationUrl,
+          "confirmation"
+        );
         return {
-          token: activation_token,
-          user: result,
+          message: "To confirm your account, please check your email.",
         };
       } catch (err) {
         throw new ApolloError(err.message);
@@ -96,8 +97,7 @@ const resolvers = {
         if (!user) throw new AuthenticationError("User not found");
 
         return {
-          token,
-          user,
+          message: "Account is activated successfully.",
         };
       } catch (err) {
         throw new ApolloError(err.message);
@@ -114,9 +114,9 @@ const resolvers = {
         }
         let reset_token = await createAccessToken({ id: user._id });
         let url = `${process.env.CLIENT_URL}/user/reset/${reset_token}`;
-        sendResetPasswordEmail(email, user.username, url);
+        sendEmail(email, user.username, url, "reset");
         return {
-          message: "Re-send the password, please check your email.",
+          message: "Please check your email.",
         };
       } catch (err) {
         throw new ApolloError(err.message);
@@ -133,8 +133,7 @@ const resolvers = {
         );
         if (!user) throw new AuthenticationError("User not found");
         return {
-          token,
-          user,
+          message: "Reset password successfully.",
         };
       } catch (err) {
         throw new ApolloError(err.message);

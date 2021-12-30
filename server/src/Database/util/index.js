@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 const URL =
-  "mongodb+srv://Vi_Long_Ombeni:5DH4dzUcIewc0vD0@cluster0.zxacs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+  " mongodb+srv://Vi_Long_Ombeni:5DH4dzUcIewc0vD0@cluster0.zxacs.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 export const connection = async () => {
   try {

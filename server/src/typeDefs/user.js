@@ -12,7 +12,7 @@ const typeDefs = gql`
   extend type Mutation {
     signup(newUser: signupInput!): Message!
     signin(email: String!, password: String!): Auth!
-    activateEmail(token: String!): Auth!
+    activateEmail(token: String!): Message!
     forgotPassword(email: String!): Message!
     resetPassword(token: String!, newPassword: String!): Message!
   }

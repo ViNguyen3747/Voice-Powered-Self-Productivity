@@ -19,7 +19,7 @@ import { categoriesOptions, priorityOptions } from "../Data";
 import { ADD_TASK, UPDATE_TASK } from "../../../utils/graphQL/mutation";
 import { GET_TASK } from "../../../utils/graphQL/query";
 import { taskSchema } from "../../../utils/validation/taskFormValidation";
-import useAuth from "../../../utils/Hooks/useAuth";
+import Auth from "../../../utils/auth";
 const renderLabel = (option) => ({
   color: option.color,
   content: option.text,
@@ -49,9 +49,8 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
     resolver: yupResolver(taskSchema),
     defaultValues: initialState,
   });
-  const [client, logout, data] = useAuth();
   const [mockModal, setMock] = useState(false);
-  const { data: task } = useQuery(GET_TASK, {
+  const { data } = useQuery(GET_TASK, {
     variables: { taskId: currentId },
   });
   const [addTask] = useMutation(ADD_TASK);
@@ -59,16 +58,16 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
 
   useEffect(() => {
     reset();
-    if (task) {
+    if (data) {
       clearErrors();
       scroll.scrollToTop();
-      let { createdAt, id, owner, __typename, ...task } = task.task;
+      let { createdAt, id, owner, __typename, ...taskInfo } = data.task;
 
-      Object.entries(task).map(([key, value]) =>
+      Object.entries(taskInfo).map(([key, value]) =>
         setValue(key, key === "date" ? new Date(value) : value)
       );
     }
-  }, [task]);
+  }, [data]);
 
   const handleFormSubmit = async () => {
     setValue(
@@ -79,7 +78,7 @@ const TaskForm = ({ currentId, setCurrentId, rerouting }) => {
     );
     let taskData = getValues();
     try {
-      if (data.authUser) {
+      if (Auth.loggedIn()) {
         if (currentId) {
           const { data } = await updateTask({
             variables: {

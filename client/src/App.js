@@ -10,7 +10,7 @@ import { setContext } from "@apollo/client/link/context";
 import Window from "./window";
 import "./components/common/Styles/commonStyles.scss";
 const link = new HttpLink({
-  uri: "https://self-care-tracker.herokuapp.com/graphql",
+  uri: "http://localhost:5000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {

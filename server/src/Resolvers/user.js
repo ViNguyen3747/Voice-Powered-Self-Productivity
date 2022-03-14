@@ -9,8 +9,7 @@ import {
   verifyId,
 } from "../utils/Userfunctions.js";
 import { User } from "../Database/Models";
-import { sendEmail } from "../utils/EmailService.js";
-
+import { sendEmail } from "../utils/EmailService";
 dotenv.config();
 const resolvers = {
   Query: {
@@ -40,7 +39,7 @@ const resolvers = {
             };
           } else {
             throw new AuthenticationError(
-              "Pending Account. Please Verify Your Email"
+              "Pending Account. Please Verify Your Email. If you cannot find the email in your inboxes, please check your spam."
             );
           }
         }
@@ -72,6 +71,7 @@ const resolvers = {
         result = await serializeUser(result);
         let activation_token = await createActivationToken(result);
         let verificationUrl = `${process.env.CLIENT_URL}/user/activate/${activation_token}`;
+
         sendEmail(
           result.email,
           result.username,
@@ -79,7 +79,8 @@ const resolvers = {
           "confirmation"
         );
         return {
-          message: "To confirm your account, please check your email.",
+          message:
+            "To confirm your account, please check your email. If you cannot find the email in your inboxes, please check your spam.",
         };
       } catch (err) {
         throw new ApolloError(err.message);
@@ -116,7 +117,8 @@ const resolvers = {
         let url = `${process.env.CLIENT_URL}/user/reset/${reset_token}`;
         sendEmail(email, user.username, url, "reset");
         return {
-          message: "Please check your email.",
+          message:
+            "Please check your email. If you cannot find the email in your inboxes, please check your spam.",
         };
       } catch (err) {
         throw new ApolloError(err.message);
